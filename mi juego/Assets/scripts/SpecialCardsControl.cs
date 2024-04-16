@@ -18,19 +18,19 @@ public class SpecialCardsControl : MonoBehaviour
     }
     public void OnClick()
     {
-        if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+        if((CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima || CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje) && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
         {
              Zone = GameObject.Find("MeleeClima");
         }
-        if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+        if((CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima || CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje) && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged )//&& CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
         {
              Zone = GameObject.Find("RangedClima");
         }
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+        else if((CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima || CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje) && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
         {
              Zone = GameObject.Find("SiegeClima");
         }
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+        /*else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
              Zone = GameObject.Find("MeleeClima (1)");
         }
@@ -41,7 +41,7 @@ public class SpecialCardsControl : MonoBehaviour
         else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
              Zone = GameObject.Find("SiegeClima (1)");
-        }
+        }*/
         Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
         Card.transform.position = Zone.transform.position;
 //        list.Add(Card);

@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 7740659113686756118}
   - component: {fileID: -668781524826958131}
   - component: {fileID: -7122800964332729680}
+  - component: {fileID: 6562888132201469530}
   m_Layer: 6
   m_Name: Card
   m_TagString: Card
@@ -496,6 +497,25 @@ MonoBehaviour:
   Zone: {fileID: 0}
   Card: {fileID: 0}
   CardInfo: {fileID: 0}
+--- !u!114 &6562888132201469530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905185156424587762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434751a8c17c51643a66690a743f3b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filaMelee: {fileID: 0}
+  filaRanged: {fileID: 0}
+  filaSiege: {fileID: 0}
+  melee: []
+  ranged: []
+  siege: []
+  suma: 0
 --- !u!1 &8223984231504805340
 GameObject:
   m_ObjectHideFlags: 0

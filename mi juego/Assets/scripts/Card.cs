@@ -31,8 +31,9 @@ public class Card : ScriptableObject
     }
      public enum Power{
         Ninguno,
-        EliminarFilaConMasPoderDelRival,
-        LimpiaLaFilaConMenosUnidades,
+        PonerUnAumento,
+        PonerUnClima,
+        LimpiarFilaConMenosUnidades,
         MultiplicarPor_n_ElAtaque,
         IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio,
         RobarUnaCarta,

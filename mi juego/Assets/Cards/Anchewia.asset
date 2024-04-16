@@ -18,5 +18,5 @@ MonoBehaviour:
   artwork: {fileID: 21300000, guid: 8e73e910c8440f740ab7e3dbac484136, type: 3}
   faccion: 0
   tipoDeCarta: 1
-  zonaQueAfecta: 0
+  zonaQueAfecta: 1
   power: 0

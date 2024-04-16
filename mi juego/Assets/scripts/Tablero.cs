@@ -115,7 +115,10 @@ public class Tablero : MonoBehaviour
     // Quita la carta si ya no esta colisionando 
     if (CartasEnZona.Contains(collision.gameObject))
     {
-    CartasEnZona.Remove(collision.gameObject);
+        CARD = collision.gameObject;
+        CartasEnZona.Remove(CARD);
+        suma -= CARD.GetComponent<cardDisplay>().card.Damage;
+
     }
     }
 

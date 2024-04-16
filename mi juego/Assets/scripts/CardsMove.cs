@@ -25,6 +25,7 @@ public class CardsMove : MonoBehaviour
         else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
             Zone = GameObject.Find("RangedZone");
+        
         }
         else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {

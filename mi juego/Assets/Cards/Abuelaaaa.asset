@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c6ba6865cf6a64eb998dcd2d75df6d, type: 3}
-  m_Name: Intelectual
+  m_Script: {fileID: 11500000, guid: 71d81750f62d950448f9c39bd988390c, type: 3}
+  m_Name: Abuelaaaa
   m_EditorClassIdentifier: 
-  name: Intelectual
+  Damage: 0
+  name: Abuelaa
   description: 
-  artwork: {fileID: 21300000, guid: af8f73d8c5f6940469c26e4f5edcaf16, type: 3}
-  Damage: 6
-  faccion: 1
+  artwork: {fileID: 21300000, guid: 8f5cee5e60c466a44a840efa37973b75, type: 3}
+  faccion: 0
   tipoDeCarta: 1
-  tipoDeAtaque: 2
-  power: 5
+  zonaQueAfecta: 0
+  power: 0

@@ -17,19 +17,47 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 916e35906cb77a849839a6ed1bdb04a2, type: 2}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8400539529839647366}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3649608461062604396}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: MultiplicarPor_n_ElAtaque
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: CardsMove, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Effects, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1020080489092409495, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
@@ -114,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_Name
-      value: Card Variant 1
+      value: Card(0) Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 8397000168474016319, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: card
@@ -125,6 +153,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+--- !u!114 &3649608461062604396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6562888132201469530, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+  m_PrefabInstance: {fileID: 7616163608411197494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919865758563666372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434751a8c17c51643a66690a743f3b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3919865758563666372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}

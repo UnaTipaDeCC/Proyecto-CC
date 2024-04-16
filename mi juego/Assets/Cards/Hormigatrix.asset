@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c6ba6865cf6a64eb998dcd2d75df6d, type: 3}
   m_Name: Hormigatrix
   m_EditorClassIdentifier: 
-  name: Hormigatrix
+  name: Hormigatrixx
   description: 
   artwork: {fileID: 21300000, guid: 1d8fe7d9578cabf40b46eb3655752877, type: 3}
   Damage: 4
   faccion: 0
   tipoDeCarta: 1
   tipoDeAtaque: 2
+  power: 4
