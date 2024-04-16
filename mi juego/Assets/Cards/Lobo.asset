@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c6ba6865cf6a64eb998dcd2d75df6d, type: 3}
+  m_Name: Lobo
+  m_EditorClassIdentifier: 
+  name: Lobo
+  description: 
+  artwork: {fileID: 21300000, guid: 0cf549ae09a21194c9d588a899470fd1, type: 3}
+  Damage: 2
+  faccion: 1
+  tipoDeCarta: 1
+  tipoDeAtaque: 0
+  power: 0
