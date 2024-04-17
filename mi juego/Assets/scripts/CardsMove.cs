@@ -9,40 +9,54 @@ public class CardsMove : MonoBehaviour
     public GameObject Zone;
      public GameObject Card;
      public Card CardInfo;
+     public GameManager gameManager;
     void Start()
     {
-        
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
     public void OnClick()
     {
-        if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
+        //comprueba que la carta no haya sido movida ya y la zona a la que debe moverse
+        if(gameManager.IsPlayerOneTurn && CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
              Zone = GameObject.Find("MeleeZone");
-             GameObject tableroObj = GameObject.Find("Melee");
-             
+             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+             Debug.Log("cambie el turno");
+               
         }
        
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
+        else if(gameManager.IsPlayerOneTurn && CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
             Zone = GameObject.Find("RangedZone");
+            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+            Debug.Log("cambie el turno");
         
         }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
+        else if(gameManager.IsPlayerOneTurn && CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
             Zone = GameObject.Find("SiegeZone");
+           gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+           Debug.Log("cambie el turno");
+
         }
-        if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+        if(!gameManager.IsPlayerOneTurn && CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
         {
             Zone = GameObject.Find("MeleeZone (1)");
+            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+            Debug.Log("cambie el turno");                    
         }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+        else if(!gameManager.IsPlayerOneTurn &&  CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
         {
             Zone = GameObject.Find("RangedZone (1)");
-            Debug.Log(CardInfo.Damage);
+            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;;       
+           Debug.Log("cambie el turno");   
+        
         }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+        else if(!gameManager.IsPlayerOneTurn &&  CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
         {
             Zone = GameObject.Find("SiegeZone (1)");
+            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn; 
+            Debug.Log("cambie el turno"); 
         }
 
         Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 

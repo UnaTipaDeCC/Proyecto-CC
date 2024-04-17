@@ -8,6 +8,7 @@ public class Card : ScriptableObject
     public new string name;
     public string description;
     public Sprite artwork;
+    public bool jugada = false;
     public int Damage;
     //public string TipoDeAtaque;
     public enum TipoDeAtaque{

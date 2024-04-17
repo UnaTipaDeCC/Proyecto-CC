@@ -11,6 +11,8 @@ TagManager:
   - RangedZone (1)
   - SiegeZone (1)
   - SiegeZone
+  - Deck(1)
+  - Hand (1)
   layers:
   - Default
   - TransparentFX

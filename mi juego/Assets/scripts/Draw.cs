@@ -6,12 +6,23 @@ public class Draw : MonoBehaviour
 {
     //public GameObject Card;
     public GameObject Hand;
-    private List<GameObject> CardsInHand { get; set; }
-    public List<GameObject> CardsInDeck;
+    public List<GameObject> CardsInHand; //= new List<GameObject>();
+    public List<GameObject> CardsInDeck; //= new List<GameObject>();
+    /*private List<GameObject> cardsInHand = new List<GameObject>();
+    private List<GameObject> cardsInDeck = new List<GameObject>();
 
+    public List<GameObject> GetCardsInHand()
+    {
+        return cardsInHand;
+    }
+
+    public List<GameObject> GetCardsInDeck()
+    {
+        return cardsInDeck;
+    }*/
     void Start()
     {
-        CardsInHand = new();
+       //CardsInHand = new();
     }
 
     public void OnClick()

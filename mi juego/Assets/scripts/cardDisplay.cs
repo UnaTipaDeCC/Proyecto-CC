@@ -10,7 +10,7 @@ public class cardDisplay : MonoBehaviour
     public Text nameText;
     public Text descriptionText;
     public Image artworkImage;
-    public Text DamageText = null;
+    public Text DamageText;
     
     // Start is called before the first frame update
     void Start()

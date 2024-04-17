@@ -6,27 +6,51 @@ using UnityEngine;
 
 public class Effects : MonoBehaviour
 {
-    public GameObject filaMelee;
-    public GameObject filaRanged;
-    public GameObject filaSiege;
-    public List<GameObject> melee;
-    public List<GameObject> ranged;
-    public List<GameObject> siege;
-    public GameObject cartam;
-    public GameObject cartar;
-    public GameObject cartas;
+    private GameObject filaMelee;
+    private GameObject hand;
+    private GameObject deck;
+    private List<GameObject> cardsinhand;
+    private List<GameObject> cardsindeck;
+    private GameObject filaRanged;
+    private GameObject filaSiege;
+    private List<GameObject> melee;
+    private List<GameObject> ranged;
+    private List<GameObject> siege;
+    private GameObject cartam;
+    private GameObject cartar;
+    private GameObject cartas;
+    public GameObject ZonaDeAumento;
 
-    /*void RobarUnaCarta(Player player)//ingresar aleatoriamente las cartas a la mano de cada jugador (EN UNITY LO TENDRE QUE CAMBIAR)
+    public void RobarUnaCarta()
     {
-        if(player.Hand.Count < 10)
-        {
-            Random random = new Random();
-            int indiceAleatorio = random.Next(0,player.Deck.Count);
-            player.Hand.Add(player.Deck[indiceAleatorio]);
-        }        
+        /*hand = GameObject.FindGameObjectWithTag("Hand (1)");
+        deck = GameObject.FindGameObjectWithTag("Deck (1)");
+        // Get a reference to the Draw component on the deck GameObject
+        Draw deckDrawComponent = deck.GetComponent<Draw>();
+        // Access the CardsInHand and CardsInDeck lists from the Draw component
+        cardsinhand = deckDrawComponent.CardsInHand;
+        cardsindeck = deckDrawComponent.CardsInDeck;
+        int index = UnityEngine.Random.Range(0, cardsindeck.Count);
+        GameObject drawCard = Instantiate(cardsindeck[index], new Vector3(0, 0, 0), Quaternion.identity);
+        cardsindeck.RemoveAt(index);
+        drawCard.transform.SetParent(hand.transform, false);
+        cardsinhand.Add(drawCard);*/
+        
+        hand = GameObject.FindGameObjectWithTag("Hand (1)");
+        deck = GameObject.FindGameObjectWithTag("Deck(1)");
+        cardsinhand = deck.GetComponent<Draw>().CardsInHand;
+        cardsindeck = deck.GetComponent<Draw>().CardsInDeck;
+        int index = UnityEngine.Random.Range(0, cardsindeck.Count);
+        GameObject drawCard = Instantiate(cardsindeck[index], new Vector3(0,0,0), Quaternion.identity);
+        cardsindeck.RemoveAt(index);
+        drawCard.transform.SetParent(hand.transform, false);
+        cardsinhand.Add(drawCard);
+
     }
+    
 
 //revisa los nombres que cambiaste las variables
+/*
 void EliminarFilaConMasPoderDelRival(Player player)//(List<Card> melee,List<Card> ranged,List<Card> siege, List<Card> Cementery)//poder del leader
  { 
     int contador_melee = 0;
@@ -78,6 +102,19 @@ void EliminarFilaConMasPoderDelRival(Player player)//(List<Card> melee,List<Card
         }
     }
 
+}*/
+/*public void Aumentar_Damage()
+{
+    melee = ZonaDeAumento.GetComponent<Tablero>().CartasEnZona;
+    ZonaDeAumento.GetComponent<Tablero>().suma = 0;
+    foreach(GameObject carta in melee)
+    {
+        if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
+        {
+            carta.GetComponent<cardDisplay>().card.Damage += 2; 
+        }
+        ZonaDeAumento.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+    }
 }*/
 public void EliminarCartaConMenosPoderDelRival()//como hago para quitar la carta de la escena y eliminarlo del contador
 {
@@ -301,44 +338,62 @@ public void LimpiaLaFilaConMenosUnidades()
     siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
     if(melee.Count != 0 || siege.Count != 0 || ranged.Count !=0)
     {
-        Debug.Log("ahi alguna fila no vacia");
+        Debug.Log("hay alguna fila no vacia");
         //comprueba cual es la fila que menos cartas tiene
         if(melee.Count != 0 && (melee.Count <= ranged.Count) && (melee.Count < siege.Count) )
         {
+            Debug.Log("melee es la que menos tiene");
+            List<GameObject> cartasAEliminar = new List<GameObject>();
             foreach(GameObject carta in melee)
             {
                 if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
                 {
-                    Destroy(carta);
+                    cartasAEliminar.Add(carta);
                     //melee.Remove(carta);
                     //player.Cementery.Add(carta);
                 }
+            }
+            foreach(GameObject carta in cartasAEliminar)
+            {
+                Destroy(carta);
             }
             // GameObject.FindGameObjectWithTag("MeleeZone").GetComponent<Tablero>().CartasEnZona = melee;
         }
         else if(ranged.Count != 0 && ( ranged.Count < melee.Count) && (ranged.Count <= siege.Count))
         {
+            Debug.Log("ranged es la que menos tiene");
+            List<GameObject> cartasAEliminar = new List<GameObject>();
             foreach(GameObject carta in ranged)
             {
                 if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
                 {
-                    Destroy(carta);
+                    cartasAEliminar.Add(carta);
                     //ranged.Remove(carta);
                     //player.Cementery.Add(carta);
                 }
+            }
+             foreach(GameObject carta in cartasAEliminar)
+            {
+                Destroy(carta);
             }
             // GameObject.FindGameObjectWithTag("RangedZone").GetComponent<Tablero>().CartasEnZona = ranged;
         }
         else if(siege.Count != 0 && (siege.Count <= melee.Count) && (siege.Count < ranged.Count))
         {
+            Debug.Log("SIEGE es la que menos tiene");
+            List<GameObject> cartasAEliminar = new List<GameObject>();
             foreach(GameObject carta in siege)
             {
                 if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
                 {
-                    Destroy(carta);
+                    cartasAEliminar.Add(carta);
                     //siege.Remove(carta);
                     //player.Cementery.Add(carta);
                 }
+            }
+             foreach(GameObject carta in cartasAEliminar)
+            {
+                Destroy(carta);
             }
              //GameObject.FindGameObjectWithTag("SiegeZone").GetComponent<Tablero>().CartasEnZona = siege;
         }

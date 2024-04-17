@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Arco Loco
   description: 
   artwork: {fileID: 21300000, guid: 26ff621ac2ead9b499ab07dc90600b84, type: 3}
+  jugada: 0
   Damage: 2
   faccion: 0
   tipoDeCarta: 0

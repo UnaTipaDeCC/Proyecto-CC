@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Abogada
   description: 
   artwork: {fileID: 21300000, guid: e201a6ac0e2893c46809d899bdca6caa, type: 3}
+  jugada: 0
   Damage: 5
   faccion: 1
   tipoDeCarta: 0

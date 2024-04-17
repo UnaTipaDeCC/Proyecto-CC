@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Neblina Intensa
   description: 
   artwork: {fileID: 21300000, guid: fd17a2f965c44014ab304996a392e8eb, type: 3}
-  faccion: 0
+  faccion: 2
   tipoDeCarta: 2
   zonaQueAfecta: 2
   power: 0

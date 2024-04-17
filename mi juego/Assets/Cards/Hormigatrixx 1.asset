@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c6ba6865cf6a64eb998dcd2d75df6d, type: 3}
+  m_Name: Hormigatrixx 1
+  m_EditorClassIdentifier: 
+  name: Hormigatrixx
+  description: Multiplica su ataque segun la cantidad de cartas igual a ella en el
+    campo
+  artwork: {fileID: 21300000, guid: 1d8fe7d9578cabf40b46eb3655752877, type: 3}
+  jugada: 0
+  Damage: 4
+  faccion: 0
+  tipoDeCarta: 1
+  tipoDeAtaque: 2
+  power: 4

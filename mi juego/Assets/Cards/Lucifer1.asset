@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c6ba6865cf6a64eb998dcd2d75df6d, type: 3}
+  m_Name: Lucifer1
+  m_EditorClassIdentifier: 
+  name: Lucifer
+  description: 
+  artwork: {fileID: 21300000, guid: ee27439931eb4f74cb71e02f98021885, type: 3}
+  jugada: 0
+  Damage: 3
+  faccion: 1
+  tipoDeCarta: 1
+  tipoDeAtaque: 1
+  power: 0

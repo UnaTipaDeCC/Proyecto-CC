@@ -76,6 +76,7 @@ public class Tablero : MonoBehaviour
     public GameObject CARD;
     public List<GameObject> CartasEnZona = new List<GameObject>();
     public int suma = 0;
+    public int turno = 0;
     void Start()
     {
 
@@ -95,7 +96,6 @@ public class Tablero : MonoBehaviour
     {
         
         CARD = collision.gameObject;
-        Debug.Log("Estoy");
         CartasEnZona.Add(CARD);
         suma += CARD.GetComponent<cardDisplay>().card.Damage;
        /* foreach (GameObject item in CartasEnZona)
@@ -108,18 +108,17 @@ public class Tablero : MonoBehaviour
             }
 
         }*/
-        Debug.Log(suma);
     }
          void OnCollisionExit2D(Collision2D collision)
     {
-    // Quita la carta si ya no esta colisionando 
-    if (CartasEnZona.Contains(collision.gameObject))
-    {
-        CARD = collision.gameObject;
-        CartasEnZona.Remove(CARD);
-        suma -= CARD.GetComponent<cardDisplay>().card.Damage;
+        // Quita la carta si ya no esta colisionando 
+        if (CartasEnZona.Contains(collision.gameObject))
+        {
+            CARD = collision.gameObject;
+            CartasEnZona.Remove(CARD);
+            suma -= CARD.GetComponent<cardDisplay>().card.Damage;
 
-    }
+        }
     }
 
     /*public List<GameObject> Melee = new List<GameObject>();

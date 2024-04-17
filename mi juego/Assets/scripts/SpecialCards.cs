@@ -30,6 +30,7 @@ public class SpecialCards : ScriptableObject
     {
         Hormigas_Bravas,
         Hormigas_Locas,
+        Ambas,
     }
      public enum Power{
         Ninguno,

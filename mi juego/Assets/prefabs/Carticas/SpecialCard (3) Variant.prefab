@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7509743093936011489
+--- !u!1001 &8107858686819026546
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1425679324145094999}
+      objectReference: {fileID: 826998496134426564}
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 560212383704253196, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: specialcard
       value: 
-      objectReference: {fileID: 11400000, guid: d60b12633cbdc614982056ccff87502e, type: 2}
+      objectReference: {fileID: 11400000, guid: 7bb77b957ad65d04baaefc512ee24153, type: 2}
     - target: {fileID: 842297851592127870, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_Name
       value: SpecialCard (3) Variant
@@ -94,11 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4088202765929698965, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1316
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4088202765929698965, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 251
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4088202765929698965, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -115,29 +115,29 @@ PrefabInstance:
     - target: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: Card
       value: 
-      objectReference: {fileID: 7171849231786216863}
+      objectReference: {fileID: 8877887798272652044}
     - target: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: CardInfo
       value: 
-      objectReference: {fileID: 11400000, guid: d60b12633cbdc614982056ccff87502e, type: 2}
+      objectReference: {fileID: 11400000, guid: 7bb77b957ad65d04baaefc512ee24153, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
---- !u!114 &1425679324145094999 stripped
+--- !u!114 &826998496134426564 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
-  m_PrefabInstance: {fileID: 7509743093936011489}
+  m_PrefabInstance: {fileID: 8107858686819026546}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171849231786216863}
+  m_GameObject: {fileID: 8877887798272652044}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e1c678616151fd4a881b0c46b624778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7171849231786216863 stripped
+--- !u!1 &8877887798272652044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 842297851592127870, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
-  m_PrefabInstance: {fileID: 7509743093936011489}
+  m_PrefabInstance: {fileID: 8107858686819026546}
   m_PrefabAsset: {fileID: 0}
