@@ -19,6 +19,7 @@ public class LeaderCardControl : MonoBehaviour
     {
         if(gameManager.playerOnePassed == false && gameManager.IsPlayerOneTurn && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
         {
+            Debug.Log("todo bien hasta aqui");
             if(gameManager.leaderCardBActivated == false)
             {
             Debug.Log("active esta historia");
@@ -31,8 +32,10 @@ public class LeaderCardControl : MonoBehaviour
             else Debug.Log("ya la activaste");
 
         }
-        else if(/*gameManager.playerTwoPassed == false && !gameManager.IsPlayerOneTurn &&*/ cardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+        else if(gameManager.playerTwoPassed == false  && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
+            if(gameManager.IsPlayerOneTurn == false)
+            {
             Debug.Log("soy de esta faccion");
             if(gameManager.leaderCardLActivated == false)
             {
@@ -44,7 +47,11 @@ public class LeaderCardControl : MonoBehaviour
                 gameManager.leaderCardLActivated = true;
             }
             else Debug.Log("ya la activaste");    
+            }
+            else Debug.Log("NO ES MI TURNO");
+        
         }
+
 
     }
 

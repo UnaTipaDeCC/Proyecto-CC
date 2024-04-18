@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -55,17 +57,66 @@ public List<GameObject> SiegeClimaCards
     get { return siegeClimaCards; }
     set { siegeClimaCards = value; }
 }
+public GameObject contador1;//contador del jugador uno
+public GameObject contador2;//contador del jugador dos
+private int RondasGanadas1;//rondas ganadas por el jugador uno
+public int rondasGanadas1
+{
+    get { return  RondasGanadas1; }
+    set {  RondasGanadas1 = value; }
+}
+private int RondasGanadas2;//rondas ganadas por el jugador dos
+public int rondasGanadas2
+{
+    get { return  RondasGanadas2; }
+    set {  RondasGanadas2 = value; }
+}
+public void EndRound()
+{
+    if(PlayerOnePassed == true && playerTwoPassed == true)
+    {
+        if(contador1.GetComponent<Contador>().puntos > contador2.GetComponent<Contador>().puntos)
+        {
+            Debug.Log("gana el jugador uno");
+            isPlayerOneTurn = true;
+            RondasGanadas1 ++;
+        }
+        if(contador1.GetComponent<Contador>().puntos < contador2.GetComponent<Contador>().puntos)
+        {
+            Debug.Log("gana el jugador dos");
+            isPlayerOneTurn = false;
+            RondasGanadas2 ++;
+        }
+        if(contador1.GetComponent<Contador>().puntos == contador2.GetComponent<Contador>().puntos)
+        {
+            Debug.Log("empate");
+            RondasGanadas1 ++;
+            RondasGanadas2 ++;
+        }
+        playerOnePassed = false;
+        playerTwoPassed = false;
 
+    }
+}
+public void EndGame()
+{
+    if((RondasGanadas1 == 2 || RondasGanadas2 == 2) && RondasGanadas1 != RondasGanadas2)
+    {
+        Debug.Log("Se acabo el juego");
+    } 
+
+}
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        contador1 = GameObject.FindGameObjectWithTag("Contador");
+        contador2 = GameObject.FindGameObjectWithTag("Contador (1)");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //FinDelaRonda();   
     }
 }

@@ -25,6 +25,8 @@ public class PasarTurno : MonoBehaviour
             Debug.Log("se paso el jugador dos");
             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
         }
+        gameManager.EndRound();
+        gameManager.EndGame();
     }
 
     // Update is called once per frame

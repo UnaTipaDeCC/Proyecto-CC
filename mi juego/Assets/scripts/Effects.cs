@@ -28,8 +28,14 @@ public class Effects : MonoBehaviour
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
     public void RobarUnaCarta()
-    { 
-        if(!gameManager.IsPlayerOneTurn)
+    {
+        bool condicion;
+        if(gameManager.playerOnePassed == true)
+        {
+            condicion = !gameManager.IsPlayerOneTurn;
+        }
+        else condicion = gameManager.IsPlayerOneTurn; 
+        if(gameManager.playerTwoPassed == false && condicion)//(!gameManager.IsPlayerOneTurn)
         {
         /*hand = GameObject.FindGameObjectWithTag("Hand (1)");
         deck = GameObject.FindGameObjectWithTag("Deck (1)");
@@ -126,8 +132,15 @@ public class Effects : MonoBehaviour
     }*/
     public void EliminarCartaConMenosPoderDelRival()
     {
-        if(gameManager.IsPlayerOneTurn)
+        bool condicion;//al activar el on click compila primero el cardsmove y se cambia el turno 
+        if(gameManager.playerTwoPassed == true)
         {
+            condicion = gameManager.IsPlayerOneTurn;
+        }
+        else condicion = !gameManager.IsPlayerOneTurn;
+        if(gameManager.playerOnePassed == false && condicion)//(gameManager.IsPlayerOneTurn)
+        {
+            Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone (1)");
@@ -202,8 +215,15 @@ public class Effects : MonoBehaviour
     }
     public void EliminarCartaConMasPoderDelRival()
     {
-        if(gameManager.IsPlayerOneTurn)
+        bool condicion;
+        if(gameManager.playerTwoPassed == true)
         {
+            condicion = gameManager.IsPlayerOneTurn;
+        }
+        else condicion = !gameManager.IsPlayerOneTurn;
+        if(gameManager.playerOnePassed == false && condicion)//(gameManager.IsPlayerOneTurn)
+        {
+             Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone (1)");
@@ -216,6 +236,8 @@ public class Effects : MonoBehaviour
             int index_ranged = 0;
             int contador_siege = int.MinValue;
             int index_siege = 0;
+            if(melee.Count != 0 || siege.Count != 0 || ranged.Count != 0)
+            {
             foreach(GameObject carta in melee)//encuentra la carta mas poder de la zona melee
             {
                 if(carta.GetComponent<cardDisplay>().card.Damage > contador_melee) 
@@ -268,12 +290,20 @@ public class Effects : MonoBehaviour
                 Destroy(cartas);
                 Debug.Log("quite una carta de siege");
             }
+            }
         }
     }
     public void MultiplicarPor_n_ElAtaque()//siendo n la cantidad de cartas igual a ella en el campo
     {
-        if(gameManager.IsPlayerOneTurn)
+        bool condicion;
+        if(gameManager.playerTwoPassed == true)
         {
+            condicion = gameManager.IsPlayerOneTurn;
+        }
+        else condicion = !gameManager.IsPlayerOneTurn;
+        if(gameManager.playerOnePassed == false && condicion)//(gameManager.IsPlayerOneTurn)
+        {
+             Debug.Log("activo esto xq es mi turno");
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone");
             ranged = filaRanged.GetComponent<Tablero>().CartasEnZona;
             int contador = 1;
@@ -290,56 +320,72 @@ public class Effects : MonoBehaviour
         else Debug.Log("no afecto xq no es mi turno");
     }
     public void IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio()
-    {   
-        if(!gameManager.IsPlayerOneTurn)
+    {
+        bool condicion;
+        if(gameManager.playerOnePassed == true)
         {
+            condicion = !gameManager.IsPlayerOneTurn;
+        }
+        else condicion = gameManager.IsPlayerOneTurn;    
+        if(gameManager.playerTwoPassed == false && condicion)//(!gameManager.IsPlayerOneTurn)
+        {
+             Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone (1)");
             ranged = filaRanged.GetComponent<Tablero>().CartasEnZona;
             filaSiege = GameObject.FindGameObjectWithTag("SiegeZone (1)");
             siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
-            
-            int promedio = (GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma + GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma + GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma)/(melee.Count + siege.Count + ranged.Count);
-            Debug.Log("EL PROMEDIO ES" + promedio);
-            GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma = 0;
-            GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma = 0;
-            GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma = 0;
-            foreach(GameObject carta in melee)
+            if(melee.Count != 0 || ranged.Count != 0 || siege.Count != 0)
             {
-                if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
+                int promedio = (GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma + GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma + GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma)/(melee.Count + siege.Count + ranged.Count);
+                Debug.Log("EL PROMEDIO ES" + promedio);
+                GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma = 0;
+                GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma = 0;
+                GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma = 0;
+                foreach(GameObject carta in melee)
                 {
+                    if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
+                    {
+                        carta.GetComponent<cardDisplay>().card.Damage = promedio;
+                        //Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
+                    }
+                    GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                }
+                foreach(GameObject carta in siege)
+                {
+                    if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
+                    {
                     carta.GetComponent<cardDisplay>().card.Damage = promedio;
                     //Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
+                    }
+                    GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
                 }
-                GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
-            }
-            foreach(GameObject carta in siege)
-            {
-                if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
+                foreach(GameObject carta in ranged)
                 {
-                carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                //Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
+                    if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
+                    {
+                        carta.GetComponent<cardDisplay>().card.Damage = promedio;
+                        Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
+                        //GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                    }
+                    GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
                 }
-                GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
-            }
-            foreach(GameObject carta in ranged)
-            {
-                if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-                {
-                    carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                    Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
-                    //GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
-                }
-                GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
             }
         }
         else Debug.Log("no afecto xq no es mi turno");
     }
-    public void LimpiaLaFilaConMenosUnidades()
+    public void LimpiaLaFilaConMenosUnidades()//hay algo aqui que no funciona bien, no la destruye
     {
-        if(!gameManager.IsPlayerOneTurn)
+        bool condicion;
+        if(gameManager.playerOnePassed == true)
         {
+            condicion = !gameManager.IsPlayerOneTurn;
+        }
+        else condicion = gameManager.IsPlayerOneTurn; 
+        if(condicion)//(!gameManager.IsPlayerOneTurn)
+        {
+             Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone");
@@ -358,6 +404,7 @@ public class Effects : MonoBehaviour
                     {
                         if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
                         {
+                            Debug.Log("HAY UNA CATYA DE PLATA Y LA VOY A METER EN LA LISTA");
                             cartasAEliminar.Add(carta);
                             //melee.Remove(carta);
                             //player.Cementery.Add(carta);
