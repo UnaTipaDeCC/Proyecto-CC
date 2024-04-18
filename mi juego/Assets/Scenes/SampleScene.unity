@@ -893,14 +893,14 @@ PrefabInstance:
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 623479746}
+      objectReference: {fileID: 623479755}
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
       objectReference: {fileID: 0}
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SpecialCardsControl, Assembly-CSharp
+      value: LeaderCardControl, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1005,7 +1005,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 842297851592127870, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 623479755}
   m_SourcePrefab: {fileID: 100100000, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
 --- !u!224 &623479744 stripped
 RectTransform:
@@ -1017,17 +1020,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 842297851592127870, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
   m_PrefabInstance: {fileID: 623479743}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &623479746 stripped
+--- !u!114 &623479755
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
-  m_PrefabInstance: {fileID: 623479743}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623479745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e1c678616151fd4a881b0c46b624778, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c2b5a56eacd3b4092cbc41aeb2b35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  card: {fileID: 623479745}
+  cardInfo: {fileID: 11400000, guid: 503ee2ebf024e7644b87f1e8c98e848d, type: 2}
 --- !u!224 &660051220 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5016699617768721996, guid: 1ce587d8b41a2454b90963ff226bc606, type: 3}
@@ -1068,14 +1074,14 @@ PrefabInstance:
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 708110642}
+      objectReference: {fileID: 708110651}
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
       objectReference: {fileID: 0}
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SpecialCardsControl, Assembly-CSharp
+      value: LeaderCardControl, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -4836757160851323520, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1180,7 +1186,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 842297851592127870, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 708110651}
   m_SourcePrefab: {fileID: 100100000, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
 --- !u!224 &708110640 stripped
 RectTransform:
@@ -1192,17 +1201,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 842297851592127870, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
   m_PrefabInstance: {fileID: 708110639}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &708110642 stripped
+--- !u!114 &708110651
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
-  m_PrefabInstance: {fileID: 708110639}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708110641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e1c678616151fd4a881b0c46b624778, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c2b5a56eacd3b4092cbc41aeb2b35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  card: {fileID: 708110641}
+  cardInfo: {fileID: 11400000, guid: 2d251b42b2f83b1449bd475f75a5890e, type: 2}
 --- !u!1 &729403848
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,9 +3575,9 @@ MonoBehaviour:
   - {fileID: 8151589459477281183, guid: 954b3002700bb1b488dae4b3fafd0486, type: 3}
   - {fileID: 1851775699188217862, guid: 832fd1ff29d3b28489719c836ff9d11b, type: 3}
   - {fileID: 8515230010526174821, guid: 413587dbb3a46d7489963abdde05761c, type: 3}
-  - {fileID: 7397097343006712733, guid: 84c1e8db8c965724ea7ebe42d5e3807a, type: 3}
-  - {fileID: 4624959999645614328, guid: 54ca84365cada78499d7ce8fb3d1883c, type: 3}
-  - {fileID: 9168370831397034508, guid: 2c22901f00005d941b7c123ae0272454, type: 3}
+  - {fileID: 641960068194393756, guid: a96ae802eb48c0a449c81882e4b3f45d, type: 3}
+  - {fileID: 3201295974381864426, guid: b6ce4d0b92785144397d6d523f03072f, type: 3}
+  - {fileID: 9127664969309648521, guid: 5ee7e0b4537b41745a36d271fbf90397, type: 3}
   - {fileID: 633045441327106516, guid: cbf4d04c4f4c45e4fb3415873bfd23b7, type: 3}
   - {fileID: 8877887798272652044, guid: 26e343706f4777c4d9c8a2fed79514e5, type: 3}
   - {fileID: 7525332019316744501, guid: ca63dc924d6028945b3b9b73a6ddbc80, type: 3}

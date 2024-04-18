@@ -19,6 +19,18 @@ public class GameManager : MonoBehaviour
         set { PlayerOnePassed = value; }
     }
     private bool PlayerTwoPassed = false;
+    private bool LeaderCardBActivated = false;//carta lider de la faccion hormigas bravas
+    public bool leaderCardBActivated
+    {
+        get { return LeaderCardBActivated; }
+        set { LeaderCardBActivated = value; }
+    }
+    private bool LeaderCardLActivated = false;//carta lider de la faccion hormigas locas
+    public bool leaderCardLActivated
+    {
+        get { return LeaderCardLActivated; }
+        set { LeaderCardLActivated = value; }
+    }    
 
     public bool playerTwoPassed
     {
@@ -33,13 +45,11 @@ public class GameManager : MonoBehaviour
     get { return meleeClimaCards; }
     set { meleeClimaCards = value; }
 }
-
 public List<GameObject> RangedClimaCards
 {
     get { return rangedClimaCards; }
     set { rangedClimaCards = value; }
 }
-
 public List<GameObject> SiegeClimaCards
 {
     get { return siegeClimaCards; }

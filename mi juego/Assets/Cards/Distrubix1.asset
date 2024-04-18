@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d81750f62d950448f9c39bd988390c, type: 3}
-  m_Name: Distrubix
+  m_Name: Distrubix1
   m_EditorClassIdentifier: 
   Damage: 0
   name: Distrubix
   description: 
   artwork: {fileID: 21300000, guid: e5ba9d19052e3844aa55c1fcea132e14, type: 3}
-  faccion: 0
+  faccion: 1
   tipoDeCarta: 1
   zonaQueAfecta: 2
   power: 0

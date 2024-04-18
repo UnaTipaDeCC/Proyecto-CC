@@ -21,222 +21,297 @@ public class SpecialCardsControl : MonoBehaviour
     public void OnClick()
     {
      //asigna la zona que le corresponde a cada carta segun el tipo de carta y la zona a la que afecta y controla que sea el turno del jugador en caso contrario no le asigna una zona y por ende no se mueve
-        //no controlas esto
-        if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+        //no hace lo de las listas
+        if(gameManager.playerOnePassed == false)
         {
-          if(gameManager.IsPlayerOneTurn)
+          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
-            Zone = GameObject.Find("MeleeClima");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          } 
-          else Debug.Log("No es tu turno");       
-        }
-       
-        if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
-          if(!gameManager.IsPlayerOneTurn)
-          {
-            Zone = GameObject.Find("MeleeClima");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          } 
-          else Debug.Log("No es tu turno");       
-        }
-       
-        if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
-          if(gameManager.IsPlayerOneTurn)
-          {
-            Zone = GameObject.Find("MeleeClima");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          } 
-          else Debug.Log("No es tu turno");       
-        }
-       
-        if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
-          if(!gameManager.IsPlayerOneTurn)
-          {
-            Zone = GameObject.Find("MeleeClima");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          } 
-          else Debug.Log("No es tu turno");       
-        }
-       
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
-          if(gameManager.IsPlayerOneTurn)
-          {
-             Zone = GameObject.Find("RangedClima");
-             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-             Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-             Card.transform.position = Zone.transform.position;
+            if(gameManager.IsPlayerOneTurn && (gameManager.MeleeClimaCards.Count == 0))
+            {
+              Zone = GameObject.Find("MeleeClima");
+              if(gameManager.playerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+            } 
+            else Debug.Log("No es tu turno o ya hay una carta clima que afecta esta zona");       
           }
-          else Debug.Log("No es tu turno");   
         
-        }
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
-          if(!gameManager.IsPlayerOneTurn)
+          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
-             Zone = GameObject.Find("RangedClima");
-             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-             Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-             Card.transform.position = Zone.transform.position;
-          }
-          else Debug.Log("No es tu turno");           
-        }
-
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
-          if(gameManager.IsPlayerOneTurn)
-          {
-             Zone = GameObject.Find("RangedClima");
-             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-             Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-             Card.transform.position = Zone.transform.position;
-          }
-          else Debug.Log("No es tu turno");           
-        }
-
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
-          if(!gameManager.IsPlayerOneTurn)
-          {
-             Zone = GameObject.Find("RangedClima");
-             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-             Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-             Card.transform.position = Zone.transform.position;
-          }
-          else Debug.Log("No es tu turno");           
-        }
-
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
             if(gameManager.IsPlayerOneTurn)
             {
-              Zone = GameObject.Find("SiegeClima");
-              gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              Zone = GameObject.Find("MeleeClima");
+              if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
-            }
-        else Debug.Log("No es tu turno");
-        }
-       
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
-            if(!gameManager.IsPlayerOneTurn)
-            {
-              Zone = GameObject.Find("SiegeClima");
-              gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-            }
-        else Debug.Log("No es tu turno");
-        }
-
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
+              if(gameManager.MeleeClimaCards.Count > 0)
+              {
+                Debug.Log("destrui la carta melee");
+                GameObject carta = gameManager.MeleeClimaCards[0];
+                gameManager.MeleeClimaCards.RemoveAt(0); 
+                Destroy(carta);//ya vermos              
+              }
+            } 
+            else Debug.Log("No es tu turno");       
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          {
             if(gameManager.IsPlayerOneTurn)
             {
-              Zone = GameObject.Find("SiegeClima");
-              gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              Zone = GameObject.Find("RangedClima");
+              if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
             }
-        else Debug.Log("No es tu turno");
+            else Debug.Log("No es tu turno");   
+          
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          {
+            if(gameManager.IsPlayerOneTurn)
+            {
+              Zone = GameObject.Find("RangedClima");
+              if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+            }
+            else Debug.Log("No es tu turno");           
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          {
+              if(gameManager.IsPlayerOneTurn)
+              {
+                Zone = GameObject.Find("SiegeClima");
+                if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+              }
+              else Debug.Log("No es tu turno");
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          {
+              if(gameManager.IsPlayerOneTurn)
+              {
+                Zone = GameObject.Find("SiegeClima");
+                if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+              }
+              else Debug.Log("No es tu turno");
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          {
+            if(gameManager.IsPlayerOneTurn)
+            {
+              Zone = GameObject.Find("AumentoMelee");
+              if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+            }  
+            else Debug.Log("No es tu turno");
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          {
+            if(gameManager.IsPlayerOneTurn)
+            {
+              Zone = GameObject.Find("AumentoRanged");
+             if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+            }
+            else Debug.Log("No es tu turno");
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          {
+            if(gameManager.IsPlayerOneTurn)
+            {
+              Zone = GameObject.Find("AumentoSiege ");
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+              if(gameManager.playerTwoPassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+            }           
+          else Debug.Log("No es tu turno");
+          }
         }
-
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+        
+       
+        if(gameManager.playerTwoPassed == false)
         {
+          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          {
+            if(!gameManager.IsPlayerOneTurn  && (gameManager.MeleeClimaCards.Count == 0))
+            {
+              Zone = GameObject.Find("MeleeClima");
+              if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+            } 
+            else Debug.Log("No es tu turno o ya hay una carta clima que afecta esta zona");       
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          {
             if(!gameManager.IsPlayerOneTurn)
             {
-              Zone = GameObject.Find("SiegeClima");
-              gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              Zone = GameObject.Find("MeleeClima");
+              if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+              if(gameManager.MeleeClimaCards.Count > 0)
+              {
+                Debug.Log("destrui la carta melee");
+                GameObject carta = gameManager.MeleeClimaCards[0];
+                gameManager.MeleeClimaCards.RemoveAt(0); 
+                Destroy(carta);//ya vermos              
+              }
+            } 
+            else Debug.Log("No es tu turno");       
+          }
+        
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          {
+            if(!gameManager.IsPlayerOneTurn)
+            {
+              Zone = GameObject.Find("RangedClima");
+             if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
             }
-        else Debug.Log("No es tu turno");
-        }
+            else Debug.Log("No es tu turno");           
+          }
         
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
-          if(gameManager.IsPlayerOneTurn)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
-            Zone = GameObject.Find("AumentoMelee");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          }  
-        else Debug.Log("No es tu turno");
-        }
-        
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
-          if(!gameManager.IsPlayerOneTurn)
-          {
-            Zone = GameObject.Find("AumentoMelee (1)");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          }  
-        else Debug.Log("No es tu turno");
-        }
-
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
-          if(gameManager.IsPlayerOneTurn)
-          {
-            Zone = GameObject.Find("AumentoRanged");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
+            if(!gameManager.IsPlayerOneTurn)
+            {
+              Zone = GameObject.Find("RangedClima");
+              if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+            }
+            else Debug.Log("No es tu turno");           
           }
           
-        else Debug.Log("No es tu turno");
-        }
-        
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
-          if(!gameManager.IsPlayerOneTurn)
-          { 
-            Zone = GameObject.Find("AumentoRanged (1)");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          }
-        else Debug.Log("No es tu turno");
-        }
-        
-        else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
-        {
-          if(gameManager.IsPlayerOneTurn)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
-            Zone = GameObject.Find("AumentoSiege ");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-            Card.transform.position = Zone.transform.position;
-          }           
-        else Debug.Log("No es tu turno");
-        }
-        
-        else if( CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
-        {
+              if(!gameManager.IsPlayerOneTurn)
+              {
+                Zone = GameObject.Find("SiegeClima");
+               if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+              }
+          else Debug.Log("No es tu turno");
+          }
+
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          {
+              if(!gameManager.IsPlayerOneTurn)
+              {
+                Zone = GameObject.Find("SiegeClima");
+               if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+              }
+          else Debug.Log("No es tu turno");
+          }
+          
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          {
             if(!gameManager.IsPlayerOneTurn)
             {
-              Zone = GameObject.Find("AumentoSiege  (1)");
-              gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              Zone = GameObject.Find("AumentoMelee (1)");
+              if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
-            }           
-            else Debug.Log("No es tu turno");
+            }  
+          else Debug.Log("No es tu turno");
+          }
+          
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          {
+            if(!gameManager.IsPlayerOneTurn)
+            { 
+              Zone = GameObject.Find("AumentoRanged (1)");
+              if(gameManager.playerOnePassed == false)
+              {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+              }
+              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+              Card.transform.position = Zone.transform.position;
+            }
+          else Debug.Log("No es tu turno");
+          }
+          
+          else if( CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          {
+              if(!gameManager.IsPlayerOneTurn)
+              {
+                Zone = GameObject.Find("AumentoSiege  (1)");
+                if(gameManager.playerOnePassed == false)
+                {
+                  gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                }
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+              }           
+              else Debug.Log("No es tu turno");
+          }
         }
     }    
 }

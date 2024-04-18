@@ -16,20 +16,25 @@ public class CardsMove : MonoBehaviour
     }
     public void OnClick()
     {
+        
+        if(gameManager.playerOnePassed == false)//comprueba que el jugador uno no se haya pasado
+        {
         //comprueba que la carta no haya sido movida ya y la zona a la que debe moverse
         if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
              if(gameManager.IsPlayerOneTurn )
              {
-             Zone = GameObject.Find("MeleeZone");
-             Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-             Card.transform.position = Zone.transform.position;
-             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-             Debug.Log("cambie el turno");
+                Zone = GameObject.Find("MeleeZone");
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+                if(gameManager.playerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+                {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                Debug.Log("cambie el turno");
+                }
              }
              else 
              {   
-               //Zone = GameObject.Find("Hand");
                 Debug.Log("no es tu turno");
              }  
         }
@@ -39,8 +44,11 @@ public class CardsMove : MonoBehaviour
             if(gameManager.IsPlayerOneTurn)
             {
             Zone = GameObject.Find("RangedZone");
+            if(gameManager.playerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+            {
             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
             Debug.Log("cambie el turno");
+            }
             Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
             Card.transform.position = Zone.transform.position;
             }
@@ -56,8 +64,11 @@ public class CardsMove : MonoBehaviour
             if(gameManager.IsPlayerOneTurn)
             {   
                 Zone = GameObject.Find("SiegeZone");
+                if(gameManager.playerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+                {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 Debug.Log("cambie el turno");
+                }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
             }
@@ -67,15 +78,23 @@ public class CardsMove : MonoBehaviour
             }
 
         }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+        }
+
+        if(gameManager.playerTwoPassed == false)
+        {
+             if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
         {
             if(!gameManager.IsPlayerOneTurn) 
             {
             Zone = GameObject.Find("MeleeZone (1)");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+            if(gameManager.playerOnePassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+                {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                Debug.Log("cambie el turno"); 
+                }
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
-            Debug.Log("cambie el turno");  
+             
             }
             else
             {
@@ -87,10 +106,14 @@ public class CardsMove : MonoBehaviour
             if(!gameManager.IsPlayerOneTurn)
             {
                 Zone = GameObject.Find("RangedZone (1)");
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;       
+                if(gameManager.playerOnePassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+                {
+                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                Debug.Log("cambie el turno");   
+                }       
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
-                Debug.Log("cambie el turno");   
+                
             }
             else
             {
@@ -104,15 +127,20 @@ public class CardsMove : MonoBehaviour
             if(!gameManager.IsPlayerOneTurn)
             {
                 Zone = GameObject.Find("SiegeZone (1)");
+                if(gameManager.playerOnePassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+                {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                Debug.Log("cambie el turno");
+                }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position; 
-                Debug.Log("cambie el turno");
+                
             }
             else
             {
                 Debug.Log("no es tu turno");
             }    
+        }
         }
 
         //Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
