@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d81750f62d950448f9c39bd988390c, type: 3}
-  m_Name: Neblina Intensa
+  m_Name: Tormenta1
   m_EditorClassIdentifier: 
   Damage: 0
-  name: Neblina Intensa
-  description: disminuye en 1  el poder de las cartas de ambas zonas ranged mientras
+  name: Tormenta
+  description: disminuye en 1  el poder de las cartas de ambas zonas melee mientras
     este en el campo
-  artwork: {fileID: 21300000, guid: fd17a2f965c44014ab304996a392e8eb, type: 3}
-  faccion: 0
+  artwork: {fileID: 21300000, guid: dad07a187acc67e4d965ac7042991f4f, type: 3}
+  faccion: 1
   tipoDeCarta: 2
-  zonaQueAfecta: 2
+  zonaQueAfecta: 0
   power: 0

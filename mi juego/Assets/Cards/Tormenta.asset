@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   name: Tormenta
-  description: holaaa
+  description: disminuye en 1  el poder de las cartas de ambas zonas melee mientras
+    este en el campo
   artwork: {fileID: 21300000, guid: dad07a187acc67e4d965ac7042991f4f, type: 3}
-  faccion: 2
+  faccion: 0
   tipoDeCarta: 2
   zonaQueAfecta: 0
   power: 0
