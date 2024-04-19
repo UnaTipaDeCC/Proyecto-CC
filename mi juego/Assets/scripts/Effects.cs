@@ -22,6 +22,7 @@ public class Effects : MonoBehaviour
     private GameObject cartas;
     public GameObject ZonaDeAumento;
     private GameManager gameManager;
+    private GameObject Cementery;
 
     void Start()
     {
@@ -37,19 +38,6 @@ public class Effects : MonoBehaviour
         else condicion = gameManager.IsPlayerOneTurn; 
         if(gameManager.playerTwoPassed == false && condicion)//(!gameManager.IsPlayerOneTurn)
         {
-        /*hand = GameObject.FindGameObjectWithTag("Hand (1)");
-        deck = GameObject.FindGameObjectWithTag("Deck (1)");
-        // Get a reference to the Draw component on the deck GameObject
-        Draw deckDrawComponent = deck.GetComponent<Draw>();
-        // Access the CardsInHand and CardsInDeck lists from the Draw component
-        cardsinhand = deckDrawComponent.CardsInHand;
-        cardsindeck = deckDrawComponent.CardsInDeck;
-        int index = UnityEngine.Random.Range(0, cardsindeck.Count);
-        GameObject drawCard = Instantiate(cardsindeck[index], new Vector3(0, 0, 0), Quaternion.identity);
-        cardsindeck.RemoveAt(index);
-        drawCard.transform.SetParent(hand.transform, false);
-        cardsinhand.Add(drawCard);*/
-        
         hand = GameObject.FindGameObjectWithTag("Hand (1)");
         deck = GameObject.FindGameObjectWithTag("Deck(1)");
         cardsinhand = deck.GetComponent<Draw>().CardsInHand;
@@ -147,6 +135,7 @@ public class Effects : MonoBehaviour
             ranged = filaRanged.GetComponent<Tablero>().CartasEnZona;
             filaSiege = GameObject.FindGameObjectWithTag("SiegeZone (1)");
             siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
+            Cementery = GameObject.FindGameObjectWithTag("Cementery (1)");
             
             
             int contador_melee = int.MaxValue;
@@ -187,26 +176,28 @@ public class Effects : MonoBehaviour
                 //compara las cartas encontradas y elimina la de menor poder de su respectiva fila
                 if(melee.Count != 0 && contador_melee <= contador_ranged && contador_melee < contador_siege)
                 {
-                    //player.Cementery.Add(player.Melee[index_melee]);
-                    //melee.RemoveAt(index_melee);
-                    Destroy(cartam);
+                    //Destroy(cartam);
+                    cartam.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
+                    cartam.transform.position = Cementery.transform.position;
+                    Debug.Log("AGREGUE A LA LISTA CEMENTERY");
                     //GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().CartasEnZona = melee;
                     Debug.Log("quite una carta de melee");
 
                 }
                 else if(ranged.Count != 0 && contador_ranged < contador_melee && contador_ranged <= contador_siege)
                 {
-                    //player.Cementery.Add(player.Ranged[index_ranged]);
-                    //ranged.RemoveAt(index_ranged);
-                    Destroy(cartar);
+                    //Destroy(cartar);
+                    cartar.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
+                    cartar.transform.position = Cementery.transform.position;
+                    Debug.Log("AGREGUE A LA LISTA CEMENTERY");
                     //GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().CartasEnZona = ranged;
                     Debug.Log("quite una carta de ranged");
                 }
                 else
                 {
-                    //player.Cementery.Add(player.Siege[index_siege]);
-                    //siege.RemoveAt(index_siege);
-                    Destroy(cartas);
+                    cartas.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
+                    cartas.transform.position = Cementery.transform.position;
+                    //Destroy(cartas);
                     //GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().CartasEnZona = siege;
                     Debug.Log("quite una carta de siege");
                 }
@@ -230,6 +221,7 @@ public class Effects : MonoBehaviour
             ranged = filaRanged.GetComponent<Tablero>().CartasEnZona;
             filaSiege = GameObject.FindGameObjectWithTag("SiegeZone (1)");
             siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
+            Cementery = GameObject.FindGameObjectWithTag("Cementery (1)");
             int contador_melee = int.MinValue;
             int index_melee = 0;
             int contador_ranged = int.MinValue;
@@ -268,17 +260,17 @@ public class Effects : MonoBehaviour
             //comparar cual de las cartas tiene mas poder y eliminarla de la fila
             if(contador_melee >= contador_ranged && contador_melee > contador_siege)
             {
-            // player.Cementery.Add(player.Melee[index_melee]);
-                //melee.RemoveAt(index_melee);
                 Debug.Log("quite una carta de melee");
-                Destroy(cartam);
+                //Destroy(cartam);
+                cartam.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
+                cartam.transform.position = Cementery.transform.position;
                 //GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().CartasEnZona = melee;
             }
             else if(contador_ranged > contador_melee && contador_ranged >= contador_siege)
             {
-                Destroy(cartar);
-                //player.Cementery.Add(player.Ranged[index_ranged]);
-                //ranged.RemoveAt(index_ranged);
+                //Destroy(cartar);
+                cartar.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
+                cartar.transform.position = Cementery.transform.position;
                 //GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().CartasEnZona = ranged;
                 Debug.Log("quite una carta de ranged");
             }
@@ -287,7 +279,9 @@ public class Effects : MonoBehaviour
                 //player.Cementery.Add(player.Siege[index_siege]);
             // siege.RemoveAt(index_siege);
                 //GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().CartasEnZona = siege;
-                Destroy(cartas);
+                //Destroy(cartas);
+                cartas.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
+                cartas.transform.position = Cementery.transform.position;
                 Debug.Log("quite una carta de siege");
             }
             }
@@ -392,6 +386,7 @@ public class Effects : MonoBehaviour
             ranged = filaRanged.GetComponent<Tablero>().CartasEnZona;
             filaSiege = GameObject.FindGameObjectWithTag("SiegeZone");
             siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
+            Cementery = GameObject.FindGameObjectWithTag("Cementery");
             if(melee.Count != 0 || siege.Count != 0 || ranged.Count !=0)
             {
                 Debug.Log("hay alguna fila no vacia");
@@ -399,41 +394,27 @@ public class Effects : MonoBehaviour
                 if(melee.Count != 0 && (melee.Count <= ranged.Count) && (melee.Count < siege.Count) )
                 {
                     Debug.Log("melee es la que menos tiene");
-                    List<GameObject> cartasAEliminar = new List<GameObject>();
                     foreach(GameObject carta in melee)
                     {
                         if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
                         {
-                            Debug.Log("HAY UNA CATYA DE PLATA Y LA VOY A METER EN LA LISTA");
-                            cartasAEliminar.Add(carta);
-                            //melee.Remove(carta);
-                            //player.Cementery.Add(carta);
+                            carta.transform.SetParent(Cementery.transform, false);
+                            carta.transform.position = Cementery.transform.position; 
+                            Debug.Log("HAY UNA CArtA DE PLATA Y LA VOY A METER EN LA LISTA");
                         }
                     }
-                    foreach(GameObject carta in cartasAEliminar)
-                    {
-                        Destroy(carta);
-                    }
-                    // GameObject.FindGameObjectWithTag("MeleeZone").GetComponent<Tablero>().CartasEnZona = melee;
                 }
                 else if(ranged.Count != 0 && ( ranged.Count < melee.Count) && (ranged.Count <= siege.Count))
                 {
                     Debug.Log("ranged es la que menos tiene");
-                    List<GameObject> cartasAEliminar = new List<GameObject>();
                     foreach(GameObject carta in ranged)
                     {
                         if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
                         {
-                            cartasAEliminar.Add(carta);
-                            //ranged.Remove(carta);
-                            //player.Cementery.Add(carta);
+                            carta.transform.SetParent(Cementery.transform, false);
+                            carta.transform.position = Cementery.transform.position;
                         }
                     }
-                    foreach(GameObject carta in cartasAEliminar)
-                    {
-                        Destroy(carta);
-                    }
-                    // GameObject.FindGameObjectWithTag("RangedZone").GetComponent<Tablero>().CartasEnZona = ranged;
                 }
                 else if(siege.Count != 0 && (siege.Count <= melee.Count) && (siege.Count < ranged.Count))
                 {
@@ -443,16 +424,10 @@ public class Effects : MonoBehaviour
                     {
                         if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
                         {
-                            cartasAEliminar.Add(carta);
-                            //siege.Remove(carta);
-                            //player.Cementery.Add(carta);
+                            carta.transform.SetParent(Cementery.transform, false);
+                            carta.transform.position = Cementery.transform.position;
                         }
                     }
-                    foreach(GameObject carta in cartasAEliminar)
-                    {
-                        Destroy(carta);
-                    }
-                    //GameObject.FindGameObjectWithTag("SiegeZone").GetComponent<Tablero>().CartasEnZona = siege;
                 }
             }
         }

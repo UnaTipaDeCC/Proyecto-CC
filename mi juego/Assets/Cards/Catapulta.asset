@@ -20,4 +20,4 @@ MonoBehaviour:
   faccion: 1
   tipoDeCarta: 0
   tipoDeAtaque: 1
-  power: 1
+  power: 0

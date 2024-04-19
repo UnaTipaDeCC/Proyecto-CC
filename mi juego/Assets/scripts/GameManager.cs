@@ -88,7 +88,7 @@ public void EndRound()
             ComprobarCuantasCartasRobar("Deck", "Hand");
             Debug.Log("EL PROBLEMA NO ES AQUI");
             RobarCarta("Deck","Hand");
-
+            
         }
         if(contador1.GetComponent<Contador>().puntos < contador2.GetComponent<Contador>().puntos)
         {
@@ -111,6 +111,8 @@ public void EndRound()
         }
         playerOnePassed = false;
         playerTwoPassed = false;
+        contador1.GetComponent<Contador>().puntos = 0;
+        contador2.GetComponent<Contador>().puntos = 0;
 
     }
 }
