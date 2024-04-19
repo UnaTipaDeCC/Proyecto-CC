@@ -10,6 +10,10 @@ public class SpecialCardsControl : MonoBehaviour
      public GameObject Card;
      public SpecialCards CardInfo;
      public GameManager gameManager;
+      private GameObject deck;
+     private GameObject deck1;
+     private List<GameObject> cardsinhand;
+     private List<GameObject> cardsinhand1;
      // Lista de zonas afectadas por cartas de clima
     //private List<SpecialCards.ZonaQueAfecta> affectedZones = new List<SpecialCards.ZonaQueAfecta>();
      //List<GameObject> list;
@@ -17,6 +21,10 @@ public class SpecialCardsControl : MonoBehaviour
     void Start()
     {
       gameManager = GameObject.FindObjectOfType<GameManager>();
+      deck = GameObject.FindGameObjectWithTag("Deck");
+      deck1 = GameObject.FindGameObjectWithTag("Deck(1)");
+      cardsinhand = deck.GetComponent<Draw>().CardsInHand;
+      cardsinhand1 = deck1.GetComponent<Draw>().CardsInHand;
     }
     public void OnClick()
     {
@@ -35,6 +43,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand.Remove(Card);
             } 
             else Debug.Log("No es tu turno o ya hay una carta clima que afecta esta zona");       
           }
@@ -50,6 +59,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand.Remove(Card);
               if(gameManager.MeleeClimaCards.Count > 0)
               {
                 Debug.Log("destrui la carta melee");
@@ -72,6 +82,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand.Remove(Card);
             }
             else Debug.Log("No es tu turno");   
           
@@ -88,6 +99,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand.Remove(Card);
             }
             else Debug.Log("No es tu turno");           
           }
@@ -103,6 +115,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand.Remove(Card);
               }
               else Debug.Log("No es tu turno");
           }
@@ -118,6 +131,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand.Remove(Card);
               }
               else Debug.Log("No es tu turno");
           }
@@ -133,6 +147,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand.Remove(Card);
             }  
             else Debug.Log("No es tu turno");
           }
@@ -148,6 +163,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand.Remove(Card);
             }
             else Debug.Log("No es tu turno");
           }
@@ -159,6 +175,7 @@ public class SpecialCardsControl : MonoBehaviour
               Zone = GameObject.Find("AumentoSiege ");
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand.Remove(Card);
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -182,6 +199,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand1.Remove(Card);
             } 
             else Debug.Log("No es tu turno o ya hay una carta clima que afecta esta zona");       
           }
@@ -197,6 +215,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand1.Remove(Card);
               if(gameManager.MeleeClimaCards.Count > 0)
               {
                 Debug.Log("destrui la carta melee");
@@ -219,6 +238,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand1.Remove(Card);
             }
             else Debug.Log("No es tu turno");           
           }
@@ -234,6 +254,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand1.Remove(Card);
             }
             else Debug.Log("No es tu turno");           
           }
@@ -249,6 +270,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand1.Remove(Card);
               }
           else Debug.Log("No es tu turno");
           }
@@ -264,6 +286,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand1.Remove(Card);
               }
           else Debug.Log("No es tu turno");
           }
@@ -279,6 +302,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand1.Remove(Card);
             }  
           else Debug.Log("No es tu turno");
           }
@@ -294,6 +318,7 @@ public class SpecialCardsControl : MonoBehaviour
               }
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
+              cardsinhand1.Remove(Card);
             }
           else Debug.Log("No es tu turno");
           }
@@ -309,6 +334,7 @@ public class SpecialCardsControl : MonoBehaviour
                 }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand1.Remove(Card);
               }           
               else Debug.Log("No es tu turno");
           }

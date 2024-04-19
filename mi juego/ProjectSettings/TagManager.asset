@@ -18,6 +18,7 @@ TagManager:
   - Contador (1)
   - Rondas Ganadas (1)
   - Rondas Ganadas
+  - Deck
   layers:
   - Default
   - TransparentFX

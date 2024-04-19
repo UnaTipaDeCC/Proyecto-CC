@@ -76,7 +76,6 @@ public class Tablero : MonoBehaviour
     public GameObject CARD;
     public List<GameObject> CartasEnZona = new List<GameObject>();
     public int suma = 0;
-    public int turno = 0;
     void Start()
     {
 

@@ -10,9 +10,17 @@ public class CardsMove : MonoBehaviour
      public GameObject Card;
      public Card CardInfo;
      public GameManager gameManager;
+     private GameObject deck;
+     private GameObject deck1;
+     private List<GameObject> cardsinhand;
+     private List<GameObject> cardsinhand1;
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
+        deck = GameObject.FindGameObjectWithTag("Deck");//todas las cartas que estan en este deck pertenecen a la faccion hormigas bravas 
+        deck1 = GameObject.FindGameObjectWithTag("Deck(1)");//todas las cartas que estan en este deck pertenecen a la faccion hormigas locas
+        cardsinhand = deck.GetComponent<Draw>().CardsInHand;
+        cardsinhand1 = deck1.GetComponent<Draw>().CardsInHand;
     }
     public void OnClick()
     {
@@ -22,11 +30,13 @@ public class CardsMove : MonoBehaviour
         //comprueba que la carta no haya sido movida ya y la zona a la que debe moverse
         if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
-             if(gameManager.IsPlayerOneTurn )
+             if(gameManager.IsPlayerOneTurn )//comprueba que sea el turno del jugador uno
              {
                 Zone = GameObject.Find("MeleeZone");
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand.Remove(Card);//remueve la carta de la mano 
+                Debug.Log("quite de la lista");
                 if(gameManager.playerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
                 {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -51,6 +61,8 @@ public class CardsMove : MonoBehaviour
             }
             Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
             Card.transform.position = Zone.transform.position;
+            cardsinhand.Remove(Card);
+            Debug.Log("quite de la lista");
             }
             else
             {
@@ -71,6 +83,7 @@ public class CardsMove : MonoBehaviour
                 }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand.Remove(Card);
             }
             else
             {
@@ -80,11 +93,11 @@ public class CardsMove : MonoBehaviour
         }
         }
 
-        if(gameManager.playerTwoPassed == false)
+        if(gameManager.playerTwoPassed == false)//comprueba que el jugador no se haya pasado
         {
              if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
         {
-            if(!gameManager.IsPlayerOneTurn) 
+            if(!gameManager.IsPlayerOneTurn)//comprueba que sea el turno del jugador 2
             {
             Zone = GameObject.Find("MeleeZone (1)");
             if(gameManager.playerOnePassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
@@ -94,6 +107,7 @@ public class CardsMove : MonoBehaviour
                 }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
+                cardsinhand1.Remove(Card);
              
             }
             else
@@ -113,7 +127,7 @@ public class CardsMove : MonoBehaviour
                 }       
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position;
-                
+                cardsinhand1.Remove(Card);
             }
             else
             {
@@ -134,7 +148,7 @@ public class CardsMove : MonoBehaviour
                 }
                 Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
                 Card.transform.position = Zone.transform.position; 
-                
+                cardsinhand1.Remove(Card);
             }
             else
             {
