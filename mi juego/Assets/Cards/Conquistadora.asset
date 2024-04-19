@@ -15,7 +15,9 @@ MonoBehaviour:
   name: Conquistadora
   description: 
   artwork: {fileID: 21300000, guid: b056c3529b0ef664582271930631dafc, type: 3}
+  jugada: 1
   Damage: 4
+  OriginalDamage: 4
   faccion: 1
   tipoDeCarta: 0
   tipoDeAtaque: 1

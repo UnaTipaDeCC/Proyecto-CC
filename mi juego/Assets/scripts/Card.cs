@@ -10,6 +10,7 @@ public class Card : ScriptableObject
     public Sprite artwork;
     public bool jugada = false;
     public int Damage;
+    public int OriginalDamage;
     //public string TipoDeAtaque;
     public enum TipoDeAtaque{
         Melee,

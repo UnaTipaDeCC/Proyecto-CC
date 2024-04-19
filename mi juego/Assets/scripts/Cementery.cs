@@ -14,6 +14,8 @@ public class Cementery : MonoBehaviour
         CARD = collision.gameObject;
         CardsInCementery.Add(CARD);
         Debug.Log("carta nueva");
+        CARD.GetComponent<cardDisplay>().card.Damage = CARD.GetComponent<cardDisplay>().card.OriginalDamage;
+        Debug.Log("cambie el dano");
     }
     // Start is called before the first frame update
     void Start()

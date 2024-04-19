@@ -15,7 +15,9 @@ MonoBehaviour:
   name: Incandescente
   description: 
   artwork: {fileID: 21300000, guid: 9124acd9602edb045bd207317f6df6e9, type: 3}
+  jugada: 0
   Damage: 3
+  OriginalDamage: 3
   faccion: 1
   tipoDeCarta: 0
   tipoDeAtaque: 1

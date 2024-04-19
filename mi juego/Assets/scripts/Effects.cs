@@ -23,6 +23,9 @@ public class Effects : MonoBehaviour
     public GameObject ZonaDeAumento;
     private GameManager gameManager;
     private GameObject Cementery;
+    private bool ActivoElEfecto = false;
+    private bool condicion;
+    public GameObject  carta;
 
     void Start()
     {
@@ -30,26 +33,30 @@ public class Effects : MonoBehaviour
     }
     public void RobarUnaCarta()
     {
-        bool condicion;
-        if(gameManager.playerOnePassed == true)
-        {
-            condicion = !gameManager.IsPlayerOneTurn;
-        }
-        else condicion = gameManager.IsPlayerOneTurn; 
-        if(gameManager.playerTwoPassed == false && condicion)//(!gameManager.IsPlayerOneTurn)
-        {
         hand = GameObject.FindGameObjectWithTag("Hand (1)");
         deck = GameObject.FindGameObjectWithTag("Deck(1)");
         cardsinhand = deck.GetComponent<Draw>().CardsInHand;
         cardsindeck = deck.GetComponent<Draw>().CardsInDeck;
-        int index = UnityEngine.Random.Range(0, cardsindeck.Count);
-        GameObject drawCard = Instantiate(cardsindeck[index], new Vector3(0,0,0), Quaternion.identity);
-        cardsindeck.RemoveAt(index);
-        drawCard.transform.SetParent(hand.transform, false);
-        cardsinhand.Add(drawCard);
-        }
+        if(ActivoElEfecto == false)
+{
+            if(gameManager.playerOnePassed == true)
+            {
+                condicion = !gameManager.IsPlayerOneTurn;
+            }
+            else condicion = gameManager.IsPlayerOneTurn; 
+            if(gameManager.playerTwoPassed == false && condicion)//(!gameManager.IsPlayerOneTurn)
+            {
+            
+            int index = UnityEngine.Random.Range(0, cardsindeck.Count);
+            GameObject drawCard = Instantiate(cardsindeck[index], new Vector3(0,0,0), Quaternion.identity);
+            cardsindeck.RemoveAt(index);
+            drawCard.transform.SetParent(hand.transform, false);
+            cardsinhand.Add(drawCard);
+            ActivoElEfecto = true;
+            Debug.Log("active el efecto");
+            }
     }
-    
+    }
 
     //revisa los nombres que cambiaste las variables
     /*

@@ -16,6 +16,7 @@ MonoBehaviour:
   name: Abuelaa
   description: 
   artwork: {fileID: 21300000, guid: 8f5cee5e60c466a44a840efa37973b75, type: 3}
+  jugada: 0
   faccion: 1
   tipoDeCarta: 1
   zonaQueAfecta: 0

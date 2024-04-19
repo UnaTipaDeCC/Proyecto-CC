@@ -17,6 +17,7 @@ MonoBehaviour:
   artwork: {fileID: 21300000, guid: 46097a65c284e954194e885e3f0b297f, type: 3}
   jugada: 0
   Damage: 4
+  OriginalDamage: 4
   faccion: 1
   tipoDeCarta: 0
   tipoDeAtaque: 0

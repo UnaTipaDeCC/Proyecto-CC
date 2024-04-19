@@ -6,8 +6,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> cardsInHand;
-    public List<GameObject> cardsInDeck;
+    private GameObject melee;
+    private GameObject ranged;
+    private GameObject siege;
+    private List<GameObject> meleecards;
+    private List<GameObject> rangedcards;
+    private List<GameObject> siegecards;
+    private List<GameObject> cardsInHand;
+    private List<GameObject> cardsInDeck;
+    private GameObject Cementery;
     
    private bool isPlayerOneTurn = true;
 
@@ -35,7 +42,8 @@ public class GameManager : MonoBehaviour
     {
         get { return LeaderCardLActivated; }
         set { LeaderCardLActivated = value; }
-    }    
+    } 
+    private bool UsadoL = false;//ya se utilice en la ronada la carta lider para ganar   
 
     public bool playerTwoPassed
     {
@@ -82,12 +90,23 @@ public void EndRound()
     {
         if(contador1.GetComponent<Contador>().puntos > contador2.GetComponent<Contador>().puntos)
         {
-            Debug.Log("gana el jugador uno");
-            isPlayerOneTurn = true;
-            RondasGanadas1 ++;
+            if(leaderCardLActivated == true && UsadoL == false && ((contador1.GetComponent<Contador>().puntos - contador2.GetComponent<Contador>().puntos) <=2) )
+            {
+                Debug.Log("gana el jugador dos xq uso su carta lider");
+                isPlayerOneTurn = false;
+                RondasGanadas2 ++;
+                UsadoL = true;
+            }
+            else
+            {
+                Debug.Log("gana el jugador uno");
+                isPlayerOneTurn = true;
+                RondasGanadas1 ++; 
+            }
             ComprobarCuantasCartasRobar("Deck", "Hand");
-            Debug.Log("EL PROBLEMA NO ES AQUI");
             RobarCarta("Deck","Hand");
+            LimpiarFilas("MeleeZone","SiegeZone","RangedZone","Cementery");//limpia filas del jugador uno
+            LimpiarFilas("MeleeZone (1)","SiegeZone (1)", "RangedZone (1)", "Cementery (1)"); //limpia la fila del jugador dos
             
         }
         if(contador1.GetComponent<Contador>().puntos < contador2.GetComponent<Contador>().puntos)
@@ -96,8 +115,9 @@ public void EndRound()
             isPlayerOneTurn = false;
             RondasGanadas2 ++;
             ComprobarCuantasCartasRobar("Deck(1)", "Hand (1)");
-            
             RobarCarta("Deck(1)","Hand (1)");
+            LimpiarFilas("MeleeZone","SiegeZone","RangedZone","Cementery");//limpia filas del jugador uno
+            LimpiarFilas("MeleeZone (1)","SiegeZone (1)", "RangedZone (1)", "Cementery (1)"); //limpia la fila del jugador dos
         }
         if(contador1.GetComponent<Contador>().puntos == contador2.GetComponent<Contador>().puntos)
         {
@@ -108,12 +128,11 @@ public void EndRound()
             RobarCarta("Deck","Hand");
             ComprobarCuantasCartasRobar("Deck(1)", "Hand (1)");
             RobarCarta("Deck(1)","Hand (1)");
+            LimpiarFilas("MeleeZone","SiegeZone","RangedZone","Cementery");//limpia filas del jugador uno
+            LimpiarFilas("MeleeZone (1)","SiegeZone (1)", "RangedZone (1)", "Cementery (1)"); //limpia la fila del jugador dos
         }
         playerOnePassed = false;
         playerTwoPassed = false;
-        contador1.GetComponent<Contador>().puntos = 0;
-        contador2.GetComponent<Contador>().puntos = 0;
-
     }
 }
 
@@ -123,7 +142,6 @@ public void RobarCarta(string tagDeck, string tagHand)
     Debug.Log("compruebo para robar carta");
         for(int i = 0; i < n; i++)
         {
-            Debug.Log("ENTRO AL FOR");
             hand = GameObject.FindGameObjectWithTag(tagHand);
             deck = GameObject.FindGameObjectWithTag(tagDeck);
             cardsInHand = deck.GetComponent<Draw>().CardsInHand;
@@ -155,13 +173,39 @@ public void ComprobarCuantasCartasRobar(string tagDeck, string tagHand)
         n = 0;
     }
 }
+public void LimpiarFilas(string tagmelee, string tagsiege, string tagranged, string tagcementery)
+{
+    melee = GameObject.FindGameObjectWithTag(tagmelee);
+    siege = GameObject.FindGameObjectWithTag(tagsiege);
+    ranged = GameObject.FindGameObjectWithTag(tagranged);
+    meleecards = melee.GetComponent<Tablero>().CartasEnZona;
+    siegecards = siege.GetComponent<Tablero>().CartasEnZona;
+    rangedcards = ranged.GetComponent<Tablero>().CartasEnZona;
+    Cementery = GameObject.FindGameObjectWithTag(tagcementery);
+    foreach(GameObject card in meleecards)
+    {
+        card.transform.SetParent(Cementery.transform, false);
+        card.transform.position = Cementery.transform.position; 
+    }
+     foreach(GameObject card in rangedcards)
+    {
+        card.transform.SetParent(Cementery.transform, false);
+        card.transform.position = Cementery.transform.position; 
+    }
+     foreach(GameObject card in siegecards)
+    {
+        card.transform.SetParent(Cementery.transform, false);
+        card.transform.position = Cementery.transform.position; 
+    }
+
+}
 public void EndGame()
 {
-    if((RondasGanadas1 == 2 || RondasGanadas2 == 2) && RondasGanadas1 != RondasGanadas2)
+    if((RondasGanadas1 >= 2 || RondasGanadas2 >= 2) && RondasGanadas1 != RondasGanadas2)
     {
         Debug.Log("Se acabo el juego");
         if(RondasGanadas1 ==2) Debug.Log("GANA EL JUGADOR UNO");
-        if(RondasGanadas2 ==2) Debug.Log("GANA EL JUGADOR Dos");
+        if(RondasGanadas2 ==2) Debug.Log("GANA EL JUGADOR DOS");
         
     } 
 

@@ -140,6 +140,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6562888132201469530, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: carta
+      value: 
+      objectReference: {fileID: 5216332042351263179}
+    - target: {fileID: 6562888132201469530, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: ZonaDeAumento
+      value: 
+      objectReference: {fileID: 5216332042351263179}
     - target: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_Name
       value: Card (20) Variant

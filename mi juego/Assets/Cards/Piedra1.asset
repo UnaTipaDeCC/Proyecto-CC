@@ -15,8 +15,9 @@ MonoBehaviour:
   name: Hormiga Piedra
   description: 
   artwork: {fileID: 21300000, guid: 66f56ce485dbb824994a6c35c3259837, type: 3}
-  jugada: 0
+  jugada: 1
   Damage: 3
+  OriginalDamage: 3
   faccion: 0
   tipoDeCarta: 1
   tipoDeAtaque: 1

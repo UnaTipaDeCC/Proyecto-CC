@@ -15,7 +15,9 @@ MonoBehaviour:
   name: Bruja
   description: 
   artwork: {fileID: 21300000, guid: cf60f9e3813bc6a45bea43ec743f9d9d, type: 3}
+  jugada: 0
   Damage: 5
+  OriginalDamage: 5
   faccion: 0
   tipoDeCarta: 0
   tipoDeAtaque: 1

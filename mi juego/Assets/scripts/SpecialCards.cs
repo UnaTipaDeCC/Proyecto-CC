@@ -9,6 +9,7 @@ public class SpecialCards : ScriptableObject
     public new string name;
     public string description;
     public Sprite artwork;
+    public bool jugada;
     public enum ZonaQueAfecta{
         Melee,
         Siege,
