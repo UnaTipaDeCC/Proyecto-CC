@@ -10,7 +10,6 @@ public class Cambiardoscartas : MonoBehaviour
     public GameObject hand;
     private List<GameObject> cardsInHand;
     private List<GameObject> cardsInDeck;
-    public GameObject cementery;
     private GameObject card;
     public void OnClick()
     {
@@ -27,8 +26,8 @@ public class Cambiardoscartas : MonoBehaviour
                 cardsInHand.Add(drawCard);
                 int index1 = UnityEngine.Random.Range(0, cardsInHand.Count);
                 card = cardsInHand[index1];
-                card.transform.SetParent(cementery.transform, false);
-                card.transform.position = cementery.transform.position;
+                cardsInDeck.Add(card);
+                Destroy(card);
                 Debug.Log("movi una");
             }
 

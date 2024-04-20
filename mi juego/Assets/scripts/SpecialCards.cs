@@ -36,6 +36,9 @@ public class SpecialCards : ScriptableObject
      public enum Power{
         Ninguno,
         Aumentar_Damage,
+        GanarEnCasoDeEmpate,
+        GanarSiLaDiferenciaDePuntosConElRivalEsMenorQueDos,
+
 
     }
 }

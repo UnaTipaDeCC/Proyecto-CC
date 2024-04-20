@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Troll
   description: 
   artwork: {fileID: 21300000, guid: bf255a620a46f3142ba84b0bef6c36d3, type: 3}
-  jugada: 1
+  jugada: 0
   Damage: 5
   OriginalDamage: 5
   faccion: 1

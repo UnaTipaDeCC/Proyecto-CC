@@ -16,7 +16,8 @@ MonoBehaviour:
   name: Hormigaza Azul
   description: Carta lider de la faccion Hormigas Locas
   artwork: {fileID: 21300000, guid: ddb7a347cfe08bd48b4daca47541d2f0, type: 3}
+  jugada: 0
   faccion: 1
   tipoDeCarta: 4
   zonaQueAfecta: 3
-  power: 0
+  power: 3

@@ -16,7 +16,8 @@ MonoBehaviour:
   name: SuperHormiga
   description: Carta lider de la faccion Hormigas Bravas
   artwork: {fileID: 21300000, guid: bac844fcc9f622440b1ddd5f39105677, type: 3}
+  jugada: 0
   faccion: 0
   tipoDeCarta: 4
   zonaQueAfecta: 3
-  power: 0
+  power: 2

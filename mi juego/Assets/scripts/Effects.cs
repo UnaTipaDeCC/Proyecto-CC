@@ -57,74 +57,6 @@ public class Effects : MonoBehaviour
             }
     }
     }
-
-    //revisa los nombres que cambiaste las variables
-    /*
-    void EliminarFilaConMasPoderDelRival(Player player)//(List<Card> melee,List<Card> ranged,List<Card> siege, List<Card> Cementery)//poder del leader
-    { 
-        int contador_melee = 0;
-        int contador_ranged = 0;
-        int contador_siege = 0;
-        foreach (Card carta in player.CardsInMeleeZone)//melee)
-        {
-            contador_melee += carta.Damage;
-        }
-        foreach(Card carta in player.CardsInRangedZone)//ranged)
-        {
-            contador_ranged += carta.Damage;
-        }
-        foreach(Card carta in player.CardsInSiegeZone)//siege)
-        {
-            contador_siege += carta.Damage;
-        }
-        if(contador_melee >= contador_ranged && contador_melee > contador_siege)
-        {
-            foreach(Card carta in player.CardsInMeleeZone)//melee)
-            {
-                if(carta.tipoDeCarta == Card.TipoDeCarta.silver)
-                {
-                    player.CardsInMeleeZone.Remove(carta);
-                    player.CardsInCementery.Add(carta);
-                }
-            }
-        }
-        if((contador_ranged > contador_melee) && (contador_ranged >= contador_siege))
-        {
-            foreach(Card carta in player.CardsInRangedZone)
-            {
-                if(carta.tipoDeCarta == Card.TipoDeCarta.silver)
-                {
-                    player.CardsInRangedZone.Remove(carta);
-                    player.CardsInCementery.Add(carta);
-                }
-            }
-        }
-        if(contador_siege >= contador_melee && contador_siege > contador_ranged)
-        {
-            foreach(Card carta in player.CardsInSiegeZone)
-            {
-                if(carta.tipoDeCarta == Card.TipoDeCarta.silver)
-                {
-                    player.CardsInSiegeZone.Remove(carta);
-                    player.CardsInCementery.Add(carta);
-                }
-            }
-        }
-
-    }*/
-    /*public void Aumentar_Damage()
-    {
-        melee = ZonaDeAumento.GetComponent<Tablero>().CartasEnZona;
-        ZonaDeAumento.GetComponent<Tablero>().suma = 0;
-        foreach(GameObject carta in melee)
-        {
-            if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-            {
-                carta.GetComponent<cardDisplay>().card.Damage += 2; 
-            }
-            ZonaDeAumento.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
-        }
-    }*/
     public void EliminarCartaConMenosPoderDelRival()
     {
         bool condicion;//al activar el on click compila primero el cardsmove y se cambia el turno 
@@ -133,8 +65,11 @@ public class Effects : MonoBehaviour
             condicion = gameManager.IsPlayerOneTurn;
         }
         else condicion = !gameManager.IsPlayerOneTurn;
-        if(gameManager.playerOnePassed == false && condicion)//(gameManager.IsPlayerOneTurn)
+        if(gameManager.playerOnePassed == false && condicion)
+       // if(gameManager.IsPlayerOneTurn)
         {
+            if(ActivoElEfecto == false)
+            {
             Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
@@ -183,11 +118,9 @@ public class Effects : MonoBehaviour
                 //compara las cartas encontradas y elimina la de menor poder de su respectiva fila
                 if(melee.Count != 0 && contador_melee <= contador_ranged && contador_melee < contador_siege)
                 {
-                    //Destroy(cartam);
                     cartam.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
                     cartam.transform.position = Cementery.transform.position;
                     Debug.Log("AGREGUE A LA LISTA CEMENTERY");
-                    //GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().CartasEnZona = melee;
                     Debug.Log("quite una carta de melee");
 
                 }
@@ -208,19 +141,23 @@ public class Effects : MonoBehaviour
                     //GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().CartasEnZona = siege;
                     Debug.Log("quite una carta de siege");
                 }
+            }
             }    
         }
     }
     public void EliminarCartaConMasPoderDelRival()
     {
-        bool condicion;
+        /*bool condicion;
         if(gameManager.playerTwoPassed == true)
         {
             condicion = gameManager.IsPlayerOneTurn;
         }
         else condicion = !gameManager.IsPlayerOneTurn;
-        if(gameManager.playerOnePassed == false && condicion)//(gameManager.IsPlayerOneTurn)
+        if(gameManager.playerOnePassed == false && condicion)*/
+        if(gameManager.IsPlayerOneTurn)
         {
+            if(ActivoElEfecto == false)
+            {
              Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
@@ -292,18 +229,24 @@ public class Effects : MonoBehaviour
                 Debug.Log("quite una carta de siege");
             }
             }
+            ActivoElEfecto = true;
+            }
         }
     }
     public void MultiplicarPor_n_ElAtaque()//siendo n la cantidad de cartas igual a ella en el campo
     {
-        bool condicion;
+       /* bool condicion;
         if(gameManager.playerTwoPassed == true)
         {
             condicion = gameManager.IsPlayerOneTurn;
         }
         else condicion = !gameManager.IsPlayerOneTurn;
-        if(gameManager.playerOnePassed == false && condicion)//(gameManager.IsPlayerOneTurn)
+        if(gameManager.playerOnePassed == false && condicion)//*/
+        
+        if(gameManager.IsPlayerOneTurn)
         {
+            if(ActivoElEfecto == false)
+            {
              Debug.Log("activo esto xq es mi turno");
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone");
             ranged = filaRanged.GetComponent<Tablero>().CartasEnZona;
@@ -317,20 +260,26 @@ public class Effects : MonoBehaviour
                     }
                 }
                 GetComponent<cardDisplay>().card.Damage *= contador;
+            ActivoElEfecto = true;
+            }    
         }
         else Debug.Log("no afecto xq no es mi turno");
     }
     public void IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio()
     {
-        bool condicion;
+        /*bool condicion;
         if(gameManager.playerOnePassed == true)
         {
             condicion = !gameManager.IsPlayerOneTurn;
         }
         else condicion = gameManager.IsPlayerOneTurn;    
-        if(gameManager.playerTwoPassed == false && condicion)//(!gameManager.IsPlayerOneTurn)
+        if(gameManager.playerTwoPassed == false && condicion)//*/
+        if(!gameManager.IsPlayerOneTurn)
         {
-             Debug.Log("activo esto xq es mi turno");
+            if(ActivoElEfecto == false)
+        
+        {
+            Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone (1)");
@@ -346,46 +295,39 @@ public class Effects : MonoBehaviour
                 GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma = 0;
                 foreach(GameObject carta in melee)
                 {
-                    if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-                    {
-                        carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                        //Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
-                    }
+                    carta.GetComponent<cardDisplay>().card.Damage = promedio;
                     GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
                 }
                 foreach(GameObject carta in siege)
                 {
-                    if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-                    {
                     carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                    //Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
-                    }
                     GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
                 }
                 foreach(GameObject carta in ranged)
                 {
-                    if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-                    {
                         carta.GetComponent<cardDisplay>().card.Damage = promedio;
                         Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
-                        //GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
-                    }
                     GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
                 }
             }
         }
+        ActivoElEfecto = true;
+        }
         else Debug.Log("no afecto xq no es mi turno");
     }
-    public void LimpiaLaFilaConMenosUnidades()//hay algo aqui que no funciona bien, no la destruye
+    public void LimpiaLaFilaConMenosUnidades()
     {
-        bool condicion;
+        /*bool condicion;
         if(gameManager.playerOnePassed == true)
         {
             condicion = !gameManager.IsPlayerOneTurn;
         }
         else condicion = gameManager.IsPlayerOneTurn; 
-        if(condicion)//(!gameManager.IsPlayerOneTurn)
+        if(condicion)//*/
+        if(!gameManager.IsPlayerOneTurn)
         {
+            if(ActivoElEfecto)
+            {
              Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
@@ -394,48 +336,41 @@ public class Effects : MonoBehaviour
             filaSiege = GameObject.FindGameObjectWithTag("SiegeZone");
             siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
             Cementery = GameObject.FindGameObjectWithTag("Cementery");
-            if(melee.Count != 0 || siege.Count != 0 || ranged.Count !=0)
+            if(melee.Count > 0 || siege.Count > 0 || ranged.Count > 0)
             {
                 Debug.Log("hay alguna fila no vacia");
                 //comprueba cual es la fila que menos cartas tiene
-                if(melee.Count != 0 && (melee.Count <= ranged.Count) && (melee.Count < siege.Count) )
+                if((melee.Count <= ranged.Count) && (melee.Count < siege.Count) )
                 {
                     Debug.Log("melee es la que menos tiene");
                     foreach(GameObject carta in melee)
                     {
-                        if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-                        {
                             carta.transform.SetParent(Cementery.transform, false);
                             carta.transform.position = Cementery.transform.position; 
                             Debug.Log("HAY UNA CArtA DE PLATA Y LA VOY A METER EN LA LISTA");
-                        }
+        
                     }
                 }
-                else if(ranged.Count != 0 && ( ranged.Count < melee.Count) && (ranged.Count <= siege.Count))
+                else if(ranged.Count < melee.Count && (ranged.Count <= siege.Count))
                 {
                     Debug.Log("ranged es la que menos tiene");
                     foreach(GameObject carta in ranged)
                     {
-                        if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-                        {
                             carta.transform.SetParent(Cementery.transform, false);
                             carta.transform.position = Cementery.transform.position;
-                        }
                     }
                 }
-                else if(siege.Count != 0 && (siege.Count <= melee.Count) && (siege.Count < ranged.Count))
+                else if((siege.Count <= melee.Count) && (siege.Count < ranged.Count))
                 {
                     Debug.Log("SIEGE es la que menos tiene");
-                    List<GameObject> cartasAEliminar = new List<GameObject>();
                     foreach(GameObject carta in siege)
                     {
-                        if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == Card.TipoDeCarta.silver)
-                        {
                             carta.transform.SetParent(Cementery.transform, false);
                             carta.transform.position = Cementery.transform.position;
-                        }
                     }
                 }
+            }
+            ActivoElEfecto = true;
             }
         }
         else Debug.Log("no afecto xq no es mi turno");

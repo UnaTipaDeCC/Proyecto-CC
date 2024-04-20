@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Proxx
   description: 
   artwork: {fileID: 21300000, guid: 146a7eab6e50de940953aac93759c98e, type: 3}
-  jugada: 1
+  jugada: 0
   Damage: 6
   OriginalDamage: 6
   faccion: 0

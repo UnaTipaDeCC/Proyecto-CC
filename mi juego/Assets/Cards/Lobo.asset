@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Lobo
   description: 
   artwork: {fileID: 21300000, guid: 0cf549ae09a21194c9d588a899470fd1, type: 3}
-  jugada: 1
+  jugada: 0
   Damage: 2
   OriginalDamage: 2
   faccion: 1
