@@ -51,7 +51,7 @@ public class SpecialCardsControl : MonoBehaviour
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
               //Debug.Log(CardInfo.jugada);
-              Clima();
+             // Clima();
               if(gameManager.playerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -397,7 +397,7 @@ public class SpecialCardsControl : MonoBehaviour
               else Debug.Log("No es tu turno");
           }
         }
-  void Clima()
+ /* void Clima()
  {
     Debug.Log("estoy aqui");
     foreach(GameObject carta in melee.GetComponent<Tablero>().CartasEnZona)
@@ -416,7 +416,7 @@ public class SpecialCardsControl : MonoBehaviour
     }
     melee.GetComponent<Tablero>().suma -= contador;
     melee1.GetComponent<Tablero>().suma -= contador1;
- }
+ }*/
     }
    
 }
