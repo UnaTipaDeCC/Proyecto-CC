@@ -126,19 +126,15 @@ public class Effects : MonoBehaviour
                 }
                 else if(ranged.Count != 0 && contador_ranged < contador_melee && contador_ranged <= contador_siege)
                 {
-                    //Destroy(cartar);
                     cartar.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
                     cartar.transform.position = Cementery.transform.position;
                     Debug.Log("AGREGUE A LA LISTA CEMENTERY");
-                    //GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().CartasEnZona = ranged;
                     Debug.Log("quite una carta de ranged");
                 }
                 else
                 {
                     cartas.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
                     cartas.transform.position = Cementery.transform.position;
-                    //Destroy(cartas);
-                    //GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().CartasEnZona = siege;
                     Debug.Log("quite una carta de siege");
                 }
             }
@@ -147,14 +143,14 @@ public class Effects : MonoBehaviour
     }
     public void EliminarCartaConMasPoderDelRival()
     {
-        /*bool condicion;
+        bool condicion;
         if(gameManager.playerTwoPassed == true)
         {
             condicion = gameManager.IsPlayerOneTurn;
         }
         else condicion = !gameManager.IsPlayerOneTurn;
-        if(gameManager.playerOnePassed == false && condicion)*/
-        if(gameManager.IsPlayerOneTurn)
+        if(gameManager.playerOnePassed == false && condicion)
+        //if(gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
             {
@@ -205,25 +201,17 @@ public class Effects : MonoBehaviour
             if(contador_melee >= contador_ranged && contador_melee > contador_siege)
             {
                 Debug.Log("quite una carta de melee");
-                //Destroy(cartam);
                 cartam.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
                 cartam.transform.position = Cementery.transform.position;
-                //GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().CartasEnZona = melee;
             }
             else if(contador_ranged > contador_melee && contador_ranged >= contador_siege)
             {
-                //Destroy(cartar);
                 cartar.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
                 cartar.transform.position = Cementery.transform.position;
-                //GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().CartasEnZona = ranged;
                 Debug.Log("quite una carta de ranged");
             }
             else
             {
-                //player.Cementery.Add(player.Siege[index_siege]);
-            // siege.RemoveAt(index_siege);
-                //GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().CartasEnZona = siege;
-                //Destroy(cartas);
                 cartas.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
                 cartas.transform.position = Cementery.transform.position;
                 Debug.Log("quite una carta de siege");
@@ -235,14 +223,13 @@ public class Effects : MonoBehaviour
     }
     public void MultiplicarPor_n_ElAtaque()//siendo n la cantidad de cartas igual a ella en el campo
     {
-       /* bool condicion;
+        /*bool condicion;
         if(gameManager.playerTwoPassed == true)
         {
             condicion = gameManager.IsPlayerOneTurn;
         }
         else condicion = !gameManager.IsPlayerOneTurn;
-        if(gameManager.playerOnePassed == false && condicion)//*/
-        
+        if(gameManager.playerOnePassed == false && condicion)*/
         if(gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
@@ -267,14 +254,14 @@ public class Effects : MonoBehaviour
     }
     public void IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio()
     {
-        /*bool condicion;
+        bool condicion;
         if(gameManager.playerOnePassed == true)
         {
             condicion = !gameManager.IsPlayerOneTurn;
         }
         else condicion = gameManager.IsPlayerOneTurn;    
-        if(gameManager.playerTwoPassed == false && condicion)//*/
-        if(!gameManager.IsPlayerOneTurn)
+        if(gameManager.playerTwoPassed == false && condicion)
+       // if(!gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
         
@@ -317,16 +304,16 @@ public class Effects : MonoBehaviour
     }
     public void LimpiaLaFilaConMenosUnidades()
     {
-        /*bool condicion;
+        bool condicion;
         if(gameManager.playerOnePassed == true)
         {
             condicion = !gameManager.IsPlayerOneTurn;
         }
         else condicion = gameManager.IsPlayerOneTurn; 
-        if(condicion)//*/
-        if(!gameManager.IsPlayerOneTurn)
+        if(condicion)
+        //if(!gameManager.IsPlayerOneTurn)
         {
-            if(ActivoElEfecto)
+            if(ActivoElEfecto == false)
             {
              Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone");
@@ -347,7 +334,7 @@ public class Effects : MonoBehaviour
                     {
                             carta.transform.SetParent(Cementery.transform, false);
                             carta.transform.position = Cementery.transform.position; 
-                            Debug.Log("HAY UNA CArtA DE PLATA Y LA VOY A METER EN LA LISTA");
+                            //Debug.Log("HAY UNA CArtA DE PLATA Y LA VOY A METER EN LA LISTA");
         
                     }
                 }
@@ -373,7 +360,7 @@ public class Effects : MonoBehaviour
             ActivoElEfecto = true;
             }
         }
-        else Debug.Log("no afecto xq no es mi turno");
+        //else Debug.Log("no afecto xq no es mi turno");
     }
 
 }

@@ -11,7 +11,8 @@ public class Card : ScriptableObject
     public bool jugada = false;
     public int Damage;
     public int OriginalDamage;
-    //public string TipoDeAtaque;
+    public bool AfectadaPorUnClima = false;
+    public bool Aumentada = false;
     public enum TipoDeAtaque{
         Melee,
         Siege,

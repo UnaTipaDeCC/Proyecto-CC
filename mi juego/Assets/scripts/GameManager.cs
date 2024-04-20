@@ -213,11 +213,13 @@ public void QuitarFilasEspeciales()
         {
             carta.transform.SetParent(Cementery.transform, false);
             carta.transform.position = Cementery.transform.position; 
+            carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             carta.transform.SetParent(Cementery1.transform, false);
             carta.transform.position = Cementery1.transform.position; 
+            carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }    
     }
     foreach(GameObject carta in aumento2.GetComponent<SpecialZones>().CartasEnZona)
@@ -225,12 +227,14 @@ public void QuitarFilasEspeciales()
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas)
         {
             carta.transform.SetParent(Cementery.transform, false);
-            carta.transform.position = Cementery.transform.position; 
+            carta.transform.position = Cementery.transform.position;
+            carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false; 
         }
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             carta.transform.SetParent(Cementery1.transform, false);
             carta.transform.position = Cementery1.transform.position; 
+            carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }    
     }
     foreach(GameObject carta in aumento3.GetComponent<SpecialZones>().CartasEnZona)
@@ -239,11 +243,13 @@ public void QuitarFilasEspeciales()
         {
             carta.transform.SetParent(Cementery.transform, false);
             carta.transform.position = Cementery.transform.position; 
+            carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             carta.transform.SetParent(Cementery1.transform, false);
             carta.transform.position = Cementery1.transform.position; 
+            carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }    
     }
 }
@@ -263,31 +269,37 @@ public void Aumentos()
     {
         carta.transform.SetParent(Cementery.transform, false);
         carta.transform.position = Cementery.transform.position; 
+        carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
     }
     foreach(GameObject carta in aumento5.GetComponent<SpecialZones>().CartasEnZona)
     {
         carta.transform.SetParent(Cementery.transform, false);
-        carta.transform.position = Cementery.transform.position; 
+        carta.transform.position = Cementery.transform.position;
+        carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false; 
     }
     foreach(GameObject carta in aumento3.GetComponent<SpecialZones>().CartasEnZona)
     {
         carta.transform.SetParent(Cementery.transform, false);
-        carta.transform.position = Cementery.transform.position; 
+        carta.transform.position = Cementery.transform.position;
+        carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false; 
     }
     foreach(GameObject carta in aumento2.GetComponent<SpecialZones>().CartasEnZona)
     {
         carta.transform.SetParent(Cementery1.transform, false);
         carta.transform.position = Cementery1.transform.position; 
+        carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
     }
     foreach(GameObject carta in aumento4.GetComponent<SpecialZones>().CartasEnZona)
     {
         carta.transform.SetParent(Cementery1.transform, false);
         carta.transform.position = Cementery1.transform.position; 
+        carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
     }
     foreach(GameObject carta in aumento6.GetComponent<SpecialZones>().CartasEnZona)
     {
         carta.transform.SetParent(Cementery1.transform, false);
         carta.transform.position = Cementery1.transform.position; 
+        carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
     }
 }
 public void LimpiarFilas(string tagmelee, string tagsiege, string tagranged, string tagcementery)
@@ -299,20 +311,32 @@ public void LimpiarFilas(string tagmelee, string tagsiege, string tagranged, str
     siegecards = siege.GetComponent<Tablero>().CartasEnZona;
     rangedcards = ranged.GetComponent<Tablero>().CartasEnZona;
     Cementery = GameObject.FindGameObjectWithTag(tagcementery);
-    foreach(GameObject card in meleecards)
+    foreach(GameObject card in meleecards)//las envia al cementerio y cambia estos parametros a los valores iniciales
     {
         card.transform.SetParent(Cementery.transform, false);
         card.transform.position = Cementery.transform.position; 
+        card.GetComponent<cardDisplay>().card.Aumentada = false;
+        card.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
+        card.GetComponent<cardDisplay>().card.jugada = false;
+        card.GetComponent<cardDisplay>().card.Damage = card.GetComponent<cardDisplay>().card.OriginalDamage;
     }
      foreach(GameObject card in rangedcards)
     {
         card.transform.SetParent(Cementery.transform, false);
-        card.transform.position = Cementery.transform.position; 
+        card.transform.position = Cementery.transform.position;
+        card.GetComponent<cardDisplay>().card.Aumentada = false;
+        card.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
+        card.GetComponent<cardDisplay>().card.jugada = false;
+        card.GetComponent<cardDisplay>().card.Damage = card.GetComponent<cardDisplay>().card.OriginalDamage; 
     }
      foreach(GameObject card in siegecards)
     {
         card.transform.SetParent(Cementery.transform, false);
         card.transform.position = Cementery.transform.position; 
+        card.GetComponent<cardDisplay>().card.Aumentada = false;
+        card.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
+        card.GetComponent<cardDisplay>().card.jugada = false;
+        card.GetComponent<cardDisplay>().card.Damage = card.GetComponent<cardDisplay>().card.OriginalDamage;
     }
 
 }
@@ -323,8 +347,9 @@ public void EndGame()
         Debug.Log("Se acabo el juego");
         if(RondasGanadas1 ==2) Debug.Log("GANA EL JUGADOR UNO");
         if(RondasGanadas2 ==2) Debug.Log("GANA EL JUGADOR DOS");     
+        playerOnePassed = true;
+        playerTwoPassed = true;
     } 
-
 }
 
     // Start is called before the first frame update

@@ -11,17 +11,12 @@ public class SpecialCardsControl : MonoBehaviour
      public GameObject Card;
      public SpecialCards CardInfo;
      public GameManager gameManager;
-     private GameObject melee;
-     private GameObject melee1;
+     private GameObject zone;
+     private GameObject zone1;
       private GameObject deck;
      private GameObject deck1;
      private List<GameObject> cardsinhand;
      private List<GameObject> cardsinhand1;
-     private int contador = 0;
-     private int contador1 = 0;
-     // Lista de zonas afectadas por cartas de clima
-    //private List<SpecialCards.ZonaQueAfecta> affectedZones = new List<SpecialCards.ZonaQueAfecta>();
-     //List<GameObject> list;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,28 +25,24 @@ public class SpecialCardsControl : MonoBehaviour
       deck1 = GameObject.FindGameObjectWithTag("Deck(1)");
       cardsinhand = deck.GetComponent<Draw>().CardsInHand;
       cardsinhand1 = deck1.GetComponent<Draw>().CardsInHand;
-      melee = GameObject.FindGameObjectWithTag("MeleeZone");
-      melee1 = GameObject.FindGameObjectWithTag("MeleeZone (1)");
     }
     public void OnClick()
     {
      //asigna la zona que le corresponde a cada carta segun el tipo de carta y la zona a la que afecta y controla que sea el turno del jugador en caso contrario no le asigna una zona y por ende no se mueve
-        //no hace lo de las listas
         if(gameManager.playerOnePassed == false)
         {
           if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
-            if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false) //&& (gameManager.MeleeClima == false))
+            if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              if(gameManager.MeleeClima == false)
+              if(gameManager.MeleeClima == false)//comprueba que no haya una carta melee afectando a esa zona
               {
               Zone = GameObject.Find("MeleeClima");
               Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              //Debug.Log(CardInfo.jugada);
-             // Clima();
+              Clima("MeleeZone","MeleeZone (1)");
               if(gameManager.playerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -78,13 +69,6 @@ public class SpecialCardsControl : MonoBehaviour
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
-              /*if(gameManager.MeleeClimaCards.Count > 0)
-              {
-                Debug.Log("destrui la carta melee");
-                GameObject carta = gameManager.MeleeClimaCards[0];
-                gameManager.MeleeClimaCards.RemoveAt(0); 
-                Destroy(carta);//ya vermos              
-              }*/
             } 
             else Debug.Log("No es tu turno");       
           }
@@ -100,7 +84,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Clima("RangedZone", "RangedZone (1)");
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -143,7 +127,7 @@ public class SpecialCardsControl : MonoBehaviour
                 Card.transform.position = Zone.transform.position;
                 cardsinhand.Remove(Card);
                 CardInfo.jugada = true;
-                Debug.Log(CardInfo.jugada);
+                Clima("SiegeZone", "SiegeZone (1)");
                 if(gameManager.playerTwoPassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -181,7 +165,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Aumentos("MeleeZone");
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -199,7 +183,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Aumentos("RangedZone");
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -217,7 +201,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Aumentos("SiegeZone");
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -242,7 +226,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand1.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Clima("MeleeZone","MeleeZone (1)");
               if(gameManager.playerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -280,7 +264,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand1.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Clima("RangedZone", "RangedZone (1)");
               if(gameManager.playerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -316,7 +300,7 @@ public class SpecialCardsControl : MonoBehaviour
                 Card.transform.position = Zone.transform.position;
                 cardsinhand1.Remove(Card);
                 CardInfo.jugada = true;
-                Debug.Log(CardInfo.jugada);
+                Clima("SiegeZone", "SiegeZone (1)");
                 if(gameManager.playerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -352,7 +336,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand1.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Aumentos("MeleeZone (1)");
               if(gameManager.playerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -370,7 +354,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand1.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              Aumentos("RangedZone (1)");
               if(gameManager.playerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -388,6 +372,7 @@ public class SpecialCardsControl : MonoBehaviour
                 Card.transform.position = Zone.transform.position;
                 cardsinhand1.Remove(Card);
                 CardInfo.jugada = true;
+                Aumentos("SiegeZone (1)");
                 if(gameManager.playerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -397,27 +382,52 @@ public class SpecialCardsControl : MonoBehaviour
               else Debug.Log("No es tu turno");
           }
         }
- /* void Clima()
+ void Clima(string tag1, string tag2)
  {
+    zone = GameObject.FindGameObjectWithTag(tag1);
+    zone1 = GameObject.FindGameObjectWithTag(tag2);
+    zone.GetComponent<Tablero>().suma = 0;//-= contador;
+    zone1.GetComponent<Tablero>().suma = 0;//-= contador1;
+
     Debug.Log("estoy aqui");
-    foreach(GameObject carta in melee.GetComponent<Tablero>().CartasEnZona)
+    foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
+    {
+      
+      if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == global::Card.TipoDeCarta.silver)
+      {
+        carta.GetComponent<cardDisplay>().card.Damage -= 1;
+        carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = true;
+      }
+      zone.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+       
+    }
+    foreach(GameObject carta in zone1.GetComponent<Tablero>().CartasEnZona)
     {
       if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == global::Card.TipoDeCarta.silver)
       {
-        contador++;
+        carta.GetComponent<cardDisplay>().card.Damage -= 1;
+        carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = true;
       }
+      zone1.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
     }
-    foreach(GameObject carta in melee1.GetComponent<Tablero>().CartasEnZona)
-    {
+    
+ }
+ void Aumentos(string tag)
+ {
+    Debug.Log("voy a aumentar");
+    zone = GameObject.FindGameObjectWithTag(tag);
+    zone.GetComponent<Tablero>().suma = 0;
+    foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
+    {     
       if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == global::Card.TipoDeCarta.silver)
       {
-        contador++;
-      }
+        carta.GetComponent<cardDisplay>().card.Damage += 2;
+        carta.GetComponent<cardDisplay>().card.Aumentada = true;
+      } 
+      zone.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;  
     }
-    melee.GetComponent<Tablero>().suma -= contador;
-    melee1.GetComponent<Tablero>().suma -= contador1;
- }*/
-    }
+ }
+}
    
 }
  

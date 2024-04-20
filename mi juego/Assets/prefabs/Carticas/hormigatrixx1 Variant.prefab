@@ -27,30 +27,30 @@ PrefabInstance:
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8106081595299346393}
+      objectReference: {fileID: 3912541748219063091}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 3912541748219063091}
+      objectReference: {fileID: 8106081595299346393}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClick
-      objectReference: {fileID: 0}
-    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: MultiplicarPor_n_ElAtaque
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CardsMove, Assembly-CSharp
+      value: Effects, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Effects, Assembly-CSharp
+      value: CardsMove, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

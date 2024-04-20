@@ -10,12 +10,8 @@ public class Cementery : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         CARD = collision.gameObject;
         CardsInZone.Add(CARD);
-        Debug.Log("carta nueva");
-        //CARD.GetComponent<cardDisplay>().card.Damage = CARD.GetComponent<cardDisplay>().card.OriginalDamage;
-        //Debug.Log("cambie el dano");
     }
     // Start is called before the first frame update
     void Start()
