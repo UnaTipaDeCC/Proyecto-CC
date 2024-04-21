@@ -23,7 +23,24 @@ public class GameManager : MonoBehaviour
     private List<GameObject> cardsInDeck;
     private GameObject Cementery;
     private GameObject Cementery1;
-    
+    private bool MeleeClimaOn = false;
+     public bool meleeClimaOn
+    {
+        get { return MeleeClimaOn; }
+        set { MeleeClimaOn = value; }
+    }
+    private bool RangedClimaOn = false;
+     public bool rangedClimaOn
+    {
+        get { return RangedClimaOn; }
+        set { RangedClimaOn = value; }
+    }
+    private bool SiegeClimaOn = false;
+     public bool siegeClimaOn
+    {
+        get { return SiegeClimaOn; }
+        set { SiegeClimaOn = value; }
+    }
    private bool isPlayerOneTurn = true;
 
     public bool IsPlayerOneTurn
@@ -149,19 +166,20 @@ public void EndRound()
             Aumentos();
             QuitarFilasEspeciales();
         }
-         ComprobarCuantasCartasRobar("Deck", "Hand");
-            RobarCarta("Deck","Hand");
+            ComprobarCuantasCartasRobar("Deck", "Hand");
+            RobarCarta("Deck","Hand","Cementery");
             ComprobarCuantasCartasRobar("Deck(1)", "Hand (1)");
-            RobarCarta("Deck(1)","Hand (1)");
+            RobarCarta("Deck(1)","Hand (1)", "Cementery (1)");
         playerOnePassed = false;
         playerTwoPassed = false;
     }
 }
 
 
-public void RobarCarta(string tagDeck, string tagHand)
+public void RobarCarta(string tagDeck, string tagHand, string tagcementery)
 {
     Debug.Log("compruebo para robar carta");
+    Cementery = GameObject.Find(tagcementery);
         for(int i = 0; i < n; i++)
         {
             hand = GameObject.FindGameObjectWithTag(tagHand);
@@ -173,6 +191,23 @@ public void RobarCarta(string tagDeck, string tagHand)
             cardsInDeck.RemoveAt(index);
             drawCard.transform.SetParent(hand.transform, false);
             cardsInHand.Add(drawCard);
+        }
+        if(n == 0)
+        {
+            for(int i = 0; i < 2; i++)
+            {
+                int index = Random.Range(0, cardsInDeck.Count);
+                GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
+                cardsInDeck.RemoveAt(index);
+                drawCard.transform.SetParent(Cementery.transform, false);
+            }  
+        }
+        if(n == 1)
+        {
+            int index = Random.Range(0, cardsInDeck.Count);
+            GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
+            cardsInDeck.RemoveAt(index);
+            drawCard.transform.SetParent(Cementery.transform, false);
         }            
 }
 public void ComprobarCuantasCartasRobar(string tagDeck, string tagHand)
@@ -356,8 +391,7 @@ public void EndGame()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             Debug.Log("GANA EL JUGADOR DOS");   
-        }
-         Debug.Log("GANA EL JUGADOR DOS");     
+        }   
         playerOnePassed = true;
         playerTwoPassed = true;
         

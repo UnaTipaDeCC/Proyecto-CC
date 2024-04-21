@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   name: Neblina Intensa
-  description: disminuye en 1  el poder de las cartas de ambas zonas ranged mientras
-    este en el campo
+  description: Disminuye en 1 las  cartas RANGED
   artwork: {fileID: 21300000, guid: fd17a2f965c44014ab304996a392e8eb, type: 3}
   jugada: 0
   faccion: 1

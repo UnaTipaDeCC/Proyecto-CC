@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: CardInfo
       value: 
       objectReference: {fileID: 11400000, guid: 70737c058e106fe4ea376ffc1081b864, type: 2}
+    - target: {fileID: -6518498491264936762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: CARD
+      value: 
+      objectReference: {fileID: 5845301584741339810}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -148,6 +152,10 @@ PrefabInstance:
       propertyPath: card
       value: 
       objectReference: {fileID: 11400000, guid: 70737c058e106fe4ea376ffc1081b864, type: 2}
+    - target: {fileID: 8739879092945431599, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

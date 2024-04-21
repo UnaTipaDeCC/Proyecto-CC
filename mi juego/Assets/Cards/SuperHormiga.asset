@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   name: SuperHormiga
-  description: Carta lider de la faccion Hormigas Bravas
+  description: Gana en caso de empate
   artwork: {fileID: 21300000, guid: bac844fcc9f622440b1ddd5f39105677, type: 3}
   jugada: 0
   faccion: 0

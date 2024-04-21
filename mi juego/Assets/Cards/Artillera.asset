@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Artillera
   m_EditorClassIdentifier: 
   name: Artillera
-  description: Limpia la fila con menos unidades del campo
+  description: Limpia la fila con menos unidades
   artwork: {fileID: 21300000, guid: b62087c164d8cb3459b25e55a9057ac9, type: 3}
   jugada: 0
   Damage: 3

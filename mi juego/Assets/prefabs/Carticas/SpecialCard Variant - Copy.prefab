@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 5fa064a0205796e418238566094e3a3c, type: 2}
     - target: {fileID: 842297851592127870, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_Name
-      value: SpecialCard Variant
+      value: SpecialCard Variant - Copy
       objectReference: {fileID: 0}
     - target: {fileID: 4088202765929698965, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: m_Pivot.x
@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8595795512712857306, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      propertyPath: CARD
+      value: 
+      objectReference: {fileID: 4568616052639344773}
     - target: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: Card
       value: 

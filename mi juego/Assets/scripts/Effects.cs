@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Build.Content;
 using UnityEngine;
@@ -323,44 +324,45 @@ public class Effects : MonoBehaviour
             filaSiege = GameObject.FindGameObjectWithTag("SiegeZone");
             siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
             Cementery = GameObject.FindGameObjectWithTag("Cementery");
-            if(melee.Count > 0 || siege.Count > 0 || ranged.Count > 0)
+
+            if(GetListaNoVaciaMenorElementos(melee,ranged,siege).Count > 0)
             {
-                Debug.Log("hay alguna fila no vacia");
-                //comprueba cual es la fila que menos cartas tiene
-                if((melee.Count <= ranged.Count) && (melee.Count < siege.Count) )
-                {
-                    Debug.Log("melee es la que menos tiene");
-                    foreach(GameObject carta in melee)
+                foreach(GameObject carta in GetListaNoVaciaMenorElementos(melee,ranged,siege))
                     {
                             carta.transform.SetParent(Cementery.transform, false);
                             carta.transform.position = Cementery.transform.position; 
-                            //Debug.Log("HAY UNA CArtA DE PLATA Y LA VOY A METER EN LA LISTA");
+                            Debug.Log("voy a quitar");
         
                     }
-                }
-                else if(ranged.Count < melee.Count && (ranged.Count <= siege.Count))
-                {
-                    Debug.Log("ranged es la que menos tiene");
-                    foreach(GameObject carta in ranged)
-                    {
-                            carta.transform.SetParent(Cementery.transform, false);
-                            carta.transform.position = Cementery.transform.position;
-                    }
-                }
-                else if((siege.Count <= melee.Count) && (siege.Count < ranged.Count))
-                {
-                    Debug.Log("SIEGE es la que menos tiene");
-                    foreach(GameObject carta in siege)
-                    {
-                            carta.transform.SetParent(Cementery.transform, false);
-                            carta.transform.position = Cementery.transform.position;
-                    }
-                }
             }
+            else Debug.Log("todas las listas estan vacias");
             ActivoElEfecto = true;
             }
         }
-        //else Debug.Log("no afecto xq no es mi turno");
+        else Debug.Log("no afecto xq no es mi turno");
     }
+    public static List<GameObject> GetListaNoVaciaMenorElementos(List<GameObject> lista1, List<GameObject> lista2, List<GameObject> lista3)
+{
+    // Crear una lista de listas no vacías
+    List<List<GameObject>> listasNoVacias = new List<List<GameObject>>();
+
+    // Agregar las listas no vacías a la lista de listas
+    if (lista1.Count > 0)
+        listasNoVacias.Add(lista1);
+    if (lista2.Count > 0)
+        listasNoVacias.Add(lista2);
+    if (lista3.Count > 0)
+        listasNoVacias.Add(lista3);
+
+    // Si no hay ninguna lista no vacía, devolver una lista vacía
+    if (listasNoVacias.Count == 0)
+        return new List<GameObject>();
+
+    // Ordenar las listas no vacías por la cantidad de elementos
+    listasNoVacias = listasNoVacias.OrderBy(l => l.Count).ToList();
+
+    // Devolver la primera lista (la que tiene menos elementos)
+    return listasNoVacias.First();
+}
 
 }

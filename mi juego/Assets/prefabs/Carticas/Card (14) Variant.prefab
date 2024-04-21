@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: CardInfo
       value: 
       objectReference: {fileID: 11400000, guid: 3baa5d69a5eebec4f9cae02bcab47e4e, type: 2}
+    - target: {fileID: -6518498491264936762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: CARD
+      value: 
+      objectReference: {fileID: 1063248947628378845}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

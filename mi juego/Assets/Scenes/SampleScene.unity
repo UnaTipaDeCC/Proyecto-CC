@@ -1514,7 +1514,8 @@ PrefabInstance:
       propertyPath: CardInfo
       value: 
       objectReference: {fileID: 11400000, guid: 503ee2ebf024e7644b87f1e8c98e848d, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8595795512712857306, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1695,7 +1696,8 @@ PrefabInstance:
       propertyPath: CardInfo
       value: 
       objectReference: {fileID: 11400000, guid: 2d251b42b2f83b1449bd475f75a5890e, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8595795512712857306, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4562,7 +4564,7 @@ MonoBehaviour:
   - {fileID: 2035908716286399242, guid: 037caf93dda13574a85119b0dc41e6ce, type: 3}
   - {fileID: 2699607706261458911, guid: c6cbdb08dc14a57498bc7363b3376a6c, type: 3}
   - {fileID: 4376595031490107389, guid: 08a51e5cd947c054f9ed0e845369daf0, type: 3}
-  - {fileID: 3177883629013191955, guid: 7ed9d4da84dc16045a8a42558c1412c4, type: 3}
+  - {fileID: 9173066883156228298, guid: d6370d14fb677a441b1e9ad1d8c3349d, type: 3}
   - {fileID: 3452505003727213948, guid: 4ba593160a220d5499a753d438fca2f8, type: 3}
   - {fileID: 7397097343006712733, guid: 84c1e8db8c965724ea7ebe42d5e3807a, type: 3}
   - {fileID: 4624959999645614328, guid: 54ca84365cada78499d7ce8fb3d1883c, type: 3}

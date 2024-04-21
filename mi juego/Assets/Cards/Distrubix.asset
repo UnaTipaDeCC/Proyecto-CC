@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   name: Distrubix
-  description: 
+  description: Despeje RANGED
   artwork: {fileID: 21300000, guid: e5ba9d19052e3844aa55c1fcea132e14, type: 3}
   jugada: 0
   faccion: 0

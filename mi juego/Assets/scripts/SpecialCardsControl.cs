@@ -46,6 +46,8 @@ public class SpecialCardsControl : MonoBehaviour
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
               Clima("MeleeZone","MeleeZone (1)");//afecta a las cartas de plata
+              gameManager.meleeClimaOn = true;
+
               if(gameManager.playerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -79,6 +81,7 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("MeleeZone","MeleeZone (1)");
                  gameManager.MeleeClima = false;
+                 gameManager.meleeClimaOn = false;
 
               }
               else Debug.Log("no hay cartas climas"); 
@@ -102,6 +105,7 @@ public class SpecialCardsControl : MonoBehaviour
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
               Clima("RangedZone", "RangedZone (1)");
+              gameManager.rangedClimaOn = true;
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -135,6 +139,7 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("RangedZone", "RangedZone (1)");
                  gameManager.RangedClima = false;
+                 gameManager.rangedClimaOn = false;
               }
               else Debug.Log("no hay cartas climas");   
 
@@ -159,6 +164,7 @@ public class SpecialCardsControl : MonoBehaviour
                 cardsinhand.Remove(Card);
                 CardInfo.jugada = true;
                 Clima("SiegeZone", "SiegeZone (1)");
+                gameManager.siegeClimaOn = true;
                 if(gameManager.playerTwoPassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -190,6 +196,7 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("SiegeZone", "SiegeZone (1)");
                  gameManager.SiegeClima = false;
+                 gameManager.siegeClimaOn = false;
               }   
 
                 if(gameManager.playerTwoPassed == false)
@@ -271,6 +278,7 @@ public class SpecialCardsControl : MonoBehaviour
                 cardsinhand1.Remove(Card);
                 CardInfo.jugada = true;
                 Clima("MeleeZone","MeleeZone (1)");
+                gameManager.meleeClimaOn = true;
                 if(gameManager.playerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -303,6 +311,7 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("MeleeZone","MeleeZone (1)");
                  gameManager.MeleeClima = false;
+                 gameManager.meleeClimaOn = false;
               }  
 
               if(gameManager.playerOnePassed == false)
@@ -325,6 +334,7 @@ public class SpecialCardsControl : MonoBehaviour
                 cardsinhand1.Remove(Card);
                 CardInfo.jugada = true;
                 Clima("RangedZone", "RangedZone (1)");
+                gameManager.rangedClimaOn = true;
                 if(gameManager.playerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -358,6 +368,7 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("RangedZone", "RangedZone (1)");
                  gameManager.RangedClima = false;
+                 gameManager.rangedClimaOn = false;
               }   
               if(gameManager.playerOnePassed == false)
               {
@@ -379,6 +390,7 @@ public class SpecialCardsControl : MonoBehaviour
                   cardsinhand1.Remove(Card);
                   CardInfo.jugada = true;
                   Clima("SiegeZone", "SiegeZone (1)");
+                  gameManager.siegeClimaOn = true;
                   if(gameManager.playerOnePassed == false)
                   {
                     gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -411,6 +423,7 @@ public class SpecialCardsControl : MonoBehaviour
                   }
                   Despeje("SiegeZone", "SiegeZone (1)");
                   gameManager.SiegeClima = false;
+                  gameManager.siegeClimaOn = false;
                 }   
                 if(gameManager.playerOnePassed == false)
                 {

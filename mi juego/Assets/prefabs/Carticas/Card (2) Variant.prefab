@@ -120,10 +120,22 @@ PrefabInstance:
       propertyPath: card
       value: 
       objectReference: {fileID: 11400000, guid: 83eb8575918367f4185668fd83527dd3, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 8692124164817338306, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: CARD
+      value: 
+      objectReference: {fileID: 6469473164798483604}
+    - target: {fileID: 8739879092945431599, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -6518498491264936762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4198003899232326714}
   m_SourcePrefab: {fileID: 100100000, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
 --- !u!114 &1962074665709195222 stripped
 MonoBehaviour:
@@ -141,3 +153,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
   m_PrefabInstance: {fileID: 440238689956693350}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4198003899232326714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469473164798483604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b730aa898292e043882c91363085d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CARD: {fileID: 6469473164798483604}
