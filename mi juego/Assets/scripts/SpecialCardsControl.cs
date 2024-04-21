@@ -7,7 +7,6 @@ using UnityEngine;
 public class SpecialCardsControl : MonoBehaviour
 {
     public GameObject Zone;
-    //public static List<GameObject> CardsInZone = new List<GameObject>();
      public GameObject Card;
      public SpecialCards CardInfo;
      public GameManager gameManager;
@@ -17,6 +16,8 @@ public class SpecialCardsControl : MonoBehaviour
      private GameObject deck1;
      private List<GameObject> cardsinhand;
      private List<GameObject> cardsinhand1;
+     private GameObject Cementery;
+     private GameObject Cementery1;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,8 @@ public class SpecialCardsControl : MonoBehaviour
       deck1 = GameObject.FindGameObjectWithTag("Deck(1)");
       cardsinhand = deck.GetComponent<Draw>().CardsInHand;
       cardsinhand1 = deck1.GetComponent<Draw>().CardsInHand;
+      Cementery = GameObject.Find("Cementery");
+      Cementery1 = GameObject.Find("Cementery (1)");
     }
     public void OnClick()
     {
@@ -33,7 +36,7 @@ public class SpecialCardsControl : MonoBehaviour
         {
           if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
-            if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
+            if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que la carta no se haya jugado y que sea el turno del jugador
             {
               if(gameManager.MeleeClima == false)//comprueba que no haya una carta melee afectando a esa zona
               {
@@ -42,7 +45,7 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              Clima("MeleeZone","MeleeZone (1)");
+              Clima("MeleeZone","MeleeZone (1)");//afecta a las cartas de plata
               if(gameManager.playerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -52,7 +55,7 @@ public class SpecialCardsControl : MonoBehaviour
               else Debug.Log("ya hay una carta clima que afecta esta zona");
               
             } 
-            else Debug.Log("No es tu turno o ya hay una carta clima que afecta esta zona");       
+            else Debug.Log("No es tu turno");       
           }
         
           if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
@@ -64,7 +67,21 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              if(gameManager.MeleeClima == true)
+              {
+                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
+                 {
+                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
+                    {
+                      carta.transform.SetParent(Cementery.transform, false); // mover la carta clima al cementerio al cementerio
+                      carta.transform.position = Cementery.transform.position;
+                    }
+                 }
+                 Despeje("MeleeZone","MeleeZone (1)");
+                 gameManager.MeleeClima = false;
+
+              }
+              else Debug.Log("no hay cartas climas"); 
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -106,7 +123,21 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              if(gameManager.RangedClima == true)
+              {
+                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
+                 {
+                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
+                    {
+                      carta.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
+                      carta.transform.position = Cementery.transform.position;
+                    }
+                 }
+                 Despeje("RangedZone", "RangedZone (1)");
+                 gameManager.RangedClima = false;
+              }
+              else Debug.Log("no hay cartas climas");   
+
               if(gameManager.playerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -147,7 +178,20 @@ public class SpecialCardsControl : MonoBehaviour
                 Card.transform.position = Zone.transform.position;
                 cardsinhand.Remove(Card);
                 CardInfo.jugada = true;
-                Debug.Log(CardInfo.jugada);
+                if(gameManager.MeleeClima == true)
+              {
+                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
+                 {
+                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
+                    {
+                      carta.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
+                      carta.transform.position = Cementery.transform.position;
+                    }
+                 }
+                 Despeje("SiegeZone", "SiegeZone (1)");
+                 gameManager.SiegeClima = false;
+              }   
+
                 if(gameManager.playerTwoPassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -216,21 +260,22 @@ public class SpecialCardsControl : MonoBehaviour
         {
           if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
-            if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false) // && (gameManager.MeleeClimaCards.Count == 0))
+            if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
               if(gameManager.MeleeClima == false)
               {
                 gameManager.MeleeClima = true;
-              Zone = GameObject.Find("MeleeClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand1.Remove(Card);
-              CardInfo.jugada = true;
-              Clima("MeleeZone","MeleeZone (1)");
-              if(gameManager.playerOnePassed == false)
-              {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-              }
+                Zone = GameObject.Find("MeleeClima");
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+                cardsinhand1.Remove(Card);
+                CardInfo.jugada = true;
+                Clima("MeleeZone","MeleeZone (1)");
+                if(gameManager.playerOnePassed == false)
+                {
+                  gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                }
+                gameManager.MeleeClima = true;
               }
               else Debug.Log("ya hay una carta clima que afecta esta zona");
             } 
@@ -246,7 +291,20 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand1.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              if(gameManager.MeleeClima == true)
+              {
+                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
+                 {
+                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
+                    {
+                      carta.transform.SetParent(Cementery1.transform, false); // mover la carta al cementerio
+                      carta.transform.position = Cementery1.transform.position;
+                    }
+                 }
+                 Despeje("MeleeZone","MeleeZone (1)");
+                 gameManager.MeleeClima = false;
+              }  
+
               if(gameManager.playerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -259,16 +317,22 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("RangedClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand1.Remove(Card);
-              CardInfo.jugada = true;
-              Clima("RangedZone", "RangedZone (1)");
-              if(gameManager.playerOnePassed == false)
+              if(gameManager.RangedClima == false)
               {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                 Zone = GameObject.Find("RangedClima");
+                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                Card.transform.position = Zone.transform.position;
+                cardsinhand1.Remove(Card);
+                CardInfo.jugada = true;
+                Clima("RangedZone", "RangedZone (1)");
+                if(gameManager.playerOnePassed == false)
+                {
+                  gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                }
+                gameManager.RangedClima = true;
               }
+              else Debug.Log("ya hay una carta clima que afecta esta zona");
+             
             }
             else Debug.Log("No es tu turno");           
           }
@@ -282,7 +346,19 @@ public class SpecialCardsControl : MonoBehaviour
               Card.transform.position = Zone.transform.position;
               cardsinhand1.Remove(Card);
               CardInfo.jugada = true;
-              Debug.Log(CardInfo.jugada);
+              if(gameManager.RangedClima == true)
+              {
+                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
+                 {
+                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
+                    {
+                      carta.transform.SetParent(Cementery1.transform, false); // mover la carta al cementerio
+                      carta.transform.position = Cementery1.transform.position;
+                    }
+                 }
+                 Despeje("RangedZone", "RangedZone (1)");
+                 gameManager.RangedClima = false;
+              }   
               if(gameManager.playerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -295,16 +371,21 @@ public class SpecialCardsControl : MonoBehaviour
           {
               if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
-                Zone = GameObject.Find("SiegeClima");
-                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                Card.transform.position = Zone.transform.position;
-                cardsinhand1.Remove(Card);
-                CardInfo.jugada = true;
-                Clima("SiegeZone", "SiegeZone (1)");
-                if(gameManager.playerOnePassed == false)
-              {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-              }
+                if(gameManager.SiegeClima == false)
+                {
+                  Zone = GameObject.Find("SiegeClima");
+                  Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
+                  Card.transform.position = Zone.transform.position;
+                  cardsinhand1.Remove(Card);
+                  CardInfo.jugada = true;
+                  Clima("SiegeZone", "SiegeZone (1)");
+                  if(gameManager.playerOnePassed == false)
+                  {
+                    gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                  }
+                  gameManager.SiegeClima = true;
+                }
+                else Debug.Log("ya hay una carta que afecta esta zona");  
               }
           else Debug.Log("No es tu turno");
           }
@@ -318,7 +399,19 @@ public class SpecialCardsControl : MonoBehaviour
                 Card.transform.position = Zone.transform.position;
                 cardsinhand1.Remove(Card);
                 CardInfo.jugada = true;
-                Debug.Log(CardInfo.jugada);
+                if(gameManager.SiegeClima == true)
+                {
+                  foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
+                  {
+                      if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
+                      {
+                        carta.transform.SetParent(Cementery1.transform, false); // mover la carta al cementerio
+                        carta.transform.position = Cementery1.transform.position;
+                      }
+                  }
+                  Despeje("SiegeZone", "SiegeZone (1)");
+                  gameManager.SiegeClima = false;
+                }   
                 if(gameManager.playerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
@@ -386,8 +479,8 @@ public class SpecialCardsControl : MonoBehaviour
  {
     zone = GameObject.FindGameObjectWithTag(tag1);
     zone1 = GameObject.FindGameObjectWithTag(tag2);
-    zone.GetComponent<Tablero>().suma = 0;//-= contador;
-    zone1.GetComponent<Tablero>().suma = 0;//-= contador1;
+    zone.GetComponent<Tablero>().suma = 0;
+    zone1.GetComponent<Tablero>().suma = 0;
 
     Debug.Log("estoy aqui");
     foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
@@ -426,6 +519,32 @@ public class SpecialCardsControl : MonoBehaviour
       } 
       zone.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;  
     }
+ }
+ void Despeje(string tag, string tag1)
+ {
+    zone = GameObject.FindGameObjectWithTag(tag);
+    zone.GetComponent<Tablero>().suma = 0;
+    zone1 = GameObject.FindGameObjectWithTag(tag1);
+    zone1.GetComponent<Tablero>().suma = 0;
+    foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
+    {
+      if(carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima == true)
+      {
+        carta.GetComponent<cardDisplay>().card.Damage += 1;
+        carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
+      }
+      zone.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+    }
+     foreach(GameObject carta in zone1.GetComponent<Tablero>().CartasEnZona)
+    {
+      if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == global::Card.TipoDeCarta.silver)
+      {
+        carta.GetComponent<cardDisplay>().card.Damage += 1;
+        carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
+      }
+      zone1.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+    }
+
  }
 }
    

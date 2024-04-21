@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Elimina la carta con menos poder del rival
   artwork: {fileID: 21300000, guid: 26ff621ac2ead9b499ab07dc90600b84, type: 3}
   jugada: 0
-  Damage: 1
+  Damage: 2
   OriginalDamage: 2
   AfectadaPorUnClima: 0
   Aumentada: 0

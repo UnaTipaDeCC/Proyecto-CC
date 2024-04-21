@@ -37,7 +37,6 @@ public class Draw : MonoBehaviour
             CardsInDeck.RemoveAt(index);
             drawCard.transform.SetParent(Hand.transform, false);
             CardsInHand.Add(drawCard);
-            //CardsInDeck.Remove(drawCard);
             Yasetoco = true;
 
         }

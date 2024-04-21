@@ -39,6 +39,7 @@ TagManager:
   - 7
   - 8
   - 9
+  - SpecialCard
   layers:
   - Default
   - TransparentFX
