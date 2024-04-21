@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -346,8 +347,17 @@ public void EndGame()
         ReestablecerValores("Cementery");
         ReestablecerValores("Cementery (1)");
         Debug.Log("Se acabo el juego");
-        if(RondasGanadas1 ==2) Debug.Log("GANA EL JUGADOR UNO");
-        if(RondasGanadas2 ==2) Debug.Log("GANA EL JUGADOR DOS");     
+        if(RondasGanadas1 > RondasGanadas2)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Debug.Log("GANA EL JUGADOR UNO");
+        } 
+        if(RondasGanadas2 > RondasGanadas1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+            Debug.Log("GANA EL JUGADOR DOS");   
+        }
+         Debug.Log("GANA EL JUGADOR DOS");     
         playerOnePassed = true;
         playerTwoPassed = true;
         
