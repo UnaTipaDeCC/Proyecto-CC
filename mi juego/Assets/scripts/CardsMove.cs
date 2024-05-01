@@ -14,6 +14,12 @@ public class CardsMove : MonoBehaviour
      private GameObject deck1;
      private List<GameObject> cardsinhand;
      private List<GameObject> cardsinhand1;
+
+    private GameObject deck2;
+    private GameObject contador;
+    private GameObject hand;
+    private List<GameObject> cardsInHand;
+    private List<GameObject> cardsInDeck;
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -24,7 +30,6 @@ public class CardsMove : MonoBehaviour
     }
     public void OnClick()
     {
-        
         if(gameManager.playerOnePassed == false)//comprueba que el jugador uno no se haya pasado
         {
         //la zona a la que debe moverse
@@ -166,6 +171,47 @@ public class CardsMove : MonoBehaviour
             }    
         }
         }
+        
+       /*else if(Input.GetMouseButtonDown(1))
+        {
+            if(Card.GetComponent<cardDisplay>().card.faccion == global::Card.Faccion.Hormigas_Bravas)
+        {
+            deck2 = GameObject.Find("Deck");
+            contador = GameObject.Find("Contador");
+            hand = GameObject.Find("Hand");
+        }
+        else if(Card.GetComponent<cardDisplay>().card.faccion == global::Card.Faccion.Hormigas_Locas)
+        {
+            deck2 = GameObject.Find("Deck (1)");
+            contador = GameObject.Find("Contador (1)");
+            hand = GameObject.Find("Hand1");
+        }
+        if(contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
+        {
+            cardsInHand = deck2.GetComponent<Draw>().CardsInHand;
+            cardsInDeck = deck2.GetComponent<Draw>().CardsInDeck;
+            cardsInDeck.Add(Card);
+            Destroy(Card);
+            int index = UnityEngine.Random.Range(0, cardsInDeck.Count);
+            GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
+            cardsInDeck.RemoveAt(index);
+            drawCard.transform.SetParent(hand.transform, false);
+            cardsInHand.Add(drawCard);
+            Debug.Log("cambie una carta");
+        }
+
+        }*/
     }
+    /*void Update()
+    {
+         /*if (Input.GetMouseButtonDown(0))
+    {
+        Debug.Log("Tocaste el botón izquierdo");
+    }
+    if (Input.GetMouseButtonDown(0))
+    {
+        OnClick();
+    }
+    }*/
     
 }

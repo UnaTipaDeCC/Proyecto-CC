@@ -91,29 +91,39 @@ public class Effects : MonoBehaviour
             {
                 foreach(GameObject carta in melee)//busca la carta con menos poder de la zona melee
                 {
-                    if(carta.GetComponent<cardDisplay>().card.Damage < contador_melee)
+                    if(carta.CompareTag("Card"))//comprueba que sea una carta de unidad
+                    {
+                        if(carta.GetComponent<cardDisplay>().card.Damage < contador_melee)
                     {
                         contador_melee = carta.GetComponent<cardDisplay>().card.Damage;
                         index_melee = melee.IndexOf(carta);
                         cartam = carta;
                     }
+                    }
+                    
                 }
                 foreach(GameObject carta in ranged) //busca la carta con menos poder de la zona ranged
                 {
+                    if(carta.CompareTag("Card"))
+                    {
                     if(carta.GetComponent<cardDisplay>().card.Damage < contador_ranged)
                     {
                         contador_ranged = carta.GetComponent<cardDisplay>().card.Damage;
                         index_ranged = ranged.IndexOf(carta);
                         cartar = carta;
                     }
+                    }
                 } 
                 foreach(GameObject carta in siege) //busca la zona con menos poder de la zona siege
                 {
+                    if(carta.CompareTag("Card"))
+                    {
                     if(carta.GetComponent<cardDisplay>().card.Damage < contador_siege)
                     {
                         contador_siege = carta.GetComponent<cardDisplay>().card.Damage;
                         index_siege = siege.IndexOf(carta);
                         cartas = carta;
+                    }
                     }
                 }
                 //compara las cartas encontradas y elimina la de menor poder de su respectiva fila
@@ -155,7 +165,7 @@ public class Effects : MonoBehaviour
         {
             if(ActivoElEfecto == false)
             {
-             Debug.Log("activo esto xq es mi turno");
+            Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone (1)");
@@ -173,29 +183,38 @@ public class Effects : MonoBehaviour
             {
             foreach(GameObject carta in melee)//encuentra la carta mas poder de la zona melee
             {
+                if(carta.CompareTag("Card"))
+                {
                 if(carta.GetComponent<cardDisplay>().card.Damage > contador_melee) 
                 {
                     contador_melee = carta.GetComponent<cardDisplay>().card.Damage;
                     index_melee = melee.IndexOf(carta);
                     cartam = carta;
                 }
+                }
             }
             foreach(GameObject carta in ranged)//encuentra la carta con mas poderde la zona ranged
             {
+                 if(carta.CompareTag("Card"))
+                {
                 if(carta.GetComponent<cardDisplay>().card.Damage > contador_ranged)
                 {
                     contador_ranged = carta.GetComponent<cardDisplay>().card.Damage;
                     index_ranged = ranged.IndexOf(carta);
                     cartar = carta;
                 }
+                }
             } 
             foreach(GameObject carta in siege)//encuentra la carta con mas poder de la zona siege
             {
+                if(carta.CompareTag("Card"))
+                {
                 if(carta.GetComponent<cardDisplay>().card.Damage > contador_siege)
                 {
                     contador_siege = carta.GetComponent<cardDisplay>().card.Damage;
                     index_siege = siege.IndexOf(carta);
                     cartas = carta;
+                }
                 }
             }
             //comparar cual de las cartas tiene mas poder y eliminarla de la fila
@@ -239,12 +258,14 @@ public class Effects : MonoBehaviour
             filaRanged = GameObject.FindGameObjectWithTag("RangedZone");
             ranged = filaRanged.GetComponent<Tablero>().CartasEnZona;
             int contador = 1;
-        
                 foreach(GameObject carta in ranged)
                 {
+                    if(carta.CompareTag("Card"))
+                    {
                     if(carta.GetComponent<cardDisplay>().card.name == "Hormigatrixx")
                     {
                         contador++;
+                    }
                     }
                 }
                 GetComponent<cardDisplay>().card.Damage *= contador;
@@ -265,8 +286,7 @@ public class Effects : MonoBehaviour
        // if(!gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
-        
-        {
+            {
             Debug.Log("activo esto xq es mi turno");
             filaMelee = GameObject.FindGameObjectWithTag("MeleeZone (1)");
             melee = filaMelee.GetComponent<Tablero>().CartasEnZona;
@@ -283,19 +303,28 @@ public class Effects : MonoBehaviour
                 GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma = 0;
                 foreach(GameObject carta in melee)
                 {
-                    carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                    GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                     if(carta.CompareTag("Card"))
+                     {
+                        carta.GetComponent<cardDisplay>().card.Damage = promedio;
+                        GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                     }
                 }
                 foreach(GameObject carta in siege)
                 {
+                    if(carta.CompareTag("Card"))
+                    {
                     carta.GetComponent<cardDisplay>().card.Damage = promedio;
                     GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                    }
                 }
                 foreach(GameObject carta in ranged)
                 {
+                     if(carta.CompareTag("Card"))
+                     {
                         carta.GetComponent<cardDisplay>().card.Damage = promedio;
                         Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
-                    GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                        GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                     }                
                 }
             }
         }
@@ -343,10 +372,10 @@ public class Effects : MonoBehaviour
     }
     public static List<GameObject> GetListaNoVaciaMenorElementos(List<GameObject> lista1, List<GameObject> lista2, List<GameObject> lista3)
 {
-    // Crear una lista de listas no vacías
+    // Una lista de listas no vacías
     List<List<GameObject>> listasNoVacias = new List<List<GameObject>>();
 
-    // Agregar las listas no vacías a la lista de listas
+    // Agrega las listas no vacías a la lista de listas
     if (lista1.Count > 0)
         listasNoVacias.Add(lista1);
     if (lista2.Count > 0)
@@ -358,10 +387,10 @@ public class Effects : MonoBehaviour
     if (listasNoVacias.Count == 0)
         return new List<GameObject>();
 
-    // Ordenar las listas no vacías por la cantidad de elementos
+    // Ordena las listas no vacías por la cantidad de elementos
     listasNoVacias = listasNoVacias.OrderBy(l => l.Count).ToList();
 
-    // Devolver la primera lista (la que tiene menos elementos)
+    // Devuelve la primera lista (la que tiene menos elementos)
     return listasNoVacias.First();
 }
 

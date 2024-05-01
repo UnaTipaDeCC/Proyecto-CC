@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d81750f62d950448f9c39bd988390c, type: 3}
+  m_Name: Diosa
+  m_EditorClassIdentifier: 
+  Damage: 0
+  name: Diosa
+  description: Carta Senuelo
+  artwork: {fileID: 21300000, guid: a5b626f74823b024eaf4594e1ccb37e8, type: 3}
+  jugada: 0
+  faccion: 1
+  tipoDeCarta: 3
+  zonaQueAfecta: 3
+  power: 0

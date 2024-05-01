@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: -668781524826958131}
   - component: {fileID: -7122800964332729680}
   - component: {fileID: 6562888132201469530}
+  - component: {fileID: -1131522369784382535}
   m_Layer: 6
   m_Name: Card
   m_TagString: Card
@@ -513,6 +514,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ZonaDeAumento: {fileID: 0}
   carta: {fileID: 0}
+--- !u!114 &-1131522369784382535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905185156424587762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b730aa898292e043882c91363085d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CARD: {fileID: 0}
 --- !u!1 &7253607962544497083
 GameObject:
   m_ObjectHideFlags: 0

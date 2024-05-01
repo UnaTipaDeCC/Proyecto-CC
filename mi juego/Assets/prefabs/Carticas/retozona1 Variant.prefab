@@ -20,20 +20,52 @@ PrefabInstance:
       propertyPath: CARD
       value: 
       objectReference: {fileID: 2888493751488981532}
+    - target: {fileID: -1131522369784382535, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: CARD
+      value: 
+      objectReference: {fileID: 2888493751488981532}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7703234337540421982}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 544336276112050263}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Cambiardoscartas
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: CardsMove, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: EscogerCartas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -668781524826958131, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1020080489092409495, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
@@ -133,6 +165,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+--- !u!114 &544336276112050263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1131522369784382535, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+  m_PrefabInstance: {fileID: 8629416490607801326}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888493751488981532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b730aa898292e043882c91363085d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2888493751488981532 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}

@@ -34,8 +34,6 @@ public class Card : ScriptableObject
     }
      public enum Power{
         Ninguno,
-        PonerUnAumento,
-        PonerUnClima,
         LimpiarFilaConMenosUnidades,
         MultiplicarPor_n_ElAtaque,
         IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio,

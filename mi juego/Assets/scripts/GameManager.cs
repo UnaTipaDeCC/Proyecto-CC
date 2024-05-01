@@ -172,6 +172,12 @@ public void EndRound()
             RobarCarta("Deck(1)","Hand (1)", "Cementery (1)");
         playerOnePassed = false;
         playerTwoPassed = false;
+        MeleeClima = false;
+        RangedClima = false;
+        SiegeClima = false;
+        MeleeClimaOn = false;
+        SiegeClimaOn = false;
+        RangedClimaOn = false;
     }
 }
 

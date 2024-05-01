@@ -9,18 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c6ba6865cf6a64eb998dcd2d75df6d, type: 3}
-  m_Name: Bruja
+  m_Script: {fileID: 11500000, guid: 71d81750f62d950448f9c39bd988390c, type: 3}
+  m_Name: Mentora
   m_EditorClassIdentifier: 
-  name: Bruja
-  description: 
-  artwork: {fileID: 21300000, guid: cf60f9e3813bc6a45bea43ec743f9d9d, type: 3}
+  Damage: 0
+  name: Mentora
+  description: Carta senuelo
+  artwork: {fileID: 21300000, guid: 668f2d96e568f744183eedb26be3e6ce, type: 3}
   jugada: 0
-  Damage: 5
-  OriginalDamage: 5
-  AfectadaPorUnClima: 0
-  Aumentada: 0
   faccion: 0
-  tipoDeCarta: 0
-  tipoDeAtaque: 1
+  tipoDeCarta: 3
+  zonaQueAfecta: 3
   power: 0
