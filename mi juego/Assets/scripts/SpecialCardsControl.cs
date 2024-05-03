@@ -587,35 +587,42 @@ public class SpecialCardsControl : MonoBehaviour
         Card.transform.position = filaMelee.transform.position;
         cardsInHand.Remove(Card);//remover la senuelo de la mano
       }
-            else if(contador_ranged > contador_melee && contador_ranged >= contador_siege)
-            {
-                cartar.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
-                cartar.transform.position = Zone.transform.position;
-                cardsInHand.Add(cartar);
-                cartar.GetComponent<cardDisplay>().card.jugada = false;
-                Card.transform.SetParent(filaRanged.transform, false); // mover la carta senuelo a la fila melee 
-                Card.transform.position = filaRanged.transform.position;
-                cardsInHand.Remove(Card);
-                Debug.Log("en ranged esta la que menos tiene");
-            }
-            else
-            {
-                cartas.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
-                cartas.transform.position = Zone.transform.position;
-                cardsInHand.Add(cartas);
-                cartas.GetComponent<cardDisplay>().card.jugada = false;
-                Card.transform.SetParent(filaSiege.transform, false); // mover la carta senuelo a la fila siege
-                Card.transform.position = filaSiege.transform.position;
-                cardsInHand.Remove(Card);
-                Debug.Log("en siege esta la que menos tiene");
-            }
-          }
-          else 
-          {
-            Card.transform.SetParent(filaSiege.transform, false); // mover la carta senuelo a la fila siege
-                Card.transform.position = filaSiege.transform.position;
-                cardsInHand.Remove(Card);
-          }
+      else if(contador_ranged > contador_melee && contador_ranged >= contador_siege)
+      {
+        cartar.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
+        cartar.transform.position = Zone.transform.position;
+        cardsInHand.Add(cartar);
+        cartar.GetComponent<cardDisplay>().card.jugada = false;
+        Card.transform.SetParent(filaRanged.transform, false); // mover la carta senuelo a la fila melee 
+        Card.transform.position = filaRanged.transform.position;
+        cardsInHand.Remove(Card);
+        Debug.Log("en ranged esta la que menos tiene");
+        }
+        else if(contador_siege > contador_melee && contador_siege > contador_ranged)
+        {
+          cartas.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
+          cartas.transform.position = Zone.transform.position;
+          cardsInHand.Add(cartas);
+          cartas.GetComponent<cardDisplay>().card.jugada = false;
+          Card.transform.SetParent(filaSiege.transform, false); // mover la carta senuelo a la fila siege
+          Card.transform.position = filaSiege.transform.position;
+          cardsInHand.Remove(Card);
+          Debug.Log("en siege esta la que menos tiene");
+        }
+        else if(cartam == null && cartar == null && cartas == null)
+        {
+        Debug.Log("todas son de oro");
+        Card.transform.SetParent(filaSiege.transform, false); // mover la carta senuelo a la fila siege
+        Card.transform.position = filaSiege.transform.position;
+        cardsInHand.Remove(Card);
+        }
+        }
+        else 
+        {
+          Card.transform.SetParent(filaSiege.transform, false); // mover la carta senuelo a la fila siege
+          Card.transform.position = filaSiege.transform.position;
+          cardsInHand.Remove(Card);
+        }
     }
  void Clima(string tag1, string tag2)
  {

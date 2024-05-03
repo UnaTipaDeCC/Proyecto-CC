@@ -18,6 +18,8 @@ MonoBehaviour:
   jugada: 0
   Damage: 2
   OriginalDamage: 2
+  AfectadaPorUnClima: 0
+  Aumentada: 0
   faccion: 0
   tipoDeCarta: 1
   tipoDeAtaque: 0

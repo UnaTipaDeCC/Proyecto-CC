@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   name: Mentora
-  description: Carta senuelo
+  description: "Carta se\xF1uelo"
   artwork: {fileID: 21300000, guid: 668f2d96e568f744183eedb26be3e6ce, type: 3}
   jugada: 0
   faccion: 0

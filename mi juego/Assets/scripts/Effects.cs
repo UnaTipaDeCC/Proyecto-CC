@@ -21,12 +21,11 @@ public class Effects : MonoBehaviour
     private GameObject cartam;
     private GameObject cartar;
     private GameObject cartas;
-    public GameObject ZonaDeAumento;
     private GameManager gameManager;
     private GameObject Cementery;
     private bool ActivoElEfecto = false;
     private bool condicion;
-    public GameObject  carta;
+
 
     void Start()
     {
@@ -39,13 +38,14 @@ public class Effects : MonoBehaviour
         cardsinhand = deck.GetComponent<Draw>().CardsInHand;
         cardsindeck = deck.GetComponent<Draw>().CardsInDeck;
         if(ActivoElEfecto == false)
-{
-            if(gameManager.playerOnePassed == true)
+        {
+            /*if(gameManager.playerOnePassed == true)
             {
                 condicion = !gameManager.IsPlayerOneTurn;
             }
-            else condicion = gameManager.IsPlayerOneTurn; 
-            if(gameManager.playerTwoPassed == false && condicion)//(!gameManager.IsPlayerOneTurn)
+            else condicion = gameManager.IsPlayerOneTurn; */
+            //if(gameManager.playerTwoPassed == false && condicion)
+            if(!gameManager.IsPlayerOneTurn)
             {
             
             int index = UnityEngine.Random.Range(0, cardsindeck.Count);
@@ -56,18 +56,19 @@ public class Effects : MonoBehaviour
             ActivoElEfecto = true;
             Debug.Log("active el efecto");
             }
-    }
+        }
+        else Debug.Log("YA ACTIVASTE EL EFECTO");
     }
     public void EliminarCartaConMenosPoderDelRival()
     {
-        bool condicion;//al activar el on click compila primero el cardsmove y se cambia el turno 
+        /*bool condicion;//al activar el on click compila primero el cardsmove y se cambia el turno 
         if(gameManager.playerTwoPassed == true)
         {
             condicion = gameManager.IsPlayerOneTurn;
         }
         else condicion = !gameManager.IsPlayerOneTurn;
-        if(gameManager.playerOnePassed == false && condicion)
-       // if(gameManager.IsPlayerOneTurn)
+        if(gameManager.playerOnePassed == false && condicion)*/
+        if(gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
             {
@@ -149,19 +150,20 @@ public class Effects : MonoBehaviour
                     Debug.Log("quite una carta de siege");
                 }
             }
+            ActivoElEfecto = true;
             }    
         }
     }
     public void EliminarCartaConMasPoderDelRival()
     {
-        bool condicion;
+        /*/bool condicion;
         if(gameManager.playerTwoPassed == true)
         {
             condicion = gameManager.IsPlayerOneTurn;
         }
         else condicion = !gameManager.IsPlayerOneTurn;
-        if(gameManager.playerOnePassed == false && condicion)
-        //if(gameManager.IsPlayerOneTurn)
+        if(gameManager.playerOnePassed == false && condicion)*/
+        if(gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
             {
@@ -239,7 +241,9 @@ public class Effects : MonoBehaviour
             }
             ActivoElEfecto = true;
             }
+            else Debug.Log("ya active el efecto");
         }
+        else Debug.Log("no afecto porque no es mi turno");
     }
     public void MultiplicarPor_n_ElAtaque()//siendo n la cantidad de cartas igual a ella en el campo
     {
@@ -270,20 +274,21 @@ public class Effects : MonoBehaviour
                 }
                 GetComponent<cardDisplay>().card.Damage *= contador;
             ActivoElEfecto = true;
-            }    
+            }  
+            else Debug.Log("ya active el efecto");  
         }
         else Debug.Log("no afecto xq no es mi turno");
     }
     public void IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio()
     {
-        bool condicion;
+        /*bool condicion;
         if(gameManager.playerOnePassed == true)
         {
             condicion = !gameManager.IsPlayerOneTurn;
         }
         else condicion = gameManager.IsPlayerOneTurn;    
-        if(gameManager.playerTwoPassed == false && condicion)
-       // if(!gameManager.IsPlayerOneTurn)
+        if(gameManager.playerTwoPassed == false && condicion)*/
+        if(!gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
             {
@@ -327,21 +332,22 @@ public class Effects : MonoBehaviour
                      }                
                 }
             }
-        }
-        ActivoElEfecto = true;
+            ActivoElEfecto = true;
+        }       
+        else Debug.Log("ya active el efecto");
         }
         else Debug.Log("no afecto xq no es mi turno");
     }
     public void LimpiaLaFilaConMenosUnidades()
     {
-        bool condicion;
+        /*bool condicion;
         if(gameManager.playerOnePassed == true)
         {
             condicion = !gameManager.IsPlayerOneTurn;
         }
         else condicion = gameManager.IsPlayerOneTurn; 
-        if(condicion)
-        //if(!gameManager.IsPlayerOneTurn)
+        if(condicion)*/
+        if(!gameManager.IsPlayerOneTurn)
         {
             if(ActivoElEfecto == false)
             {
@@ -367,6 +373,7 @@ public class Effects : MonoBehaviour
             else Debug.Log("todas las listas estan vacias");
             ActivoElEfecto = true;
             }
+            else Debug.Log("YA ACTIVE EL EFECTO");
         }
         else Debug.Log("no afecto xq no es mi turno");
     }

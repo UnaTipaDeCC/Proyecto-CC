@@ -94,7 +94,21 @@ public class GameManager : MonoBehaviour
         get { return siegeClima;}
         set { siegeClima = value;}
     }
-
+    private int cambieb = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Bravas
+    public int Cambieb 
+    {
+        get { return cambieb;}
+        set { cambieb = value;}
+    }
+    private int cambieL = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Locas
+    public int CambieL
+    {
+        get { return cambieL;}
+        set { cambieL = value;}
+    }
+   
+    
+    
 private GameObject hand;
 private GameObject deck;
 private GameObject contador1;//contador del jugador uno
@@ -378,8 +392,7 @@ public void ReestablecerValores(string tag)
             card.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }
     }
-
-
+   
 }
 public void EndGame()
 {

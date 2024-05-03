@@ -180,15 +180,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Al iniciar el juego cada jugador roba y obtiene 10 cartas(el jugador de
+  m_text: Al iniciar el juego cada jugador roba y obtiene 10 cartas(el jugador de
     la faccion "Hormigas Bravas" siempre comienza), antes de poner alguna carta tienen
     la opcion de cambiar, de manera aleatoria dos de sus cartas. Cada turno consiste
     en poner una carta, activar la carta lider o pasar turno, una vez se pasa turno,
     no se puede volver a jugar hasta finalizada la ronda(cuando ambos jugadores se
     hayan pasado, ganando aquel que mas puntos tenga). Cada mazo esta compuesto por
-    cartas de unidad(de oro y plata), que pueden tener efectos o no, y cartas especiales(clima,despeje,aumento)
-    las cuales solo afectan a las cartas de plata. El juego finaliza cuando uno de
-    los jugadores haya ganado al menos dos rondas. '
+    cartas de unidad(de oro y plata), que pueden tener efectos o no, y cartas especiales(clima,despeje,aumento,
+    senuelo) las cuales solo afectan a las cartas de plata, estas ultimas intercambian
+    posicion con la carta de plata mas poderosa del campo propio. El juego finaliza
+    cuando uno de los jugadores haya ganado al menos dos rondas.  Diviertete!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1651,7 +1652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1257257447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1729,7 +1730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1839152364
 RectTransform:
   m_ObjectHideFlags: 0

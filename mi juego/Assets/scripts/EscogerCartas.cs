@@ -7,7 +7,6 @@ using UnityEngine.XR;
 public class EscogerCartas : MonoBehaviour
 {
     private GameManager gameManager;
-    //public GameObject CARD;
     public GameObject clickedCard;
     private GameObject deck;
     private GameObject contador;
@@ -18,23 +17,16 @@ public class EscogerCartas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GetComponent<GameManager>();
+       gameManager = GameObject.FindObjectOfType<GameManager>();
     }
     public void Cambiardoscartas()
     {  
-       if(clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Bravas)
+        if((clickedCard.CompareTag("Card") && clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Bravas) || (clickedCard.CompareTag("SpecialCard") && clickedCard.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas))
         {
             deck = GameObject.Find("Deck");
             contador = GameObject.Find("Contador");
             hand = GameObject.Find("Hand");
-        }
-        else if(clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Locas)
-        {
-            deck = GameObject.Find("Deck (1)");
-            contador = GameObject.Find("Contador (1)");
-            hand = GameObject.Find("Hand1");
-        }
-        if(contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
+        if(gameManager.Cambieb  < 2 && Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
         {
             cardsInHand = deck.GetComponent<Draw>().CardsInHand;
             cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
@@ -47,30 +39,36 @@ public class EscogerCartas : MonoBehaviour
             drawCard.transform.SetParent(hand.transform, false);
             cardsInHand.Add(drawCard);
             Debug.Log("cambie una carta");
+            gameManager.Cambieb ++;
+             Debug.Log(gameManager.Cambieb);
+
         }
-    }
-    // Update is called once per frame
-    /*void Update()
-    {
-         /*if (Input.GetMouseButtonDown(0))
-    {
-        Debug.Log("Tocaste el botón izquierdo");
-    }
-    if (Input.GetMouseButtonDown(1))
-    {
-        Cambiardoscartas();
-    }
-    }*/
-    void Update()
-{
-    if (Input.GetMouseButtonDown(1))
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+        else Debug.Log("Ya cambiaste las dos cartas o ya jugaste y no  puedes cambiar");
+        }
+        else if((gameManager.CambieL < 2 && clickedCard.CompareTag("Card") && clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Locas) || (clickedCard.CompareTag("SpecialCard") && clickedCard.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas))
         {
-            clickedCard = hit.collider.gameObject;
-            Cambiardoscartas();
+            deck = GameObject.Find("Deck (1)");
+            contador = GameObject.Find("Contador (1)");
+            hand = GameObject.Find("Hand1");
+            if( Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
+        {
+            cardsInHand = deck.GetComponent<Draw>().CardsInHand;
+            cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
+            cardsInHand.Remove(clickedCard);
+            cardsInDeck.Add(clickedCard);
+            Destroy(clickedCard);
+            int index = UnityEngine.Random.Range(0, cardsInDeck.Count);
+            GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
+            cardsInDeck.RemoveAt(index);
+            drawCard.transform.SetParent(hand.transform, false);
+            cardsInHand.Add(drawCard);
+            Debug.Log("cambie una carta");
+            gameManager.CambieL++;
+            Debug.Log(gameManager.CambieL);
         }
+        else Debug.Log("Ya cambiaste las dos cartas o ya jugaste y no  puedes cambiar");
+        }
+       
     }
 }
-}
+  

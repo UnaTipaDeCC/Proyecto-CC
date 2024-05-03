@@ -112,6 +112,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917655730593477435, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2804968690447779955}
+    - target: {fileID: 4917655730593477435, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Cambiardoscartas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917655730593477435, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EscogerCartas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917655730593477435, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708339489878395902, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+      propertyPath: clickedCard
+      value: 
+      objectReference: {fileID: 5162449722112472819}
     - target: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
       propertyPath: Card
       value: 
@@ -125,6 +145,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+--- !u!114 &2804968690447779955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7708339489878395902, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
+  m_PrefabInstance: {fileID: 5482224097631585165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5162449722112472819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b730aa898292e043882c91363085d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4029091648517237307 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8934842888067885494, guid: d396acfb3a61831499a2990fbdf14620, type: 3}
