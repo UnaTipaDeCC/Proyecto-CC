@@ -7,6 +7,7 @@ using UnityEngine.XR;
 public class EscogerCartas : MonoBehaviour
 {
     private GameManager gameManager;
+    private CardZoom cardZoom;
     public GameObject clickedCard;
     private GameObject deck;
     private GameObject contador;
@@ -18,15 +19,15 @@ public class EscogerCartas : MonoBehaviour
     void Start()
     {
        gameManager = GameObject.FindObjectOfType<GameManager>();
-    }
+    }   
     public void Cambiardoscartas()
-    {  
+    { 
         if((clickedCard.CompareTag("Card") && clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Bravas) || (clickedCard.CompareTag("SpecialCard") && clickedCard.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas))
         {
             deck = GameObject.Find("Deck");
             contador = GameObject.Find("Contador");
             hand = GameObject.Find("Hand");
-        if(gameManager.Cambieb  < 2 && Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
+        if(gameManager.rondasGanadas1 == 0 && gameManager.playerOnePassed == false && gameManager.leaderCardBActivated == false && gameManager.Cambieb  < 2 && Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
         {
             cardsInHand = deck.GetComponent<Draw>().CardsInHand;
             cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
@@ -41,7 +42,11 @@ public class EscogerCartas : MonoBehaviour
             Debug.Log("cambie una carta");
             gameManager.Cambieb ++;
              Debug.Log(gameManager.Cambieb);
-
+             if (cardZoom != null && cardZoom.ZoomCard != null)
+            {
+                Destroy(cardZoom.ZoomCard);
+                
+            }
         }
         else Debug.Log("Ya cambiaste las dos cartas o ya jugaste y no  puedes cambiar");
         }
@@ -50,7 +55,7 @@ public class EscogerCartas : MonoBehaviour
             deck = GameObject.Find("Deck (1)");
             contador = GameObject.Find("Contador (1)");
             hand = GameObject.Find("Hand1");
-            if( Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
+            if(gameManager.rondasGanadas2 == 0 && gameManager.playerTwoPassed == false && gameManager.leaderCardLActivated == false &&  Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
         {
             cardsInHand = deck.GetComponent<Draw>().CardsInHand;
             cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;

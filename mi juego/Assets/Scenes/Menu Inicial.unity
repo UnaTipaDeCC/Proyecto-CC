@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Al iniciar el juego cada jugador roba y obtiene 10 cartas(el jugador de
     la faccion "Hormigas Bravas" siempre comienza), antes de poner alguna carta tienen
-    la opcion de cambiar, de manera aleatoria dos de sus cartas. Cada turno consiste
+    la opcion de cambiar dos de ellas haciendo click derecho. Cada turno consiste
     en poner una carta, activar la carta lider o pasar turno, una vez se pasa turno,
     no se puede volver a jugar hasta finalizada la ronda(cuando ambos jugadores se
     hayan pasado, ganando aquel que mas puntos tenga). Cada mazo esta compuesto por

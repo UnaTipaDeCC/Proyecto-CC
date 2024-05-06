@@ -105,10 +105,7 @@ public class GameManager : MonoBehaviour
     {
         get { return cambieL;}
         set { cambieL = value;}
-    }
-   
-    
-    
+    }  
 private GameObject hand;
 private GameObject deck;
 private GameObject contador1;//contador del jugador uno
@@ -127,10 +124,11 @@ public int rondasGanadas2
 }
 public void EndRound()
 {
-    if(PlayerOnePassed == true && playerTwoPassed == true)
+    if(PlayerOnePassed == true && playerTwoPassed == true)//comprueba que ambos jugadores se hayan pasado
     {
-        if(contador1.GetComponent<Contador>().puntos > contador2.GetComponent<Contador>().puntos)
+        if(contador1.GetComponent<Contador>().puntos > contador2.GetComponent<Contador>().puntos)//comprueba cual es el ganador
         {
+            //comprueba si se activo el efecto de la lider, si se uso y en caso contrario si cumple las condiciones para ser activado
             if(leaderCardLActivated == true && UsadoL == false && ((contador1.GetComponent<Contador>().puntos - contador2.GetComponent<Contador>().puntos) <=2) )
             {
                 Debug.Log("gana el jugador dos xq uso su carta lider");
@@ -162,7 +160,7 @@ public void EndRound()
         }
         if(contador1.GetComponent<Contador>().puntos == contador2.GetComponent<Contador>().puntos)
         {
-            if(leaderCardBActivated == true && UsadoB == false)
+            if(leaderCardBActivated == true && UsadoB == false)//comprueba para usar la carta lider 
             {
                 Debug.Log("gana el jugador uno xq uso su carta lider");
                 isPlayerOneTurn = true;
@@ -184,6 +182,7 @@ public void EndRound()
             RobarCarta("Deck","Hand","Cementery");
             ComprobarCuantasCartasRobar("Deck(1)", "Hand (1)");
             RobarCarta("Deck(1)","Hand (1)", "Cementery (1)");
+        //restaura los valores
         playerOnePassed = false;
         playerTwoPassed = false;
         MeleeClima = false;
@@ -263,13 +262,11 @@ public void QuitarFilasEspeciales()
         {
             carta.transform.SetParent(Cementery.transform, false);
             carta.transform.position = Cementery.transform.position; 
-           // carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             carta.transform.SetParent(Cementery1.transform, false);
             carta.transform.position = Cementery1.transform.position; 
-            //carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }    
     }
     foreach(GameObject carta in aumento2.GetComponent<SpecialZones>().CartasEnZona)
@@ -278,13 +275,11 @@ public void QuitarFilasEspeciales()
         {
             carta.transform.SetParent(Cementery.transform, false);
             carta.transform.position = Cementery.transform.position;
-            //carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false; 
         }
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             carta.transform.SetParent(Cementery1.transform, false);
             carta.transform.position = Cementery1.transform.position; 
-           // carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
         }    
     }
     foreach(GameObject carta in aumento3.GetComponent<SpecialZones>().CartasEnZona)
@@ -293,18 +288,18 @@ public void QuitarFilasEspeciales()
         {
             carta.transform.SetParent(Cementery.transform, false);
             carta.transform.position = Cementery.transform.position; 
-            //carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
+            
         }
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             carta.transform.SetParent(Cementery1.transform, false);
             carta.transform.position = Cementery1.transform.position; 
-            //carta.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
+            
         }    
     }
 }
 
-public void Aumentos()
+public void Aumentos()//limpia los aumentos del campo
 {
     aumento1 = GameObject.FindGameObjectWithTag("1");
     aumento2 = GameObject.FindGameObjectWithTag("2");

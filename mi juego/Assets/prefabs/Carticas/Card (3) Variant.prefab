@@ -226,6 +226,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -8251416609346155306}
   m_SourcePrefab: {fileID: 100100000, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+--- !u!114 &1111136732116749463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582528851284203823, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+  m_PrefabInstance: {fileID: 3223856836130837944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316272636212005962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2bb0e1151d4ff4eaf580c5cb838841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3574673882586046216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -7122800964332729680, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
@@ -275,6 +286,38 @@ MonoBehaviour:
         - m_Target: {fileID: 3055103905682895377}
           m_TargetAssemblyTypeName: EscogerCartas, Assembly-CSharp
           m_MethodName: Cambiardoscartas
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1111136732116749463}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: OnHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1111136732116749463}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: OnHoverExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

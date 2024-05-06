@@ -22,6 +22,10 @@ public class cardDisplay : MonoBehaviour
     
         
     }
+    void Update()
+    {
+        DamageText.text = card.Damage.ToString();
+    }
 
    
 }

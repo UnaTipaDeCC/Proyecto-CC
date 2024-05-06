@@ -25,15 +25,47 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7383051111657442833}
     - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3886368943434951815}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3886368943434951815}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Cambiardoscartas
+      objectReference: {fileID: 0}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHoverEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHoverExit
       objectReference: {fileID: 0}
     - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EscogerCartas, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CardZoom, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CardZoom, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -3838276253597964684, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: -1131522369784382535, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
@@ -194,6 +226,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee780d936ab09084481bdb6470e0ad66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3886368943434951815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582528851284203823, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+  m_PrefabInstance: {fileID: 1601552726388569512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327194209412590682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2bb0e1151d4ff4eaf580c5cb838841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5327194209412590682 stripped

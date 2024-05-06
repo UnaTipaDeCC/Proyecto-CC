@@ -185,6 +185,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee780d936ab09084481bdb6470e0ad66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2723260019708435529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582528851284203823, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+  m_PrefabInstance: {fileID: 440238689956693350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469473164798483604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2bb0e1151d4ff4eaf580c5cb838841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6469473164798483604 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
@@ -203,6 +214,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2723260019708435529}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: OnHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2723260019708435529}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: OnHoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 3
     callback:
       m_PersistentCalls:
