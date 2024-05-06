@@ -7,7 +7,7 @@ using UnityEngine.XR;
 public class EscogerCartas : MonoBehaviour
 {
     private GameManager gameManager;
-    private CardZoom cardZoom;
+    private GameObject cardZoom;
     public GameObject clickedCard;
     private GameObject deck;
     private GameObject contador;
@@ -19,9 +19,11 @@ public class EscogerCartas : MonoBehaviour
     void Start()
     {
        gameManager = GameObject.FindObjectOfType<GameManager>();
+       cardZoom = GameObject.Find("ZoomCard");
     }   
     public void Cambiardoscartas()
     { 
+        //Comprueba a que faccion pertenece la carta y en funcion de eso asigna los valores necesarios y verifica que el jugador no haya jugado, ni pasado, ni activado la carta lider(basicamente que no haya empezado el juego)
         if((clickedCard.CompareTag("Card") && clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Bravas) || (clickedCard.CompareTag("SpecialCard") && clickedCard.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas))
         {
             deck = GameObject.Find("Deck");
@@ -41,12 +43,10 @@ public class EscogerCartas : MonoBehaviour
             cardsInHand.Add(drawCard);
             Debug.Log("cambie una carta");
             gameManager.Cambieb ++;
-             Debug.Log(gameManager.Cambieb);
-             if (cardZoom != null && cardZoom.ZoomCard != null)
-            {
-                Destroy(cardZoom.ZoomCard);
-                
-            }
+            Debug.Log(gameManager.Cambieb);
+            Transform hijoADestruir = cardZoom.transform.GetChild(0); //referencia al zoom de la carta en la escena 
+            // Verifica si se encontró el zoom de la carta y luego destrúyelo 
+            if (hijoADestruir != null) { Destroy(hijoADestruir.gameObject); }
         }
         else Debug.Log("Ya cambiaste las dos cartas o ya jugaste y no  puedes cambiar");
         }
@@ -56,21 +56,23 @@ public class EscogerCartas : MonoBehaviour
             contador = GameObject.Find("Contador (1)");
             hand = GameObject.Find("Hand1");
             if(gameManager.rondasGanadas2 == 0 && gameManager.playerTwoPassed == false && gameManager.leaderCardLActivated == false &&  Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
-        {
-            cardsInHand = deck.GetComponent<Draw>().CardsInHand;
-            cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
-            cardsInHand.Remove(clickedCard);
-            cardsInDeck.Add(clickedCard);
-            Destroy(clickedCard);
-            int index = UnityEngine.Random.Range(0, cardsInDeck.Count);
-            GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
-            cardsInDeck.RemoveAt(index);
-            drawCard.transform.SetParent(hand.transform, false);
-            cardsInHand.Add(drawCard);
-            Debug.Log("cambie una carta");
-            gameManager.CambieL++;
-            Debug.Log(gameManager.CambieL);
-        }
+            {
+                cardsInHand = deck.GetComponent<Draw>().CardsInHand;
+                cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
+                cardsInHand.Remove(clickedCard);
+                cardsInDeck.Add(clickedCard);
+                Destroy(clickedCard);
+                int index = UnityEngine.Random.Range(0, cardsInDeck.Count);
+                GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
+                cardsInDeck.RemoveAt(index);
+                drawCard.transform.SetParent(hand.transform, false);
+                cardsInHand.Add(drawCard);
+                Debug.Log("cambie una carta");
+                gameManager.CambieL++;
+                Debug.Log(gameManager.CambieL);
+                Transform hijoADestruir = cardZoom.transform.GetChild(0);
+                if (hijoADestruir != null) { Destroy(hijoADestruir.gameObject); }
+            }
         else Debug.Log("Ya cambiaste las dos cartas o ya jugaste y no  puedes cambiar");
         }
        
