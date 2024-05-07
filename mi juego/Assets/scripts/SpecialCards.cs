@@ -38,6 +38,7 @@ public class SpecialCards : ScriptableObject
         Aumentar_Damage,
         GanarEnCasoDeEmpate,
         GanarSiLaDiferenciaDePuntosConElRivalEsMenorQueDos,
+        Disminuir_Damage,
 
 
     }

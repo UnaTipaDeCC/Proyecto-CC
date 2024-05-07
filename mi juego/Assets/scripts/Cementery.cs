@@ -12,6 +12,18 @@ public class Cementery : MonoBehaviour
     {
         CARD = collision.gameObject;
         CardsInZone.Add(CARD);
+        foreach (GameObject card in CardsInZone)
+        {
+            if(CARD.CompareTag("Card"))
+            {
+                CARD.GetComponent<cardDisplay>().card.jugada = true;
+            }
+            else if(CARD.CompareTag("SpecialCard"))
+            {
+                CARD.GetComponent<SpecialCardsDisplay>().specialcard.jugada = true;
+            }
+        }
+        
     }
     // Start is called before the first frame update
     void Start()

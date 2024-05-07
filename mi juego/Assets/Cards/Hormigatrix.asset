@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Hormigatrix
   m_EditorClassIdentifier: 
   name: Hormigatrixx
-  description: Multiplica su ataque segun la cantidad de cartas igual a ella en el
-    campo
+  description: Multiplica su ataque
   artwork: {fileID: 21300000, guid: 1d8fe7d9578cabf40b46eb3655752877, type: 3}
   jugada: 0
   Damage: 4

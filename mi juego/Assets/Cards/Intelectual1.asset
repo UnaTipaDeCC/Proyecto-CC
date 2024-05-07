@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Intelectual1
   m_EditorClassIdentifier: 
   name: Intelectual
-  description: Iguala el dano de las cartas al promedio del campo
+  description: "Da\xF1o cartas = promedio campo"
   artwork: {fileID: 21300000, guid: af8f73d8c5f6940469c26e4f5edcaf16, type: 3}
   jugada: 0
   Damage: 6

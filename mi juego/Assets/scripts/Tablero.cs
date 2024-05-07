@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tablero : MonoBehaviour
 {
-    public GameObject CARD;
+    private GameObject CARD;
     public List<GameObject> CartasEnZona = new List<GameObject>();
     public int suma = 0;
     private GameManager gameManager;

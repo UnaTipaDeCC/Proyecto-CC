@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5952526542155060186, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_text
+      value: M
+      objectReference: {fileID: 0}
     - target: {fileID: 6905185156424587762, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_Name
       value: Card (7) Variant
@@ -210,7 +214,19 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 27b5f44455359db459b6fa30fd03625a, type: 2}
     - target: {fileID: 8739879092945431599, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739879092945431599, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739879092945431599, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739879092945431599, guid: cd94592a24edda44fbf59b0c482a64e1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.74509805
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

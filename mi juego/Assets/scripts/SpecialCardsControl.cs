@@ -6,23 +6,23 @@ using UnityEngine;
 
 public class SpecialCardsControl : MonoBehaviour
 {
-    public GameObject Zone;
-     public GameObject Card;
-     public SpecialCards CardInfo;
-     public GameManager gameManager;
-     private GameObject zone;
-     private GameObject zone1;
-      private GameObject deck;
-     private GameObject deck1;
-     private List<GameObject> cardsinhand;
-     private List<GameObject> cardsinhand1;
-     private GameObject Cementery;
-     private GameObject Cementery1;
-     private GameObject cartam;
-     private GameObject cartas;
-     private GameObject cartar;
-     private GameObject filaMelee;
-     private GameObject filaRanged;
+    private GameObject Zone;
+    public GameObject Card;
+    public SpecialCards CardInfo;
+    private GameManager gameManager;
+    private GameObject zone;
+    private GameObject zone1;
+    private GameObject deck;
+    private GameObject deck1;
+    private List<GameObject> cardsinhand;
+    private List<GameObject> cardsinhand1;
+    private GameObject Cementery;
+    private GameObject Cementery1;
+    private GameObject cartam;
+    private GameObject cartas;
+    private GameObject cartar;
+    private GameObject filaMelee;
+    private GameObject filaRanged;
     private GameObject filaSiege;
     private List<GameObject> melee;
     private List<GameObject> ranged;
@@ -49,11 +49,7 @@ public class SpecialCardsControl : MonoBehaviour
             {
               if(gameManager.MeleeClima == false)//comprueba que no haya una carta melee afectando a esa zona
               {
-              Zone = GameObject.Find("MeleeClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("MeleeClima",cardsinhand);
               Clima("MeleeZone","MeleeZone (1)");//afecta a las cartas de plata
               gameManager.meleeClimaOn = true;
 
@@ -73,11 +69,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("MeleeClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("MeleeClima",cardsinhand);
               if(gameManager.MeleeClima == true)
               {
                  foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
@@ -108,18 +100,14 @@ public class SpecialCardsControl : MonoBehaviour
             {
               if(gameManager.RangedClima == false)
               {
-              Zone = GameObject.Find("RangedClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand.Remove(Card);
-              CardInfo.jugada = true;
-              Clima("RangedZone", "RangedZone (1)");
-              gameManager.rangedClimaOn = true;
-              if(gameManager.playerTwoPassed == false)
-              {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-              }
-              gameManager.RangedClima = true;
+                Mover("RangedClima",cardsinhand);
+                Clima("RangedZone", "RangedZone (1)");
+                gameManager.rangedClimaOn = true;
+                if(gameManager.playerTwoPassed == false)
+                {
+                  gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                }
+                gameManager.RangedClima = true;
               }
               else Debug.Log("YA HAY UNA CARTA CLIMA QUE AFECTA ESTA ZONA");
             }
@@ -131,11 +119,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("RangedClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("RangedClima",cardsinhand);
               if(gameManager.RangedClima == true)
               {
                  foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
@@ -167,19 +151,15 @@ public class SpecialCardsControl : MonoBehaviour
                 if(gameManager.SiegeClima == false)
                 {
                   gameManager.SiegeClima = true;
-                Zone = GameObject.Find("SiegeClima");
-                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                Card.transform.position = Zone.transform.position;
-                cardsinhand.Remove(Card);
-                CardInfo.jugada = true;
-                Clima("SiegeZone", "SiegeZone (1)");
-                gameManager.siegeClimaOn = true;
-                if(gameManager.playerTwoPassed == false)
-                {
-                  gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-                }
-                }
-                else Debug.Log("ya hay una carta clima que afecta esta zona");
+                  Mover("SiegeClima",cardsinhand);
+                  Clima("SiegeZone", "SiegeZone (1)");
+                  gameManager.siegeClimaOn = true;
+                  if(gameManager.playerTwoPassed == false)
+                  {
+                    gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                  }
+                  }
+                  else Debug.Log("ya hay una carta clima que afecta esta zona");
               }
               else Debug.Log("No es tu turno");
           }
@@ -188,11 +168,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
               if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
-                Zone = GameObject.Find("SiegeClima");
-                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                Card.transform.position = Zone.transform.position;
-                cardsinhand.Remove(Card);
-                CardInfo.jugada = true;
+                Mover("SiegeClima",cardsinhand);
                 if(gameManager.MeleeClima == true)
               {
                  foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
@@ -220,11 +196,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("AumentoMelee");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("AumentoMelee",cardsinhand);
               Aumentos("MeleeZone");
               if(gameManager.playerTwoPassed == false)
               {
@@ -238,11 +210,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("AumentoRanged");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("AumentoRanged",cardsinhand);
               Aumentos("RangedZone");
               if(gameManager.playerTwoPassed == false)
               {
@@ -256,11 +224,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("AumentoSiege ");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("AumentoSiege ",cardsinhand);
               Aumentos("SiegeZone");
               if(gameManager.playerTwoPassed == false)
               {
@@ -294,11 +258,7 @@ public class SpecialCardsControl : MonoBehaviour
               if(gameManager.MeleeClima == false)
               {
                 gameManager.MeleeClima = true;
-                Zone = GameObject.Find("MeleeClima");
-                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                Card.transform.position = Zone.transform.position;
-                cardsinhand1.Remove(Card);
-                CardInfo.jugada = true;
+                Mover("MeleeClima",cardsinhand1);
                 Clima("MeleeZone","MeleeZone (1)");
                 gameManager.meleeClimaOn = true;
                 if(gameManager.playerOnePassed == false)
@@ -316,11 +276,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("MeleeClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand1.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("MeleeClima",cardsinhand1);
               if(gameManager.MeleeClima == true)
               {
                  foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
@@ -350,11 +306,7 @@ public class SpecialCardsControl : MonoBehaviour
             {
               if(gameManager.RangedClima == false)
               {
-                 Zone = GameObject.Find("RangedClima");
-                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                Card.transform.position = Zone.transform.position;
-                cardsinhand1.Remove(Card);
-                CardInfo.jugada = true;
+                Mover("RangedClima",cardsinhand1);
                 Clima("RangedZone", "RangedZone (1)");
                 gameManager.rangedClimaOn = true;
                 if(gameManager.playerOnePassed == false)
@@ -373,11 +325,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("RangedClima");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand1.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("RangedClima",cardsinhand1);
               if(gameManager.RangedClima == true)
               {
                  foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
@@ -406,11 +354,7 @@ public class SpecialCardsControl : MonoBehaviour
               {
                 if(gameManager.SiegeClima == false)
                 {
-                  Zone = GameObject.Find("SiegeClima");
-                  Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                  Card.transform.position = Zone.transform.position;
-                  cardsinhand1.Remove(Card);
-                  CardInfo.jugada = true;
+                  Mover("SiegeClima",cardsinhand1);
                   Clima("SiegeZone", "SiegeZone (1)");
                   gameManager.siegeClimaOn = true;
                   if(gameManager.playerOnePassed == false)
@@ -428,11 +372,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
               if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
-                Zone = GameObject.Find("SiegeClima");
-                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                Card.transform.position = Zone.transform.position;
-                cardsinhand1.Remove(Card);
-                CardInfo.jugada = true;
+                Mover("SiegeClima",cardsinhand1);
                 if(gameManager.SiegeClima == true)
                 {
                   foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
@@ -459,11 +399,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
-              Zone = GameObject.Find("AumentoMelee (1)");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand1.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("AumentoMelee (1)",cardsinhand1);
               Aumentos("MeleeZone (1)");
               if(gameManager.playerOnePassed == false)
               {
@@ -477,11 +413,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             { 
-              Zone = GameObject.Find("AumentoRanged (1)");
-              Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-              Card.transform.position = Zone.transform.position;
-              cardsinhand1.Remove(Card);
-              CardInfo.jugada = true;
+              Mover("AumentoRanged (1)",cardsinhand1);
               Aumentos("RangedZone (1)");
               if(gameManager.playerOnePassed == false)
               {
@@ -495,11 +427,7 @@ public class SpecialCardsControl : MonoBehaviour
           {
               if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
-                Zone = GameObject.Find("AumentoSiege  (1)");
-                Card.transform.SetParent(Zone.transform, false); // mover la carta a la zona deseada 
-                Card.transform.position = Zone.transform.position;
-                cardsinhand1.Remove(Card);
-                CardInfo.jugada = true;
+                Mover("AumentoSiege  (1)",cardsinhand1);
                 Aumentos("SiegeZone (1)");
                 if(gameManager.playerOnePassed == false)
                 {
@@ -706,7 +634,16 @@ public class SpecialCardsControl : MonoBehaviour
       zone1.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
       }
     }
+    
   }
+   void Mover(string tagZone, List<GameObject> cardsinhand)
+    {
+        Zone = GameObject.Find(tagZone);
+        Card.transform.SetParent(Zone.transform, false);//mover el gameObject a la zona que le  corresponde
+        Card.transform.position = Zone.transform.position; 
+        cardsinhand.Remove(Card);//remover de la mano
+        CardInfo.jugada = true;//ya se jugo la carta
+    }
   }   
 }
  
