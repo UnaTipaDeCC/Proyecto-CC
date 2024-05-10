@@ -54,7 +54,6 @@ public class Effects : MonoBehaviour
             drawCard.transform.SetParent(hand.transform, false);
             cardsinhand.Add(drawCard);
             ActivoElEfecto = true;
-            Debug.Log("active el efecto");
             }
         }
         else Debug.Log("YA ACTIVASTE EL EFECTO");
@@ -279,7 +278,7 @@ public class Effects : MonoBehaviour
         }
         else Debug.Log("no afecto xq no es mi turno");
     }
-    public void IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio()
+   public void IgualarPoderDeCartasAlPromedioDeCartasDelCampoPropio()
     {
         /*bool condicion;
         if(gameManager.playerOnePassed == true)
@@ -301,17 +300,17 @@ public class Effects : MonoBehaviour
             siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
             if(melee.Count != 0 || ranged.Count != 0 || siege.Count != 0)
             {
-                int promedio = (GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma + GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma + GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma)/(melee.Count + siege.Count + ranged.Count);
+                int promedio = (GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().Suma + GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().Suma + GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().Suma)/(melee.Count + siege.Count + ranged.Count);
                 Debug.Log("EL PROMEDIO ES" + promedio);
-                GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma = 0;
-                GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma = 0;
-                GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma = 0;
+                GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().Suma = 0;
+                GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().Suma = 0;
+                GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().Suma = 0;
                 foreach(GameObject carta in melee)
                 {
                      if(carta.CompareTag("Card"))
                      {
                         carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                        GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                        GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
                      }
                 }
                 foreach(GameObject carta in siege)
@@ -319,7 +318,7 @@ public class Effects : MonoBehaviour
                     if(carta.CompareTag("Card"))
                     {
                     carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                    GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                    GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
                     }
                 }
                 foreach(GameObject carta in ranged)
@@ -328,7 +327,7 @@ public class Effects : MonoBehaviour
                      {
                         carta.GetComponent<cardDisplay>().card.Damage = promedio;
                         Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
-                        GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+                        GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
                      }                
                 }
             }

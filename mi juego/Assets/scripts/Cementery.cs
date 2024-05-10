@@ -11,19 +11,7 @@ public class Cementery : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         CARD = collision.gameObject;
-        CardsInZone.Add(CARD);
-        foreach (GameObject card in CardsInZone)
-        {
-            if(CARD.CompareTag("Card"))
-            {
-                CARD.GetComponent<cardDisplay>().card.jugada = true;
-            }
-            else if(CARD.CompareTag("SpecialCard"))
-            {
-                CARD.GetComponent<SpecialCardsDisplay>().specialcard.jugada = true;
-            }
-        }
-        
+        CardsInZone.Add(CARD);        
     }
     // Start is called before the first frame update
     void Start()

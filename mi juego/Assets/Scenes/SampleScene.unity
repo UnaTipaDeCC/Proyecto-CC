@@ -1034,7 +1034,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962a6fa2f1addf54cb90fcf0c722563e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeleeClimaOn: 0
+  RangedClimaOn: 0
+  SiegeClimaOn: 0
+  IsPlayerOneTurn: 1
+  PlayerOnePassed: 0
   n: 0
+  PlayerTwoPassed: 0
+  MeleeClima: 0
+  RangedClima: 0
+  SiegeClima: 0
+  Cambieb: 0
+  CambieL: 0
+  RondasGanadas1: 0
+  RondasGanadas2: 0
 --- !u!1 &615033732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rondasGanadas: {fileID: 615033734}
   gameManager: {fileID: 0}
-  cuantas: 0
 --- !u!1001 &623479743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2169,7 +2181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rondasGanadas: {fileID: 1178967340}
   gameManager: {fileID: 0}
-  cuantas: 0
 --- !u!1 &1239503381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,9 +2232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contador: {fileID: 1239503384}
-  melee: {fileID: 1436057798}
-  ranged: {fileID: 1994813093}
-  siege: {fileID: 1075055332}
+  Melee: {fileID: 1436057798}
+  Ranged: {fileID: 1994813093}
+  Siege: {fileID: 1075055332}
   puntos: 0
 --- !u!114 &1239503384
 MonoBehaviour:
@@ -2961,9 +2972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contador: {fileID: 1485362641}
-  melee: {fileID: 47050920}
-  ranged: {fileID: 1062969411}
-  siege: {fileID: 1856590779}
+  Melee: {fileID: 47050920}
+  Ranged: {fileID: 1062969411}
+  Siege: {fileID: 1856590779}
   puntos: 0
 --- !u!114 &1485362641
 MonoBehaviour:

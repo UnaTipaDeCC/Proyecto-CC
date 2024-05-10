@@ -30,7 +30,7 @@ public class CardsMove : MonoBehaviour
     }
     public void OnClick()
     {
-        if(gameManager.playerOnePassed == false)//comprueba que el jugador uno no se haya pasado
+        if(gameManager.PlayerOnePassed == false)//comprueba que el jugador uno no se haya pasado
         {
         //la zona a la que debe moverse
         if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
@@ -38,7 +38,7 @@ public class CardsMove : MonoBehaviour
              if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que sea el turno del jugador uno y que la carta no haya sido jugada
              {
                 Mover("MeleeZone",cardsinhand);
-                if(gameManager.playerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+                if(gameManager.PlayerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
                 {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 Debug.Log("cambie el turno");
@@ -54,7 +54,7 @@ public class CardsMove : MonoBehaviour
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
             Mover("RangedZone",cardsinhand);
-            if(gameManager.playerTwoPassed == false)
+            if(gameManager.PlayerTwoPassed == false)
             {
             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
             Debug.Log("cambie el turno");
@@ -71,7 +71,7 @@ public class CardsMove : MonoBehaviour
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {   
                 Mover("SiegeZone",cardsinhand);
-                if(gameManager.playerTwoPassed == false)
+                if(gameManager.PlayerTwoPassed == false)
                 {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 Debug.Log("cambie el turno");
@@ -85,7 +85,7 @@ public class CardsMove : MonoBehaviour
         }
         }
 
-        if(gameManager.playerTwoPassed == false)//comprueba que el jugador no se haya pasado
+        if(gameManager.PlayerTwoPassed == false)//comprueba que el jugador no se haya pasado
         {
              if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
             {
@@ -93,7 +93,7 @@ public class CardsMove : MonoBehaviour
                 {
                     Mover("MeleeZone (1)",cardsinhand1);
                     Debug.Log(CardInfo.jugada);
-                    if(gameManager.playerOnePassed == false)
+                    if(gameManager.PlayerOnePassed == false)
                     {
                     gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                     Debug.Log("cambie el turno"); 
@@ -110,7 +110,7 @@ public class CardsMove : MonoBehaviour
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
                 Mover("RangedZone (1)",cardsinhand1);
-                if(gameManager.playerOnePassed == false) 
+                if(gameManager.PlayerOnePassed == false) 
                 {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 Debug.Log("cambie el turno");   
@@ -128,7 +128,7 @@ public class CardsMove : MonoBehaviour
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
                 Mover("SiegeZone (1)",cardsinhand1);
-                if(gameManager.playerOnePassed == false) 
+                if(gameManager.PlayerOnePassed == false) 
                 {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 Debug.Log("cambie el turno");

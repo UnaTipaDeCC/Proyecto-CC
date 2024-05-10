@@ -13,15 +13,15 @@ public class PasarTurno : MonoBehaviour
     }
     public void OnClick()
     {
-        if(gameManager.IsPlayerOneTurn)
+        if(gameManager.IsPlayerOneTurn)//comprueba que sea el turno del jugador
         {
-            gameManager.playerOnePassed = true;
+            gameManager.PlayerOnePassed = true;
             Debug.Log("se paso el jugador uno");
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn; 
         }
         else 
         {
-            gameManager.playerTwoPassed = true;
+            gameManager.PlayerTwoPassed = true;
             Debug.Log("se paso el jugador dos");
             gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
         }

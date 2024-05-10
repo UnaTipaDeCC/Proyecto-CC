@@ -8,16 +8,16 @@ using TMPro;
 public class Contador : MonoBehaviour
 {
     public TextMeshProUGUI contador;
-    public GameObject  melee;
-    public GameObject ranged;
-    public GameObject siege; 
+    public GameObject  Melee;
+    public GameObject Ranged;
+    public GameObject Siege; 
     public int puntos = 0;
 
     // Update is called once per frame
     void Update()
     {
         int adicionar = 0;
-        adicionar = melee.GetComponent<Tablero>().suma + siege.GetComponent<Tablero>().suma + ranged.GetComponent<Tablero>().suma;
+        adicionar = Melee.GetComponent<Tablero>().Suma + Siege.GetComponent<Tablero>().Suma + Ranged.GetComponent<Tablero>().Suma;
         puntos = adicionar;
         contador.text = puntos.ToString();   
     }

@@ -8,7 +8,6 @@ public class LeaderCardControl : MonoBehaviour
     private GameManager gameManager;
     public GameObject card;
     public SpecialCards cardInfo;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,22 +16,23 @@ public class LeaderCardControl : MonoBehaviour
 
     public void OnClick()
     {
-        if(gameManager.playerOnePassed == false && gameManager.IsPlayerOneTurn && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+        if(gameManager.PlayerOnePassed == false && gameManager.IsPlayerOneTurn && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)//comprueba que sea el turno correspondiente
         {
             Debug.Log("todo bien hasta aqui");
-            if(gameManager.leaderCardBActivated == false)
+            if(gameManager.leaderCardBActivated == false)//comprueba que no se haya activado la carta lider 
             {
             Debug.Log("active esta historia");
-            if(gameManager.playerTwoPassed == false)
+            if(gameManager.PlayerTwoPassed == false)
             {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
             }
             gameManager.leaderCardBActivated = true;
             }
+
             else Debug.Log("ya la activaste");
 
         }
-        else if(gameManager.playerTwoPassed == false  && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+        else if(gameManager.PlayerTwoPassed == false  && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             if(gameManager.IsPlayerOneTurn == false)
             {
@@ -40,7 +40,7 @@ public class LeaderCardControl : MonoBehaviour
             if(gameManager.leaderCardLActivated == false)
             {
                 Debug.Log("active esta historia");
-                if(gameManager.playerOnePassed == false)
+                if(gameManager.PlayerOnePassed == false) 
                 {
                     gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
@@ -51,8 +51,7 @@ public class LeaderCardControl : MonoBehaviour
             else Debug.Log("NO ES MI TURNO");
         
         }
-
-
+       
     }
 
     // Update is called once per frame

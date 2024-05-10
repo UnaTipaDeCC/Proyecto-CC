@@ -41,7 +41,7 @@ public class SpecialCardsControl : MonoBehaviour
     public void OnClick()
     {
      //asigna la zona que le corresponde a cada carta segun el tipo de carta y la zona a la que afecta y controla que sea el turno del jugador en caso contrario no le asigna una zona y por ende no se mueve
-        if(gameManager.playerOnePassed == false)
+        if(gameManager.PlayerOnePassed == false)
         {
           if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
@@ -51,9 +51,9 @@ public class SpecialCardsControl : MonoBehaviour
               {
               Mover("MeleeClima",cardsinhand);
               Clima("MeleeZone","MeleeZone (1)");//afecta a las cartas de plata
-              gameManager.meleeClimaOn = true;
+              gameManager.MeleeClimaOn = true;
 
-              if(gameManager.playerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
+              if(gameManager.PlayerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -82,11 +82,11 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("MeleeZone","MeleeZone (1)");
                  gameManager.MeleeClima = false;
-                 gameManager.meleeClimaOn = false;
+                 gameManager.MeleeClimaOn = false;
 
               }
               else Debug.Log("no hay cartas climas"); 
-              if(gameManager.playerTwoPassed == false)
+              if(gameManager.PlayerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -102,8 +102,8 @@ public class SpecialCardsControl : MonoBehaviour
               {
                 Mover("RangedClima",cardsinhand);
                 Clima("RangedZone", "RangedZone (1)");
-                gameManager.rangedClimaOn = true;
-                if(gameManager.playerTwoPassed == false)
+                gameManager.RangedClimaOn = true;
+                if(gameManager.PlayerTwoPassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
@@ -132,11 +132,11 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("RangedZone", "RangedZone (1)");
                  gameManager.RangedClima = false;
-                 gameManager.rangedClimaOn = false;
+                 gameManager.RangedClimaOn = false;
               }
               else Debug.Log("no hay cartas climas");   
 
-              if(gameManager.playerTwoPassed == false)
+              if(gameManager.PlayerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -153,8 +153,8 @@ public class SpecialCardsControl : MonoBehaviour
                   gameManager.SiegeClima = true;
                   Mover("SiegeClima",cardsinhand);
                   Clima("SiegeZone", "SiegeZone (1)");
-                  gameManager.siegeClimaOn = true;
-                  if(gameManager.playerTwoPassed == false)
+                  gameManager.SiegeClimaOn = true;
+                  if(gameManager.PlayerTwoPassed == false)
                   {
                     gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                   }
@@ -181,10 +181,10 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("SiegeZone", "SiegeZone (1)");
                  gameManager.SiegeClima = false;
-                 gameManager.siegeClimaOn = false;
+                 gameManager.SiegeClimaOn = false;
               }   
 
-                if(gameManager.playerTwoPassed == false)
+                if(gameManager.PlayerTwoPassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
@@ -198,7 +198,7 @@ public class SpecialCardsControl : MonoBehaviour
             {
               Mover("AumentoMelee",cardsinhand);
               Aumentos("MeleeZone");
-              if(gameManager.playerTwoPassed == false)
+              if(gameManager.PlayerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -212,7 +212,7 @@ public class SpecialCardsControl : MonoBehaviour
             {
               Mover("AumentoRanged",cardsinhand);
               Aumentos("RangedZone");
-              if(gameManager.playerTwoPassed == false)
+              if(gameManager.PlayerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -226,7 +226,7 @@ public class SpecialCardsControl : MonoBehaviour
             {
               Mover("AumentoSiege ",cardsinhand);
               Aumentos("SiegeZone");
-              if(gameManager.playerTwoPassed == false)
+              if(gameManager.PlayerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -240,7 +240,7 @@ public class SpecialCardsControl : MonoBehaviour
             {
               Senuelo("MeleeZone","SiegeZone","RangedZone", cardsinhand,"Hand");
               CardInfo.jugada = true;
-              if(gameManager.playerTwoPassed == false)
+              if(gameManager.PlayerTwoPassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }  
@@ -249,7 +249,7 @@ public class SpecialCardsControl : MonoBehaviour
         }
         
        
-        if(gameManager.playerTwoPassed == false)
+        if(gameManager.PlayerTwoPassed == false)
         {
           if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
@@ -260,8 +260,8 @@ public class SpecialCardsControl : MonoBehaviour
                 gameManager.MeleeClima = true;
                 Mover("MeleeClima",cardsinhand1);
                 Clima("MeleeZone","MeleeZone (1)");
-                gameManager.meleeClimaOn = true;
-                if(gameManager.playerOnePassed == false)
+                gameManager.MeleeClimaOn = true;
+                if(gameManager.PlayerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
@@ -289,10 +289,10 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("MeleeZone","MeleeZone (1)");
                  gameManager.MeleeClima = false;
-                 gameManager.meleeClimaOn = false;
+                 gameManager.MeleeClimaOn = false;
               }  
 
-              if(gameManager.playerOnePassed == false)
+              if(gameManager.PlayerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -308,8 +308,8 @@ public class SpecialCardsControl : MonoBehaviour
               {
                 Mover("RangedClima",cardsinhand1);
                 Clima("RangedZone", "RangedZone (1)");
-                gameManager.rangedClimaOn = true;
-                if(gameManager.playerOnePassed == false)
+                gameManager.RangedClimaOn = true;
+                if(gameManager.PlayerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
@@ -338,9 +338,9 @@ public class SpecialCardsControl : MonoBehaviour
                  }
                  Despeje("RangedZone", "RangedZone (1)");
                  gameManager.RangedClima = false;
-                 gameManager.rangedClimaOn = false;
+                 gameManager.RangedClimaOn = false;
               }   
-              if(gameManager.playerOnePassed == false)
+              if(gameManager.PlayerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -356,8 +356,8 @@ public class SpecialCardsControl : MonoBehaviour
                 {
                   Mover("SiegeClima",cardsinhand1);
                   Clima("SiegeZone", "SiegeZone (1)");
-                  gameManager.siegeClimaOn = true;
-                  if(gameManager.playerOnePassed == false)
+                  gameManager.SiegeClimaOn = true;
+                  if(gameManager.PlayerOnePassed == false)
                   {
                     gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                   }
@@ -385,9 +385,9 @@ public class SpecialCardsControl : MonoBehaviour
                   }
                   Despeje("SiegeZone", "SiegeZone (1)");
                   gameManager.SiegeClima = false;
-                  gameManager.siegeClimaOn = false;
+                  gameManager.SiegeClimaOn = false;
                 }   
-                if(gameManager.playerOnePassed == false)
+                if(gameManager.PlayerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
@@ -401,7 +401,7 @@ public class SpecialCardsControl : MonoBehaviour
             {
               Mover("AumentoMelee (1)",cardsinhand1);
               Aumentos("MeleeZone (1)");
-              if(gameManager.playerOnePassed == false)
+              if(gameManager.PlayerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -415,7 +415,7 @@ public class SpecialCardsControl : MonoBehaviour
             { 
               Mover("AumentoRanged (1)",cardsinhand1);
               Aumentos("RangedZone (1)");
-              if(gameManager.playerOnePassed == false)
+              if(gameManager.PlayerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
@@ -429,7 +429,7 @@ public class SpecialCardsControl : MonoBehaviour
               {
                 Mover("AumentoSiege  (1)",cardsinhand1);
                 Aumentos("SiegeZone (1)");
-                if(gameManager.playerOnePassed == false)
+                if(gameManager.PlayerOnePassed == false)
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
@@ -439,11 +439,11 @@ public class SpecialCardsControl : MonoBehaviour
           }
           else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.senuelo && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
-            if (!gameManager.playerTwoPassed && CardInfo.jugada == false)
+            if (!gameManager.PlayerTwoPassed && CardInfo.jugada == false)
             {
               Senuelo("MeleeZone (1)","SiegeZone (1)","RangedZone (1)", cardsinhand1,"Hand (1)");
               CardInfo.jugada = true;
-              if(gameManager.playerOnePassed == false)
+              if(gameManager.PlayerOnePassed == false)
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }  
@@ -556,8 +556,8 @@ public class SpecialCardsControl : MonoBehaviour
  {
     zone = GameObject.FindGameObjectWithTag(tag1);
     zone1 = GameObject.FindGameObjectWithTag(tag2);
-    zone.GetComponent<Tablero>().suma = 0;
-    zone1.GetComponent<Tablero>().suma = 0;
+    zone.GetComponent<Tablero>().Suma = 0;
+    zone1.GetComponent<Tablero>().Suma = 0;
 
     Debug.Log("estoy aqui");
     foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
@@ -569,7 +569,7 @@ public class SpecialCardsControl : MonoBehaviour
         carta.GetComponent<cardDisplay>().card.Damage -= 1;
         carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = true;
       }
-      zone.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+      zone.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       } 
     }
     foreach(GameObject carta in zone1.GetComponent<Tablero>().CartasEnZona)
@@ -581,7 +581,7 @@ public class SpecialCardsControl : MonoBehaviour
         carta.GetComponent<cardDisplay>().card.Damage -= 1;
         carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = true;
       }
-      zone1.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+      zone1.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       }
     }
     
@@ -590,7 +590,7 @@ public class SpecialCardsControl : MonoBehaviour
  {
     Debug.Log("voy a aumentar");
     zone = GameObject.FindGameObjectWithTag(tag);
-    zone.GetComponent<Tablero>().suma = 0;
+    zone.GetComponent<Tablero>().Suma = 0;
     foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
     {
        if(carta.CompareTag("Card"))
@@ -600,16 +600,16 @@ public class SpecialCardsControl : MonoBehaviour
         carta.GetComponent<cardDisplay>().card.Damage += 2;
         carta.GetComponent<cardDisplay>().card.Aumentada = true;
       } 
-      zone.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;  
+      zone.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;  
        }
     }
  }
  void Despeje(string tag, string tag1)
  {
     zone = GameObject.FindGameObjectWithTag(tag);
-    zone.GetComponent<Tablero>().suma = 0;
+    zone.GetComponent<Tablero>().Suma = 0;
     zone1 = GameObject.FindGameObjectWithTag(tag1);
-    zone1.GetComponent<Tablero>().suma = 0;
+    zone1.GetComponent<Tablero>().Suma = 0;
     foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
     {
        if(carta.CompareTag("Card"))
@@ -619,7 +619,7 @@ public class SpecialCardsControl : MonoBehaviour
         carta.GetComponent<cardDisplay>().card.Damage += 1;
         carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
       }
-      zone.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+      zone.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
        }
     }
      foreach(GameObject carta in zone1.GetComponent<Tablero>().CartasEnZona)
@@ -631,7 +631,7 @@ public class SpecialCardsControl : MonoBehaviour
         carta.GetComponent<cardDisplay>().card.Damage += 1;
         carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
       }
-      zone1.GetComponent<Tablero>().suma += carta.GetComponent<cardDisplay>().card.Damage;
+      zone1.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       }
     }
     

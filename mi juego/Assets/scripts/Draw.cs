@@ -9,21 +9,9 @@ public class Draw : MonoBehaviour
     public List<GameObject> CardsInHand; //= new List<GameObject>();
     public List<GameObject> CardsInDeck; //= new List<GameObject>();
     private bool Yasetoco = false;
-    /*private List<GameObject> cardsInHand = new List<GameObject>();
-    private List<GameObject> cardsInDeck = new List<GameObject>();
-
-    public List<GameObject> GetCardsInHand()
-    {
-        return cardsInHand;
-    }
-
-    public List<GameObject> GetCardsInDeck()
-    {
-        return cardsInDeck;
-    }*/
     void Start()
     {
-       //CardsInHand = new();
+        
     }
 
     public void OnClick()

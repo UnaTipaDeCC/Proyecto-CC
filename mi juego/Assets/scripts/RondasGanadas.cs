@@ -8,12 +8,11 @@ public class RondasGanadas : MonoBehaviour
 {
     public TextMeshProUGUI rondasGanadas;
     public GameManager gameManager;
-    public int cuantas;
+    private int cuantas = 0;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
-        cuantas = 0;
     }
     
 
@@ -22,11 +21,11 @@ public class RondasGanadas : MonoBehaviour
     {
         if(rondasGanadas.CompareTag("Rondas Ganadas"))
         {
-            cuantas = gameManager.rondasGanadas1;
+            cuantas = gameManager.RondasGanadas1;
         }
         else if(rondasGanadas.CompareTag("Rondas Ganadas (1)"))
         {
-            cuantas = gameManager.rondasGanadas2;
+            cuantas = gameManager.RondasGanadas2;
         }
         rondasGanadas.text = cuantas.ToString();
     }

@@ -26,7 +26,7 @@ public class Card : ScriptableObject
         gold,
         silver,
     }
-    public enum Faccion//esto lo tienen las cartas todas, no solo las de unidad
+    public enum Faccion
     {
         Hormigas_Bravas,
         Hormigas_Locas,
@@ -41,7 +41,5 @@ public class Card : ScriptableObject
         EliminarCartaConMenosPoderDelRival,
         EliminarCartaConMasPoderDelRival,
 
-    }
-
-    
+    }    
 }

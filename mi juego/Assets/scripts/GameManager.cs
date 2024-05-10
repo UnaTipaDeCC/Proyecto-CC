@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
-using Unity.VisualScripting;
+//using System.Data.Common;
+//using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,39 +23,39 @@ public class GameManager : MonoBehaviour
     private List<GameObject> cardsInDeck;
     private GameObject Cementery;
     private GameObject Cementery1;
-    private bool MeleeClimaOn = false;
-     public bool meleeClimaOn
+    public  bool MeleeClimaOn = false;
+     /*public bool meleeClimaOn
     {
         get { return MeleeClimaOn; }
         set { MeleeClimaOn = value; }
-    }
-    private bool RangedClimaOn = false;
-     public bool rangedClimaOn
+    }*/
+    public bool RangedClimaOn = false;
+    /* public bool rangedClimaOn
     {
         get { return RangedClimaOn; }
         set { RangedClimaOn = value; }
-    }
-    private bool SiegeClimaOn = false;
-     public bool siegeClimaOn
+    }*/
+    public bool SiegeClimaOn = false;
+     /*public bool siegeClimaOn
     {
         get { return SiegeClimaOn; }
         set { SiegeClimaOn = value; }
-    }
-   private bool isPlayerOneTurn = true;
+    }*/
+   public bool IsPlayerOneTurn = true;
 
-    public bool IsPlayerOneTurn
+    /*public bool IsPlayerOneTurn
     {
         get { return isPlayerOneTurn; }
         set { isPlayerOneTurn = value; }
-    }
-    private bool PlayerOnePassed = false;
+    }*/
+    public bool PlayerOnePassed = false;
     public int n;
-    public bool playerOnePassed
+    /*public bool playerOnePassed
     {
         get { return PlayerOnePassed; }
         set { PlayerOnePassed = value; }
-    }
-    private bool PlayerTwoPassed = false;
+    }*/
+    public bool PlayerTwoPassed = false;
     private bool LeaderCardBActivated = false;//carta lider de la faccion hormigas bravas
     public bool leaderCardBActivated
     {
@@ -71,60 +71,60 @@ public class GameManager : MonoBehaviour
     private bool UsadoL = false;//ya utilice en la ronada la carta lider de la faccion hormigas locas para ganar   
     private bool UsadoB = false;//ya utilice en la ronada la carta lider de la faccion hormigas bravas para ganar   
 
-    public bool playerTwoPassed
+    /*public bool playerTwoPassed
     {
         get { return PlayerTwoPassed; }
         set { PlayerTwoPassed = value; }
-    }
-    private bool meleeClima;
-    public bool MeleeClima
+    }*/
+    public bool MeleeClima;
+    /*public bool MeleeClima
     {
         get { return meleeClima;}
         set { meleeClima = value;}
-    }
-    private bool rangedClima;
-    public bool RangedClima
+    }*/
+    public bool RangedClima;
+    /*public bool RangedClima
     {
         get { return rangedClima;}
         set { rangedClima = value;}
-    }
-    private bool siegeClima;
-    public bool SiegeClima
+    }*/
+    public bool SiegeClima;
+    /*public bool SiegeClima
     {
         get { return siegeClima;}
         set { siegeClima = value;}
-    }
-    private int cambieb = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Bravas
-    public int Cambieb 
+    }*/
+    public int Cambieb = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Bravas
+    /*public int Cambieb 
     {
         get { return cambieb;}
         set { cambieb = value;}
-    }
-    private int cambieL = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Locas
-    public int CambieL
+    }*/
+    public int CambieL = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Locas
+    /*public int CambieL
     {
         get { return cambieL;}
         set { cambieL = value;}
-    }  
+    }  */
     private GameObject hand;
     private GameObject deck;
     private GameObject contador1;//contador del jugador uno
     private GameObject contador2;//contador del jugador dos
-    private int RondasGanadas1;//rondas ganadas por el jugador uno
-    public int rondasGanadas1
+    public int RondasGanadas1;//rondas ganadas por el jugador uno
+    /*public int rondasGanadas1
     {
         get { return  RondasGanadas1; }
         set {  RondasGanadas1 = value; }
-    }
-    private int RondasGanadas2;//rondas ganadas por el jugador dos
-    public int rondasGanadas2
+    }*/
+    public int RondasGanadas2;//rondas ganadas por el jugador dos
+    /*public int rondasGanadas2
     {
         get { return  RondasGanadas2; }
         set {  RondasGanadas2 = value; }
-    }
+    }*/
     public void EndRound()
     {
-        if(PlayerOnePassed == true && playerTwoPassed == true)//comprueba que ambos jugadores se hayan pasado
+        if(PlayerOnePassed == true && PlayerTwoPassed == true)//comprueba que ambos jugadores se hayan pasado
         {
             if(contador1.GetComponent<Contador>().puntos > contador2.GetComponent<Contador>().puntos)//comprueba cual es el ganador
             {
@@ -132,15 +132,15 @@ public class GameManager : MonoBehaviour
                 if(leaderCardLActivated == true && UsadoL == false && ((contador1.GetComponent<Contador>().puntos - contador2.GetComponent<Contador>().puntos) <=2) )
                 {
                     Debug.Log("gana el jugador dos xq uso su carta lider");
-                    isPlayerOneTurn = false;
+                    IsPlayerOneTurn = false;
                     RondasGanadas2 ++;
                     UsadoL = true;
                 }
                 else
                 {
                     Debug.Log("gana el jugador uno");
-                    isPlayerOneTurn = true;
-                    rondasGanadas1 ++; 
+                    IsPlayerOneTurn = true;
+                    RondasGanadas1 ++; 
                 }
                 LimpiarFilas("MeleeZone","SiegeZone","RangedZone","Cementery");//limpia filas del jugador uno
                 LimpiarFilas("MeleeZone (1)","SiegeZone (1)", "RangedZone (1)", "Cementery (1)"); //limpia la fila del jugador dos
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
             if(contador1.GetComponent<Contador>().puntos < contador2.GetComponent<Contador>().puntos)
             {
                 Debug.Log("gana el jugador dos");
-                isPlayerOneTurn = false;
+                IsPlayerOneTurn = false;
                 RondasGanadas2 ++;
                 Aumentos();
                 LimpiarFilas("MeleeZone","SiegeZone","RangedZone","Cementery");//limpia filas del jugador uno
@@ -163,14 +163,14 @@ public class GameManager : MonoBehaviour
                 if(leaderCardBActivated == true && UsadoB == false)//comprueba para usar la carta lider 
                 {
                     Debug.Log("gana el jugador uno xq uso su carta lider");
-                    isPlayerOneTurn = true;
-                    rondasGanadas1 ++;
+                    IsPlayerOneTurn = true;
+                    RondasGanadas1 ++;
                     UsadoB = true;
                 }
                 else
                 {
                     Debug.Log("empate");
-                    rondasGanadas1 ++;
+                    RondasGanadas1 ++;
                     RondasGanadas2 ++;
                 }
                 LimpiarFilas("MeleeZone","SiegeZone","RangedZone","Cementery");//limpia filas del jugador uno
@@ -183,8 +183,8 @@ public class GameManager : MonoBehaviour
                 ComprobarCuantasCartasRobar("Deck(1)", "Hand (1)");
                 RobarCarta("Deck(1)","Hand (1)", "Cementery (1)");
             //restaura los valores
-            playerOnePassed = false;
-            playerTwoPassed = false;
+            PlayerOnePassed = false;
+            PlayerTwoPassed = false;
             MeleeClima = false;
             RangedClima = false;
             SiegeClima = false;
@@ -410,8 +410,8 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
                 Debug.Log("GANA EL JUGADOR DOS");   
             }   
-            playerOnePassed = true;
-            playerTwoPassed = true;
+            PlayerOnePassed = true;
+            PlayerTwoPassed = true;
             
         } 
     }
@@ -421,4 +421,5 @@ public class GameManager : MonoBehaviour
             contador1 = GameObject.FindGameObjectWithTag("Contador");
             contador2 = GameObject.FindGameObjectWithTag("Contador (1)");
         }
+
     }
