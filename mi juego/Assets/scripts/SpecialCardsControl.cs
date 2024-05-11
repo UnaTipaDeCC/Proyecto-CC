@@ -41,9 +41,9 @@ public class SpecialCardsControl : MonoBehaviour
     public void OnClick()
     {
      //asigna la zona que le corresponde a cada carta segun el tipo de carta y la zona a la que afecta y controla que sea el turno del jugador en caso contrario no le asigna una zona y por ende no se mueve
-        if(gameManager.PlayerOnePassed == false)
+        if(gameManager.PlayerOnePassed == false && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
         {
-          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que la carta no se haya jugado y que sea el turno del jugador
             {
@@ -52,20 +52,18 @@ public class SpecialCardsControl : MonoBehaviour
               Mover("MeleeClima",cardsinhand);
               Clima("MeleeZone","MeleeZone (1)");//afecta a las cartas de plata
               gameManager.MeleeClimaOn = true;
-
+              gameManager.MeleeClima = true;
               if(gameManager.PlayerTwoPassed == false)//comprueba que el otro jagador no se haya pasado para cambiar el turno
               {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
               }
-              gameManager.MeleeClima = true;
               }
               else Debug.Log("ya hay una carta clima que afecta esta zona");
-              
             } 
             else Debug.Log("No es tu turno");       
           }
         
-          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -94,7 +92,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");       
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -115,7 +113,7 @@ public class SpecialCardsControl : MonoBehaviour
           
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -144,7 +142,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");           
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
               if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
@@ -164,7 +162,7 @@ public class SpecialCardsControl : MonoBehaviour
               else Debug.Log("No es tu turno");
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
               if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
@@ -192,7 +190,7 @@ public class SpecialCardsControl : MonoBehaviour
               else Debug.Log("No es tu turno");
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -206,7 +204,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -220,7 +218,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -233,7 +231,7 @@ public class SpecialCardsControl : MonoBehaviour
             }           
           else Debug.Log("No es tu turno");
           }
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.senuelo && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.senuelo)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)
           {
             Debug.Log("estoy");
             if (gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
@@ -249,9 +247,9 @@ public class SpecialCardsControl : MonoBehaviour
         }
         
        
-        if(gameManager.PlayerTwoPassed == false)
+        if(gameManager.PlayerTwoPassed == false && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
-          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -272,7 +270,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");       
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -300,7 +298,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");       
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -321,7 +319,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");           
           }
         
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -348,7 +346,7 @@ public class SpecialCardsControl : MonoBehaviour
             else Debug.Log("No es tu turno");           
           }
           
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
               if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
@@ -368,7 +366,7 @@ public class SpecialCardsControl : MonoBehaviour
           else Debug.Log("No es tu turno");
           }
 
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.despeje && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
               if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
@@ -395,7 +393,7 @@ public class SpecialCardsControl : MonoBehaviour
           else Debug.Log("No es tu turno");
           }
           
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -409,7 +407,7 @@ public class SpecialCardsControl : MonoBehaviour
           else Debug.Log("No es tu turno");
           }
           
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Ranged)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             { 
@@ -423,7 +421,7 @@ public class SpecialCardsControl : MonoBehaviour
           else Debug.Log("No es tu turno");
           }
           
-          else if( CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if( CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.aumento && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Siege)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
               if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
               {
@@ -437,7 +435,7 @@ public class SpecialCardsControl : MonoBehaviour
               }           
               else Debug.Log("No es tu turno");
           }
-          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.senuelo && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
+          else if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.senuelo)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
           {
             if (!gameManager.PlayerTwoPassed && CardInfo.jugada == false)
             {
@@ -507,34 +505,37 @@ public class SpecialCardsControl : MonoBehaviour
       if(contador_melee >= contador_ranged && contador_melee > contador_siege)
       {
         Debug.Log("en melee esta la que menos tiene");
+        CambiaCarta(cartam,filaMelee,cardsInHand);/*
         cartam.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano
         cartam.transform.position = Zone.transform.position;
         cardsInHand.Add(cartam); //agregarla a la lista de  la mano
         cartam.GetComponent<cardDisplay>().card.jugada = false;
         Card.transform.SetParent(filaMelee.transform, false); // mover la carta senuelo a la fila melee 
         Card.transform.position = filaMelee.transform.position;
-        cardsInHand.Remove(Card);//remover la senuelo de la mano
+        cardsInHand.Remove(Card);//remover la senuelo de la mano*/
       }
       else if(contador_ranged > contador_melee && contador_ranged >= contador_siege)
       {
-        cartar.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
+        CambiaCarta(cartar, filaRanged,cardsInHand);
+        /*cartar.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
         cartar.transform.position = Zone.transform.position;
         cardsInHand.Add(cartar);
         cartar.GetComponent<cardDisplay>().card.jugada = false;
         Card.transform.SetParent(filaRanged.transform, false); // mover la carta senuelo a la fila melee 
         Card.transform.position = filaRanged.transform.position;
-        cardsInHand.Remove(Card);
+        cardsInHand.Remove(Card);*/
         Debug.Log("en ranged esta la que menos tiene");
         }
         else if(contador_siege > contador_melee && contador_siege > contador_ranged)
         {
-          cartas.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
+          CambiaCarta(cartas, filaSiege, cardsInHand);
+          /*cartas.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
           cartas.transform.position = Zone.transform.position;
           cardsInHand.Add(cartas);
           cartas.GetComponent<cardDisplay>().card.jugada = false;
           Card.transform.SetParent(filaSiege.transform, false); // mover la carta senuelo a la fila siege
           Card.transform.position = filaSiege.transform.position;
-          cardsInHand.Remove(Card);
+          cardsInHand.Remove(Card);*/
           Debug.Log("en siege esta la que menos tiene");
         }
         else if(cartam == null && cartar == null && cartas == null)
@@ -552,13 +553,22 @@ public class SpecialCardsControl : MonoBehaviour
           cardsInHand.Remove(Card);
         }
     }
+    void CambiaCarta(GameObject carta, GameObject fila, List<GameObject> cardsInHand)
+    {
+          carta.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
+          carta.transform.position = Zone.transform.position;
+          cardsInHand.Add(cartas);
+          carta.GetComponent<cardDisplay>().card.jugada = false;
+          Card.transform.SetParent(fila.transform, false); // mover la carta senuelo a la fila siege
+          Card.transform.position = fila.transform.position;
+          cardsInHand.Remove(Card);//remover la carta senuelo de la mano
+    }
  void Clima(string tag1, string tag2)
  {
     zone = GameObject.FindGameObjectWithTag(tag1);
     zone1 = GameObject.FindGameObjectWithTag(tag2);
     zone.GetComponent<Tablero>().Suma = 0;
     zone1.GetComponent<Tablero>().Suma = 0;
-
     Debug.Log("estoy aqui");
     foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
     {
@@ -583,8 +593,7 @@ public class SpecialCardsControl : MonoBehaviour
       }
       zone1.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       }
-    }
-    
+    }  
  }
  void Aumentos(string tag)
  {
@@ -633,8 +642,7 @@ public class SpecialCardsControl : MonoBehaviour
       }
       zone1.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       }
-    }
-    
+    } 
   }
    void Mover(string tagZone, List<GameObject> cardsinhand)
     {

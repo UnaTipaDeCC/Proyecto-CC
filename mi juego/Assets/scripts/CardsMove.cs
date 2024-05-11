@@ -30,10 +30,10 @@ public class CardsMove : MonoBehaviour
     }
     public void OnClick()
     {
-        if(gameManager.PlayerOnePassed == false)//comprueba que el jugador uno no se haya pasado
+        if(gameManager.PlayerOnePassed == false  && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)//comprueba que el jugador uno no se haya pasado y que sea una de sus cartas
         {
         //la zona a la que debe moverse
-        if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
+        if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
              if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que sea el turno del jugador uno y que la carta no haya sido jugada
              {
@@ -49,7 +49,7 @@ public class CardsMove : MonoBehaviour
                 Debug.Log("no es tu turno o ya estas en la mesa");
              }  
         }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
+        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -66,7 +66,7 @@ public class CardsMove : MonoBehaviour
             }
         
         }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
+        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
         {
             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {   
@@ -81,13 +81,12 @@ public class CardsMove : MonoBehaviour
             {
                 Debug.Log("no es tu turno o ya esta en la mesa");
             }
-
         }
-        }
+    }
 
-        if(gameManager.PlayerTwoPassed == false)//comprueba que el jugador no se haya pasado
+        if(gameManager.PlayerTwoPassed == false && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)//comprueba que el jugador no se haya pasado
         {
-             if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+             if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
             {
                 if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que sea el turno del jugador 2
                 {
@@ -105,7 +104,7 @@ public class CardsMove : MonoBehaviour
                     Debug.Log("no es tu turno o ya esta en la mesa");
                 }                 
             }
-        else if( CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+        else if( CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
         {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {
@@ -123,7 +122,7 @@ public class CardsMove : MonoBehaviour
             
         
         }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
         {
             if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
             {

@@ -180,16 +180,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Al iniciar el juego cada jugador roba y obtiene 10 cartas(el jugador de
-    la faccion "Hormigas Bravas" siempre comienza), antes de poner alguna carta tienen
-    la opcion de cambiar dos de ellas haciendo click derecho. Cada turno consiste
-    en poner una carta, activar la carta lider o pasar turno, una vez se pasa turno,
-    no se puede volver a jugar hasta finalizada la ronda(cuando ambos jugadores se
-    hayan pasado, ganando aquel que mas puntos tenga). Cada mazo esta compuesto por
-    cartas de unidad(de oro y plata), que pueden tener efectos o no, y cartas especiales(clima,despeje,aumento,
-    senuelo) las cuales solo afectan a las cartas de plata, estas ultimas intercambian
-    posicion con la carta de plata mas poderosa del campo propio. El juego finaliza
-    cuando uno de los jugadores haya ganado al menos dos rondas.  Diviertete!!
+  m_text: "Al iniciar el juego cada jugador roba (haciendo click en su  respectivo
+    deck) y obtiene 10 cartas(el jugador de la faccion \"Hormigas Bravas\" siempre
+    comienza), antes de poner alguna carta tienen la opci\xF3n de cambiar dos de
+    ellas haciendo click derecho. Cada turno consiste en poner una carta, activar
+    la carta l\xEDder o pasar turno, una vez se pasa turno, no se puede volver a
+    jugar hasta finalizada la ronda(cuando ambos jugadores se hayan pasado, ganando
+    aquel que mas puntos tenga), en cada nueva ronda comienza jugando el ganador
+    de la ronda anterior. Cada mazo est\xE1 compuesto por cartas de unidad(oro y
+    plata), que pueden tener efectos o no, y cartas especiales(clima,despeje,aumento,
+    se\xF1uelo) las cuales solo afectan a las cartas de plata, estas \xFAltimas intercambian
+    posici\xF3n con la carta de plata m\xE1s poderosa del campo propio. El juego
+    finaliza cuando uno de los jugadores haya ganado al menos dos rondas.  Divi\xE9rtete!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1652,7 +1654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1257257447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1730,7 +1732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1839152364
 RectTransform:
   m_ObjectHideFlags: 0

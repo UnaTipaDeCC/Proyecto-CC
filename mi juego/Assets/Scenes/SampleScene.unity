@@ -347,8 +347,8 @@ GameObject:
   - component: {fileID: 251672783}
   - component: {fileID: 251672785}
   - component: {fileID: 251672784}
-  - component: {fileID: 251672787}
   - component: {fileID: 251672786}
+  - component: {fileID: 251672788}
   m_Layer: 5
   m_Name: Cementery (1)
   m_TagString: Cementery (1)
@@ -458,7 +458,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &251672787
+--- !u!114 &251672788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -467,10 +467,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 251672782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d420596ec0bc34349b38730f8b273e72, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fe4efd47eec4cd4eac7ee4cae14e3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardsInZone: []
+  CartasEnZona: []
 --- !u!1 &290837345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3061129867547123535, guid: 1ce587d8b41a2454b90963ff226bc606, type: 3}
@@ -3084,8 +3084,8 @@ GameObject:
   - component: {fileID: 1494390624}
   - component: {fileID: 1494390626}
   - component: {fileID: 1494390625}
-  - component: {fileID: 1494390628}
   - component: {fileID: 1494390627}
+  - component: {fileID: 1494390629}
   m_Layer: 5
   m_Name: Cementery
   m_TagString: Cementery
@@ -3195,7 +3195,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1494390628
+--- !u!114 &1494390629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3204,10 +3204,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1494390623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d420596ec0bc34349b38730f8b273e72, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fe4efd47eec4cd4eac7ee4cae14e3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardsInZone: []
+  CartasEnZona: []
 --- !u!1 &1505904793 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1188922605078183707, guid: 9a02bf6c7a1609441b311140bc463638, type: 3}

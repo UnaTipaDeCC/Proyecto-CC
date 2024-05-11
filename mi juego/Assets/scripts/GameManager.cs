@@ -23,113 +23,40 @@ public class GameManager : MonoBehaviour
     private List<GameObject> cardsInDeck;
     private GameObject Cementery;
     private GameObject Cementery1;
-    public  bool MeleeClimaOn = false;
-     /*public bool meleeClimaOn
-    {
-        get { return MeleeClimaOn; }
-        set { MeleeClimaOn = value; }
-    }*/
-    public bool RangedClimaOn = false;
-    /* public bool rangedClimaOn
-    {
-        get { return RangedClimaOn; }
-        set { RangedClimaOn = value; }
-    }*/
-    public bool SiegeClimaOn = false;
-     /*public bool siegeClimaOn
-    {
-        get { return SiegeClimaOn; }
-        set { SiegeClimaOn = value; }
-    }*/
-   public bool IsPlayerOneTurn = true;
-
-    /*public bool IsPlayerOneTurn
-    {
-        get { return isPlayerOneTurn; }
-        set { isPlayerOneTurn = value; }
-    }*/
-    public bool PlayerOnePassed = false;
-    public int n;
-    /*public bool playerOnePassed
-    {
-        get { return PlayerOnePassed; }
-        set { PlayerOnePassed = value; }
-    }*/
-    public bool PlayerTwoPassed = false;
-    private bool LeaderCardBActivated = false;//carta lider de la faccion hormigas bravas
-    public bool leaderCardBActivated
-    {
-        get { return LeaderCardBActivated; }
-        set { LeaderCardBActivated = value; }
-    }
-    private bool LeaderCardLActivated = false;//carta lider de la faccion hormigas locas
-    public bool leaderCardLActivated
-    {
-        get { return LeaderCardLActivated; }
-        set { LeaderCardLActivated = value; }
-    } 
-    private bool UsadoL = false;//ya utilice en la ronada la carta lider de la faccion hormigas locas para ganar   
-    private bool UsadoB = false;//ya utilice en la ronada la carta lider de la faccion hormigas bravas para ganar   
-
-    /*public bool playerTwoPassed
-    {
-        get { return PlayerTwoPassed; }
-        set { PlayerTwoPassed = value; }
-    }*/
-    public bool MeleeClima;
-    /*public bool MeleeClima
-    {
-        get { return meleeClima;}
-        set { meleeClima = value;}
-    }*/
-    public bool RangedClima;
-    /*public bool RangedClima
-    {
-        get { return rangedClima;}
-        set { rangedClima = value;}
-    }*/
-    public bool SiegeClima;
-    /*public bool SiegeClima
-    {
-        get { return siegeClima;}
-        set { siegeClima = value;}
-    }*/
-    public int Cambieb = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Bravas
-    /*public int Cambieb 
-    {
-        get { return cambieb;}
-        set { cambieb = value;}
-    }*/
-    public int CambieL = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Locas
-    /*public int CambieL
-    {
-        get { return cambieL;}
-        set { cambieL = value;}
-    }  */
+    private int n;
     private GameObject hand;
     private GameObject deck;
     private GameObject contador1;//contador del jugador uno
     private GameObject contador2;//contador del jugador dos
+    private bool UsadoL = false;//ya utilice en la ronada la carta lider de la faccion hormigas locas para ganar   
+    private bool UsadoB = false;//ya utilice en la ronada la carta lider de la faccion hormigas bravas para ganar   
+    public bool IsPlayerOneTurn = true;
+    //comprueban que cada jugador se haya pasado
+    public bool PlayerOnePassed = false;
+    public bool PlayerTwoPassed = false;
+    public bool LeaderCardBActivated = false;//carta lider de la faccion hormigas bravas
+    public bool LeaderCardLActivated = false;//carta lider de la faccion hormigas locas
+    //comprueba que se haya puesto una carta clima en su respectiva zona
+    public bool MeleeClima;
+    public bool RangedClima;
+    public bool SiegeClima;
+    //compueba que ya se haya activado el efecto de la carta clima
+    public  bool MeleeClimaOn = false;
+    public bool RangedClimaOn = false;
+    public bool SiegeClimaOn = false;
+    public int Cambieb = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Bravas
+    public int CambieL = 0;//cartas cambiadas al iniciar la partida en la faccion Hormigas Locas
     public int RondasGanadas1;//rondas ganadas por el jugador uno
-    /*public int rondasGanadas1
-    {
-        get { return  RondasGanadas1; }
-        set {  RondasGanadas1 = value; }
-    }*/
     public int RondasGanadas2;//rondas ganadas por el jugador dos
-    /*public int rondasGanadas2
-    {
-        get { return  RondasGanadas2; }
-        set {  RondasGanadas2 = value; }
-    }*/
+
     public void EndRound()
     {
         if(PlayerOnePassed == true && PlayerTwoPassed == true)//comprueba que ambos jugadores se hayan pasado
         {
             if(contador1.GetComponent<Contador>().puntos > contador2.GetComponent<Contador>().puntos)//comprueba cual es el ganador
             {
-                //comprueba si se activo el efecto de la lider, si se uso y en caso contrario si cumple las condiciones para ser activado
-                if(leaderCardLActivated == true && UsadoL == false && ((contador1.GetComponent<Contador>().puntos - contador2.GetComponent<Contador>().puntos) <=2) )
+                //comprueba si se activo el efecto de la lider, si se uso y en caso contrario si cumple las condiciones para ser usado
+                if(LeaderCardLActivated == true && UsadoL == false && ((contador1.GetComponent<Contador>().puntos - contador2.GetComponent<Contador>().puntos) <=2) )
                 {
                     Debug.Log("gana el jugador dos xq uso su carta lider");
                     IsPlayerOneTurn = false;
@@ -145,8 +72,7 @@ public class GameManager : MonoBehaviour
                 LimpiarFilas("MeleeZone","SiegeZone","RangedZone","Cementery");//limpia filas del jugador uno
                 LimpiarFilas("MeleeZone (1)","SiegeZone (1)", "RangedZone (1)", "Cementery (1)"); //limpia la fila del jugador dos
                 Aumentos();//limpia los aumentos
-                QuitarFilasEspeciales(); //quita las cartas de aumento y despeje
-                
+                QuitarFilasEspeciales(); //quita las cartas de aumento y despeje           
             }
             if(contador1.GetComponent<Contador>().puntos < contador2.GetComponent<Contador>().puntos)
             {
@@ -160,7 +86,7 @@ public class GameManager : MonoBehaviour
             }
             if(contador1.GetComponent<Contador>().puntos == contador2.GetComponent<Contador>().puntos)
             {
-                if(leaderCardBActivated == true && UsadoB == false)//comprueba para usar la carta lider 
+                if(LeaderCardBActivated == true && UsadoB == false)//comprueba para usar la carta lider 
                 {
                     Debug.Log("gana el jugador uno xq uso su carta lider");
                     IsPlayerOneTurn = true;
@@ -178,10 +104,10 @@ public class GameManager : MonoBehaviour
                 Aumentos();
                 QuitarFilasEspeciales();
             }
-                ComprobarCuantasCartasRobar("Deck", "Hand");
-                RobarCarta("Deck","Hand","Cementery");
-                ComprobarCuantasCartasRobar("Deck(1)", "Hand (1)");
-                RobarCarta("Deck(1)","Hand (1)", "Cementery (1)");
+            ComprobarCuantasCartasRobar("Deck", "Hand");
+            RobarCarta("Deck","Hand","Cementery");
+            ComprobarCuantasCartasRobar("Deck(1)", "Hand (1)");
+            RobarCarta("Deck(1)","Hand (1)", "Cementery (1)");
             //restaura los valores
             PlayerOnePassed = false;
             PlayerTwoPassed = false;
@@ -193,8 +119,6 @@ public class GameManager : MonoBehaviour
             RangedClimaOn = false;
         }
     }
-
-
     public void RobarCarta(string tagDeck, string tagHand, string tagcementery)
     {
         Debug.Log("compruebo para robar carta");
@@ -217,20 +141,16 @@ public class GameManager : MonoBehaviour
                 {
                     int index = Random.Range(0, cardsInDeck.Count);
                     GameObject drawCard = cardsInDeck[index];
-                    //GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
                     cardsInDeck.RemoveAt(index);
-                    //drawCard.transform.SetParent(Cementery.transform, false);
-                    Cementery.GetComponent<Cementery>().CardsInZone.Add(drawCard);
+                    Cementery.GetComponent<SpecialZones>().CartasEnZona.Add(drawCard);
                 }  
             }
             if(n == 1)
             {
                 int index = Random.Range(0, cardsInDeck.Count);
                 GameObject drawCard = cardsInDeck[index];
-                //GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
                 cardsInDeck.RemoveAt(index);
-                Cementery.GetComponent<Cementery>().CardsInZone.Add(drawCard);
-                //drawCard.transform.SetParent(Cementery.transform, false);
+                Cementery.GetComponent<SpecialZones>().CartasEnZona.Add(drawCard);
             }            
     }
     public void ComprobarCuantasCartasRobar(string tagDeck, string tagHand)
@@ -259,7 +179,6 @@ public class GameManager : MonoBehaviour
         aumento3 = GameObject.FindGameObjectWithTag("9");//zona siegeclima
         Cementery = GameObject.FindGameObjectWithTag("Cementery");
         Cementery1 = GameObject.FindGameObjectWithTag("Cementery (1)");
-
         foreach(GameObject carta in aumento1.GetComponent<SpecialZones>().CartasEnZona)
         {
             if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas)
@@ -291,18 +210,15 @@ public class GameManager : MonoBehaviour
         if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas)
             {
                 carta.transform.SetParent(Cementery.transform, false);
-                carta.transform.position = Cementery.transform.position; 
-                
+                carta.transform.position = Cementery.transform.position;                 
             }
             if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas)
             {
                 carta.transform.SetParent(Cementery1.transform, false);
                 carta.transform.position = Cementery1.transform.position; 
-                
             }    
         }
     }
-
     public void Aumentos()//limpia los aumentos del campo
     {
         aumento1 = GameObject.FindGameObjectWithTag("1");
@@ -313,7 +229,6 @@ public class GameManager : MonoBehaviour
         aumento6 = GameObject.FindGameObjectWithTag("6");
         Cementery = GameObject.FindGameObjectWithTag("Cementery");
         Cementery1 = GameObject.FindGameObjectWithTag("Cementery (1)");
-
         foreach(GameObject carta in aumento1.GetComponent<SpecialZones>().CartasEnZona)
         {
             carta.transform.SetParent(Cementery.transform, false);
@@ -375,7 +290,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("aqui estoy");
         Cementery = GameObject.Find(tag);
-        foreach(GameObject card in Cementery.GetComponent<Cementery>().CardsInZone)
+        foreach(GameObject card in Cementery.GetComponent<SpecialZones>().CartasEnZona)
         {
             if(card.CompareTag("Card"))
             {
@@ -415,11 +330,10 @@ public class GameManager : MonoBehaviour
             
         } 
     }
-        // Start is called before the first frame update
-        void Start()
-        {
-            contador1 = GameObject.FindGameObjectWithTag("Contador");
-            contador2 = GameObject.FindGameObjectWithTag("Contador (1)");
-        }
-
+    // Start is called before the first frame update
+    void Start()
+    {
+        contador1 = GameObject.FindGameObjectWithTag("Contador");
+        contador2 = GameObject.FindGameObjectWithTag("Contador (1)");
     }
+}

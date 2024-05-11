@@ -19,44 +19,34 @@ public class LeaderCardControl : MonoBehaviour
         if(gameManager.PlayerOnePassed == false && gameManager.IsPlayerOneTurn && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Bravas)//comprueba que sea el turno correspondiente
         {
             Debug.Log("todo bien hasta aqui");
-            if(gameManager.leaderCardBActivated == false)//comprueba que no se haya activado la carta lider 
+            if(gameManager.LeaderCardBActivated == false)//comprueba que no se haya activado la carta lider 
             {
             Debug.Log("active esta historia");
             if(gameManager.PlayerTwoPassed == false)
             {
                 gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
             }
-            gameManager.leaderCardBActivated = true;
+            gameManager.LeaderCardBActivated = true;
             }
-
             else Debug.Log("ya la activaste");
-
         }
         else if(gameManager.PlayerTwoPassed == false  && cardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
             if(gameManager.IsPlayerOneTurn == false)
             {
             Debug.Log("soy de esta faccion");
-            if(gameManager.leaderCardLActivated == false)
+            if(gameManager.LeaderCardLActivated == false)
             {
                 Debug.Log("active esta historia");
-                if(gameManager.PlayerOnePassed == false) 
+                if(gameManager.PlayerOnePassed == false)  
                 {
                     gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
-                gameManager.leaderCardLActivated = true;
+                gameManager.LeaderCardLActivated = true;
             }
             else Debug.Log("ya la activaste");    
             }
             else Debug.Log("NO ES MI TURNO");
-        
-        }
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }  
     }
 }
