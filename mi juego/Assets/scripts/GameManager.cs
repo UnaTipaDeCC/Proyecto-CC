@@ -123,35 +123,35 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("compruebo para robar carta");
         Cementery = GameObject.Find(tagcementery);
-            for(int i = 0; i < n; i++)
-            {
-                hand = GameObject.FindGameObjectWithTag(tagHand);
-                deck = GameObject.FindGameObjectWithTag(tagDeck);
-                cardsInHand = deck.GetComponent<Draw>().CardsInHand;
-                cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
-                int index = Random.Range(0, cardsInDeck.Count);
-                GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
-                cardsInDeck.RemoveAt(index);
-                drawCard.transform.SetParent(hand.transform, false);
-                cardsInHand.Add(drawCard);
-            }
-            if(n == 0)
-            {
-                for(int i = 0; i < 2; i++)
-                {
-                    int index = Random.Range(0, cardsInDeck.Count);
-                    GameObject drawCard = cardsInDeck[index];
-                    cardsInDeck.RemoveAt(index);
-                    Cementery.GetComponent<SpecialZones>().CartasEnZona.Add(drawCard);
-                }  
-            }
-            if(n == 1)
+        for(int i = 0; i < n; i++)
+        {
+            hand = GameObject.FindGameObjectWithTag(tagHand);
+            deck = GameObject.FindGameObjectWithTag(tagDeck);
+            cardsInHand = deck.GetComponent<Draw>().CardsInHand;
+            cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
+            int index = Random.Range(0, cardsInDeck.Count);
+            GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
+            cardsInDeck.RemoveAt(index);
+            drawCard.transform.SetParent(hand.transform, false);
+            cardsInHand.Add(drawCard);
+        }
+        if(n == 0)
+        {
+            for(int i = 0; i < 2; i++)
             {
                 int index = Random.Range(0, cardsInDeck.Count);
                 GameObject drawCard = cardsInDeck[index];
                 cardsInDeck.RemoveAt(index);
                 Cementery.GetComponent<SpecialZones>().CartasEnZona.Add(drawCard);
-            }            
+            }  
+        }
+        if(n == 1)
+        {
+            int index = Random.Range(0, cardsInDeck.Count);
+            GameObject drawCard = cardsInDeck[index];
+            cardsInDeck.RemoveAt(index);
+            Cementery.GetComponent<SpecialZones>().CartasEnZona.Add(drawCard);
+        }            
     }
     public void ComprobarCuantasCartasRobar(string tagDeck, string tagHand)
     {
@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
         }
         foreach(GameObject carta in aumento3.GetComponent<SpecialZones>().CartasEnZona)
         {
-        if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas)
+            if(carta.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Bravas)
             {
                 carta.transform.SetParent(Cementery.transform, false);
                 carta.transform.position = Cementery.transform.position;                 
@@ -284,7 +284,6 @@ public class GameManager : MonoBehaviour
             card.transform.SetParent(Cementery.transform, false);
             card.transform.position = Cementery.transform.position; 
         }
-
     }
     public void ReestablecerValores(string tag)
     {
@@ -306,7 +305,6 @@ public class GameManager : MonoBehaviour
                 card.GetComponent<SpecialCardsDisplay>().specialcard.jugada = false;
             }
         }
-    
     }
     public void EndGame()
     {
@@ -326,8 +324,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("GANA EL JUGADOR DOS");   
             }   
             PlayerOnePassed = true;
-            PlayerTwoPassed = true;
-            
+            PlayerTwoPassed = true;    
         } 
     }
     // Start is called before the first frame update

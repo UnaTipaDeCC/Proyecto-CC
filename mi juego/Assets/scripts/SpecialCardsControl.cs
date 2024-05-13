@@ -70,18 +70,10 @@ public class SpecialCardsControl : MonoBehaviour
               Mover("MeleeClima",cardsinhand);
               if(gameManager.MeleeClima == true)
               {
-                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
-                 {
-                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
-                    {
-                      carta.transform.SetParent(Cementery.transform, false); // mover la carta clima al cementerio al cementerio
-                      carta.transform.position = Cementery.transform.position;
-                    }
-                 }
-                 Despeje("MeleeZone","MeleeZone (1)");
-                 gameManager.MeleeClima = false;
-                 gameManager.MeleeClimaOn = false;
-
+                RemoverClima();
+                Despeje("MeleeZone","MeleeZone (1)");
+                gameManager.MeleeClima = false;
+                gameManager.MeleeClimaOn = false;
               }
               else Debug.Log("no hay cartas climas"); 
               if(gameManager.PlayerTwoPassed == false)
@@ -120,17 +112,10 @@ public class SpecialCardsControl : MonoBehaviour
               Mover("RangedClima",cardsinhand);
               if(gameManager.RangedClima == true)
               {
-                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
-                 {
-                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
-                    {
-                      carta.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
-                      carta.transform.position = Cementery.transform.position;
-                    }
-                 }
-                 Despeje("RangedZone", "RangedZone (1)");
-                 gameManager.RangedClima = false;
-                 gameManager.RangedClimaOn = false;
+                RemoverClima();
+                Despeje("RangedZone", "RangedZone (1)");
+                gameManager.RangedClima = false;
+                gameManager.RangedClimaOn = false;
               }
               else Debug.Log("no hay cartas climas");   
 
@@ -169,17 +154,10 @@ public class SpecialCardsControl : MonoBehaviour
                 Mover("SiegeClima",cardsinhand);
                 if(gameManager.MeleeClima == true)
               {
-                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
-                 {
-                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
-                    {
-                      carta.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
-                      carta.transform.position = Cementery.transform.position;
-                    }
-                 }
-                 Despeje("SiegeZone", "SiegeZone (1)");
-                 gameManager.SiegeClima = false;
-                 gameManager.SiegeClimaOn = false;
+                RemoverClima();
+                Despeje("SiegeZone", "SiegeZone (1)");
+                gameManager.SiegeClima = false;
+                gameManager.SiegeClimaOn = false;
               }   
 
                 if(gameManager.PlayerTwoPassed == false)
@@ -244,9 +222,7 @@ public class SpecialCardsControl : MonoBehaviour
               }  
             }
           }
-        }
-        
-       
+        }       
         if(gameManager.PlayerTwoPassed == false && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
         {
           if(CardInfo.tipoDeCarta == SpecialCards.TipoDeCarta.clima && CardInfo.zonaQueAfecta == SpecialCards.ZonaQueAfecta.Melee)// && CardInfo.faccion == SpecialCards.Faccion.Hormigas_Locas)
@@ -277,14 +253,7 @@ public class SpecialCardsControl : MonoBehaviour
               Mover("MeleeClima",cardsinhand1);
               if(gameManager.MeleeClima == true)
               {
-                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
-                 {
-                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
-                    {
-                      carta.transform.SetParent(Cementery1.transform, false); // mover la carta al cementerio
-                      carta.transform.position = Cementery1.transform.position;
-                    }
-                 }
+                 RemoverClima();
                  Despeje("MeleeZone","MeleeZone (1)");
                  gameManager.MeleeClima = false;
                  gameManager.MeleeClimaOn = false;
@@ -314,7 +283,6 @@ public class SpecialCardsControl : MonoBehaviour
                 gameManager.RangedClima = true;
               }
               else Debug.Log("ya hay una carta clima que afecta esta zona");
-             
             }
             else Debug.Log("No es tu turno");           
           }
@@ -326,14 +294,7 @@ public class SpecialCardsControl : MonoBehaviour
               Mover("RangedClima",cardsinhand1);
               if(gameManager.RangedClima == true)
               {
-                 foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
-                 {
-                    if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
-                    {
-                      carta.transform.SetParent(Cementery1.transform, false); // mover la carta al cementerio
-                      carta.transform.position = Cementery1.transform.position;
-                    }
-                 }
+                 RemoverClima();
                  Despeje("RangedZone", "RangedZone (1)");
                  gameManager.RangedClima = false;
                  gameManager.RangedClimaOn = false;
@@ -373,14 +334,7 @@ public class SpecialCardsControl : MonoBehaviour
                 Mover("SiegeClima",cardsinhand1);
                 if(gameManager.SiegeClima == true)
                 {
-                  foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
-                  {
-                      if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
-                      {
-                        carta.transform.SetParent(Cementery1.transform, false); // mover la carta al cementerio
-                        carta.transform.position = Cementery1.transform.position;
-                      }
-                  }
+                  RemoverClima();
                   Despeje("SiegeZone", "SiegeZone (1)");
                   gameManager.SiegeClima = false;
                   gameManager.SiegeClimaOn = false;
@@ -505,37 +459,16 @@ public class SpecialCardsControl : MonoBehaviour
       if(contador_melee >= contador_ranged && contador_melee > contador_siege)
       {
         Debug.Log("en melee esta la que menos tiene");
-        CambiaCarta(cartam,filaMelee,cardsInHand);/*
-        cartam.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano
-        cartam.transform.position = Zone.transform.position;
-        cardsInHand.Add(cartam); //agregarla a la lista de  la mano
-        cartam.GetComponent<cardDisplay>().card.jugada = false;
-        Card.transform.SetParent(filaMelee.transform, false); // mover la carta senuelo a la fila melee 
-        Card.transform.position = filaMelee.transform.position;
-        cardsInHand.Remove(Card);//remover la senuelo de la mano*/
+        CambiaCarta(cartam,filaMelee,cardsInHand);
       }
       else if(contador_ranged > contador_melee && contador_ranged >= contador_siege)
       {
         CambiaCarta(cartar, filaRanged,cardsInHand);
-        /*cartar.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
-        cartar.transform.position = Zone.transform.position;
-        cardsInHand.Add(cartar);
-        cartar.GetComponent<cardDisplay>().card.jugada = false;
-        Card.transform.SetParent(filaRanged.transform, false); // mover la carta senuelo a la fila melee 
-        Card.transform.position = filaRanged.transform.position;
-        cardsInHand.Remove(Card);*/
         Debug.Log("en ranged esta la que menos tiene");
         }
         else if(contador_siege > contador_melee && contador_siege > contador_ranged)
         {
           CambiaCarta(cartas, filaSiege, cardsInHand);
-          /*cartas.transform.SetParent(Zone.transform, false); // mover la carta con mas  poder a la mano 
-          cartas.transform.position = Zone.transform.position;
-          cardsInHand.Add(cartas);
-          cartas.GetComponent<cardDisplay>().card.jugada = false;
-          Card.transform.SetParent(filaSiege.transform, false); // mover la carta senuelo a la fila siege
-          Card.transform.position = filaSiege.transform.position;
-          cardsInHand.Remove(Card);*/
           Debug.Log("en siege esta la que menos tiene");
         }
         else if(cartam == null && cartar == null && cartas == null)
@@ -651,6 +584,17 @@ public class SpecialCardsControl : MonoBehaviour
         Card.transform.position = Zone.transform.position; 
         cardsinhand.Remove(Card);//remover de la mano
         CardInfo.jugada = true;//ya se jugo la carta
+    }
+    void RemoverClima()
+    {
+      foreach(GameObject carta in Zone.GetComponent<SpecialZones>().CartasEnZona)
+      {
+        if(carta.GetComponent<SpecialCardsDisplay>().specialcard.tipoDeCarta == SpecialCards.TipoDeCarta.clima)
+        {
+          carta.transform.SetParent(Cementery.transform, false); // mover la carta clima al cementerio al cementerio
+          carta.transform.position = Cementery.transform.position;
+        }
+      }
     }
   }   
 }

@@ -32,61 +32,59 @@ public class CardsMove : MonoBehaviour
     {
         if(gameManager.PlayerOnePassed == false  && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)//comprueba que el jugador uno no se haya pasado y que sea una de sus cartas
         {
-        //la zona a la que debe moverse
-        if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
-        {
-             if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que sea el turno del jugador uno y que la carta no haya sido jugada
-             {
-                Mover("MeleeZone",cardsinhand);
-                if(gameManager.PlayerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+            //la zona a la que debe moverse
+            if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee)
+            {
+                if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que sea el turno del jugador uno y que la carta no haya sido jugada
                 {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-                Debug.Log("cambie el turno");
+                    Mover("MeleeZone",cardsinhand);
+                    if(gameManager.PlayerTwoPassed == false) //comprueba que el otro jugador no se haya pasado y en ese caso cambia el turno
+                    {
+                    gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                    Debug.Log("cambie el turno");
+                    }
                 }
-             }
-             else 
-             {   
-                Debug.Log("no es tu turno o ya estas en la mesa");
-             }  
-        }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
-        {
-            if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
-            {
-            Mover("RangedZone",cardsinhand);
-            if(gameManager.PlayerTwoPassed == false)
-            {
-            gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-            Debug.Log("cambie el turno");
+                else 
+                {   
+                    Debug.Log("no es tu turno o ya estas en la mesa");
+                }  
             }
-            }
-            else
+            else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged)
             {
-                Debug.Log("no es tu turno o ya esta en la mesa");
-            }
-        
-        }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Bravas)
-        {
-            if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
-            {   
-                Mover("SiegeZone",cardsinhand);
-                if(gameManager.PlayerTwoPassed == false)
+                if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
                 {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-                Debug.Log("cambie el turno");
+                    Mover("RangedZone",cardsinhand);
+                    if(gameManager.PlayerTwoPassed == false)
+                    {
+                        gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                        Debug.Log("cambie el turno");
+                    }
+                }
+                else
+                {
+                    Debug.Log("no es tu turno o ya esta en la mesa");
                 }
             }
-            else
+            else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege)
             {
-                Debug.Log("no es tu turno o ya esta en la mesa");
+                if(gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
+                {   
+                    Mover("SiegeZone",cardsinhand);
+                    if(gameManager.PlayerTwoPassed == false)
+                    {
+                        gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                        Debug.Log("cambie el turno");
+                    }
+                }
+                else
+                {
+                    Debug.Log("no es tu turno o ya esta en la mesa");
+                }
             }
         }
-    }
-
-        if(gameManager.PlayerTwoPassed == false && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)//comprueba que el jugador no se haya pasado
+        if(gameManager.PlayerTwoPassed == false && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)//comprueba que el jugador no se haya pasado y que sea una de sus cartas
         {
-             if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
+            if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Melee)
             {
                 if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)//comprueba que sea el turno del jugador 2
                 {
@@ -94,53 +92,48 @@ public class CardsMove : MonoBehaviour
                     Debug.Log(CardInfo.jugada);
                     if(gameManager.PlayerOnePassed == false)
                     {
-                    gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-                    Debug.Log("cambie el turno"); 
+                        gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                        Debug.Log("cambie el turno"); 
                     }
-                
                 }
                 else
                 {
                     Debug.Log("no es tu turno o ya esta en la mesa");
                 }                 
             }
-        else if( CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
-        {
-            if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
+            else if( CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Ranged)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
             {
-                Mover("RangedZone (1)",cardsinhand1);
-                if(gameManager.PlayerOnePassed == false) 
+                if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
                 {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-                Debug.Log("cambie el turno");   
-                }     
-            }
-            else
-            {
-                Debug.Log("no es tu turno o ya esta en la mesa");
-            }   
-            
-        
-        }
-        else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
-        {
-            if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
-            {
-                Mover("SiegeZone (1)",cardsinhand1);
-                if(gameManager.PlayerOnePassed == false) 
-                {
-                gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
-                Debug.Log("cambie el turno");
+                    Mover("RangedZone (1)",cardsinhand1);
+                    if(gameManager.PlayerOnePassed == false) 
+                    {
+                        gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                        Debug.Log("cambie el turno");   
+                    }     
                 }
+                else
+                {
+                    Debug.Log("no es tu turno o ya esta en la mesa");
+                } 
             }
-            else
+            else if(CardInfo.tipoDeAtaque == global::Card.TipoDeAtaque.Siege)// && CardInfo.faccion == global::Card.Faccion.Hormigas_Locas)
             {
-                Debug.Log("no es tu turno o ya esta en la mesa");
-            }    
-        }
-        }
-        
-      
+                if(!gameManager.IsPlayerOneTurn && CardInfo.jugada == false)
+                {
+                    Mover("SiegeZone (1)",cardsinhand1);
+                    if(gameManager.PlayerOnePassed == false) 
+                    {
+                        gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
+                        Debug.Log("cambie el turno");
+                    }
+                }
+                else
+                {
+                    Debug.Log("no es tu turno o ya esta en la mesa");
+                }    
+            }
+        }      
     }
     private void Mover(string tagZone, List<GameObject> cardsinhand)
     {
@@ -150,5 +143,4 @@ public class CardsMove : MonoBehaviour
         cardsinhand.Remove(Card);//remover de la mano
         CardInfo.jugada = true;//ya se jugo la carta
     }
-    
 }
