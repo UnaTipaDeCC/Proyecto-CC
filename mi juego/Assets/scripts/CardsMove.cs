@@ -14,12 +14,6 @@ public class CardsMove : MonoBehaviour
      private GameObject deck1;
      private List<GameObject> cardsinhand;
      private List<GameObject> cardsinhand1;
-
-    private GameObject deck2;
-    private GameObject contador;
-    private GameObject hand;
-    private List<GameObject> cardsInHand;
-    private List<GameObject> cardsInDeck;
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();

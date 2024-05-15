@@ -33,20 +33,12 @@ public class Effects : MonoBehaviour
     }
     public void RobarUnaCarta()
     {
-        hand = GameObject.FindGameObjectWithTag("Hand (1)");
         deck = GameObject.FindGameObjectWithTag("Deck(1)");
-        cardsinhand = deck.GetComponent<Draw>().CardsInHand;
-        cardsindeck = deck.GetComponent<Draw>().CardsInDeck;
         if(ActivoElEfecto == false)
         {
             if(!gameManager.IsPlayerOneTurn)
-            {
-            
-            int index = UnityEngine.Random.Range(0, cardsindeck.Count);
-            GameObject drawCard = Instantiate(cardsindeck[index], new Vector3(0,0,0), Quaternion.identity);
-            cardsindeck.RemoveAt(index);
-            drawCard.transform.SetParent(hand.transform, false);
-            cardsinhand.Add(drawCard);
+            {  
+            deck.GetComponent<Draw>().ROBAR();
             ActivoElEfecto = true;
             }
         }
@@ -66,74 +58,62 @@ public class Effects : MonoBehaviour
                 filaSiege = GameObject.FindGameObjectWithTag("SiegeZone (1)");
                 siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
                 Cementery = GameObject.FindGameObjectWithTag("Cementery (1)");    
-                int contador_melee = int.MaxValue;
-                int index_melee = 0;
-                int contador_ranged = int.MaxValue;
-                int index_ranged = 0;
-                int contador_siege = int.MaxValue;
-                int index_siege = 0;
                 if(melee.Count!= 0 || ranged.Count!= 0 || siege.Count!= 0)
                 {
-                    foreach(GameObject carta in melee)//busca la carta con menos poder de la zona melee
+                    if(melee.Count != 0) cartam = melee[0];
+                    else if(siege.Count != 0) cartam = siege[0];
+                    else if(ranged.Count != 0) cartam = ranged[0];
+                    ComprobarMenor(melee);
+                    ComprobarMenor(siege);
+                    ComprobarMenor(ranged);
+                    /*foreach(GameObject carta in melee)
                     {
-                        if(carta.CompareTag("Card"))//comprueba que sea una carta de unidad
+                        if(carta.CompareTag("Card"))
                         {
-                            if(carta.GetComponent<cardDisplay>().card.Damage < contador_melee)
+                            if(carta.GetComponent<cardDisplay>().card.Damage < cartam.GetComponent<cardDisplay>().card.Damage)
                             {
-                                contador_melee = carta.GetComponent<cardDisplay>().card.Damage;
-                                index_melee = melee.IndexOf(carta);
                                 cartam = carta;
                             }
                         }
                     }
-                    foreach(GameObject carta in ranged) //busca la carta con menos poder de la zona ranged
+                    foreach(GameObject carta in siege)
                     {
                         if(carta.CompareTag("Card"))
                         {
-                            if(carta.GetComponent<cardDisplay>().card.Damage < contador_ranged)
+                            if(carta.GetComponent<cardDisplay>().card.Damage < cartam.GetComponent<cardDisplay>().card.Damage)
                             {
-                                contador_ranged = carta.GetComponent<cardDisplay>().card.Damage;
-                                index_ranged = ranged.IndexOf(carta);
-                                cartar = carta;
+                                cartam = carta;
                             }
                         }
-                    } 
-                    foreach(GameObject carta in siege) //busca la zona con menos poder de la zona siege
+                    }
+                    foreach(GameObject carta in ranged)
                     {
                         if(carta.CompareTag("Card"))
                         {
-                            if(carta.GetComponent<cardDisplay>().card.Damage < contador_siege)
+                            if(carta.GetComponent<cardDisplay>().card.Damage < cartam.GetComponent<cardDisplay>().card.Damage)
                             {
-                                contador_siege = carta.GetComponent<cardDisplay>().card.Damage;
-                                index_siege = siege.IndexOf(carta);
-                                cartas = carta;
+                                cartam = carta;
                             }
                         }
-                    }
-                    //compara las cartas encontradas y elimina la de menor poder de su respectiva fila
-                    if(melee.Count != 0 && contador_melee <= contador_ranged && contador_melee < contador_siege)
-                    {
-                        cartam.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
-                        cartam.transform.position = Cementery.transform.position;
-                        Debug.Log("AGREGUE A LA LISTA CEMENTERY");
-                        Debug.Log("quite una carta de melee");
-                    }
-                    else if(ranged.Count != 0 && contador_ranged < contador_melee && contador_ranged <= contador_siege)
-                    {
-                        cartar.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
-                        cartar.transform.position = Cementery.transform.position;
-                        Debug.Log("AGREGUE A LA LISTA CEMENTERY");
-                        Debug.Log("quite una carta de ranged");
-                    }
-                    else
-                    {
-                        cartas.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
-                        cartas.transform.position = Cementery.transform.position;
-                        Debug.Log("quite una carta de siege");
-                    }
+                    }*/
+                    cartam.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
+                    cartam.transform.position = Cementery.transform.position;
                 }
                 ActivoElEfecto = true;
             }    
+        }
+    }
+    void ComprobarMenor(List<GameObject> zona)
+    {
+        foreach(GameObject carta in zona)
+        {
+            if(carta.CompareTag("Card"))
+            {
+                if(carta.GetComponent<cardDisplay>().card.Damage < cartam.GetComponent<cardDisplay>().card.Damage)
+                {
+                    cartam = carta;
+                }
+            }
         }
     }
     public void EliminarCartaConMasPoderDelRival()
@@ -150,75 +130,65 @@ public class Effects : MonoBehaviour
                 filaSiege = GameObject.FindGameObjectWithTag("SiegeZone (1)");
                 siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
                 Cementery = GameObject.FindGameObjectWithTag("Cementery (1)");
-                int contador_melee = int.MinValue;
-                int index_melee = 0;
-                int contador_ranged = int.MinValue;
-                int index_ranged = 0;
-                int contador_siege = int.MinValue;
-                int index_siege = 0;
                 if(melee.Count != 0 || siege.Count != 0 || ranged.Count != 0)
                 {
-                    foreach(GameObject carta in melee)//encuentra la carta mas poder de la zona melee
+                    if(melee.Count != 0) cartam = melee[0];
+                    else if(siege.Count != 0) cartam = siege[0];
+                    else if(ranged.Count != 0) cartam = ranged[0];
+                    ComprobarMayor(melee);
+                    ComprobarMayor(siege);
+                    ComprobarMayor(ranged);
+                    /*foreach(GameObject carta in melee)
+                    {
+                    if(carta.CompareTag("Card"))
+                        {
+                            if(carta.GetComponent<cardDisplay>().card.Damage > cartam.GetComponent<cardDisplay>().card.Damage) 
+                            {
+                                cartam = carta;
+                            }
+                        }    
+                    }
+                    foreach(GameObject carta in siege)
                     {
                         if(carta.CompareTag("Card"))
                         {
-                            if(carta.GetComponent<cardDisplay>().card.Damage > contador_melee) 
+                            if(carta.GetComponent<cardDisplay>().card.Damage > cartam.GetComponent<cardDisplay>().card.Damage) 
                             {
-                                contador_melee = carta.GetComponent<cardDisplay>().card.Damage;
-                                index_melee = melee.IndexOf(carta);
                                 cartam = carta;
                             }
                         }
-                    }
-                    foreach(GameObject carta in ranged)//encuentra la carta con mas poderde la zona ranged
+                    }   
+                    foreach(GameObject carta in ranged)
                     {
                         if(carta.CompareTag("Card"))
                         {
-                            if(carta.GetComponent<cardDisplay>().card.Damage > contador_ranged)
+                            if(carta.GetComponent<cardDisplay>().card.Damage > cartam.GetComponent<cardDisplay>().card.Damage) 
                             {
-                                contador_ranged = carta.GetComponent<cardDisplay>().card.Damage;
-                                index_ranged = ranged.IndexOf(carta);
-                                cartar = carta;
+                                cartam = carta;
                             }
                         }
-                    } 
-                    foreach(GameObject carta in siege)//encuentra la carta con mas poder de la zona siege
-                    {
-                        if(carta.CompareTag("Card"))
-                        {
-                            if(carta.GetComponent<cardDisplay>().card.Damage > contador_siege)
-                            {
-                                contador_siege = carta.GetComponent<cardDisplay>().card.Damage;
-                                index_siege = siege.IndexOf(carta);
-                                cartas = carta;
-                            }
-                        }
-                    }
-                    //comparar cual de las cartas tiene mas poder y eliminarla de la fila
-                    if(contador_melee >= contador_ranged && contador_melee > contador_siege)
-                    {
-                        Debug.Log("quite una carta de melee");
-                        cartam.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
-                        cartam.transform.position = Cementery.transform.position;
-                    }
-                    else if(contador_ranged > contador_melee && contador_ranged >= contador_siege)
-                    {
-                        cartar.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
-                        cartar.transform.position = Cementery.transform.position;
-                        Debug.Log("quite una carta de ranged");
-                    }
-                    else
-                    {
-                        cartas.transform.SetParent(Cementery.transform, false); // mover la carta al cementerio
-                        cartas.transform.position = Cementery.transform.position;
-                        Debug.Log("quite una carta de siege");
-                    }
+                    } */  
+                    cartam.transform.SetParent(Cementery.transform, false); // mover la carta a la zona deseada 
+                    cartam.transform.position = Cementery.transform.position;                
                 }
                 ActivoElEfecto = true;
             }
             else Debug.Log("ya active el efecto");
         }
         else Debug.Log("no afecto porque no es mi turno");
+    }
+    void ComprobarMayor(List<GameObject> zona)
+    {
+        foreach(GameObject carta in zona)
+        {
+            if(carta.CompareTag("Card"))
+            {
+                if(carta.GetComponent<cardDisplay>().card.Damage > cartam.GetComponent<cardDisplay>().card.Damage)
+                {
+                    cartam = carta;
+                }
+            }
+        }
     }
     public void MultiplicarPor_n_ElAtaque()//siendo n la cantidad de cartas igual a ella en el campo
     {
@@ -267,37 +237,26 @@ public class Effects : MonoBehaviour
                     GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().Suma = 0;
                     GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().Suma = 0;
                     GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().Suma = 0;
-                    foreach(GameObject carta in melee)
-                    {
-                        if(carta.CompareTag("Card"))
-                        {
-                            carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                            GameObject.FindGameObjectWithTag("MeleeZone (1)").GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
-                        }
-                    }
-                    foreach(GameObject carta in siege)
-                    {
-                        if(carta.CompareTag("Card"))
-                        {
-                            carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                            GameObject.FindGameObjectWithTag("SiegeZone (1)").GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
-                        }
-                    }
-                    foreach(GameObject carta in ranged)
-                    {
-                        if(carta.CompareTag("Card"))
-                        {
-                            carta.GetComponent<cardDisplay>().card.Damage = promedio;
-                            Debug.Log(carta.GetComponent<cardDisplay>().card.Damage);
-                            GameObject.FindGameObjectWithTag("RangedZone (1)").GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
-                        }                
-                    }
+                    IgualarPoder(melee,promedio,"MeleeZone (1)");
+                    IgualarPoder(siege,promedio,"SiegeZone (1)");
+                    IgualarPoder(ranged,promedio,"RangedZone (1)");
                 }
                 ActivoElEfecto = true;
             }       
             else Debug.Log("ya active el efecto");
         }
         else Debug.Log("no afecto xq no es mi turno");
+    }
+    void IgualarPoder(List<GameObject> lista, int promedio, string tag)
+    {
+        foreach(GameObject carta in lista)
+                    {
+                        if(carta.CompareTag("Card"))
+                        {
+                            carta.GetComponent<cardDisplay>().card.Damage = promedio;
+                            GameObject.FindGameObjectWithTag(tag).GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
+                        }
+                    }
     }
     public void LimpiaLaFilaConMenosUnidades()
     {
@@ -319,7 +278,6 @@ public class Effects : MonoBehaviour
                     {
                         carta.transform.SetParent(Cementery.transform, false);
                         carta.transform.position = Cementery.transform.position; 
-                        Debug.Log("voy a quitar");
                     }
                 }
                 else Debug.Log("todas las listas estan vacias");

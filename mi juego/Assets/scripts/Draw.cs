@@ -14,13 +14,17 @@ public class Draw : MonoBehaviour
         {
             for(int i = 0; i < 10; i++)
             {
-                int index = Random.Range(0, CardsInDeck.Count);
+                ROBAR();
+                Yasetoco = true;
+            }
+        }    
+    }
+    public void ROBAR()
+    {
+        int index = Random.Range(0, CardsInDeck.Count);
                 GameObject drawCard = Instantiate(CardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
                 CardsInDeck.RemoveAt(index);
                 drawCard.transform.SetParent(Hand.transform, false);
                 CardsInHand.Add(drawCard);
-                Yasetoco = true;
-            }
-        }    
     }
 }

@@ -34,19 +34,23 @@ public class EscogerCartas : MonoBehaviour
         if(gameManager.RondasGanadas1 == 0 && gameManager.PlayerOnePassed == false && gameManager.LeaderCardBActivated == false && gameManager.Cambieb  < 2 && Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
         {
             EscogeCartas(cardsInHand , cardsInDeck);
+            gameManager.Cambieb++;
+            Debug.Log(gameManager.Cambieb);
         }
         else Debug.Log("Ya cambiaste las dos cartas o ya jugaste y no  puedes cambiar");
         }
-        else if((gameManager.CambieL < 2 && clickedCard.CompareTag("Card") && clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Locas) || (clickedCard.CompareTag("SpecialCard") && clickedCard.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas))
+        else if((clickedCard.CompareTag("Card") && clickedCard.GetComponent<cardDisplay>().card.faccion == Card.Faccion.Hormigas_Locas) || (clickedCard.CompareTag("SpecialCard") && clickedCard.GetComponent<SpecialCardsDisplay>().specialcard.faccion == SpecialCards.Faccion.Hormigas_Locas))
         {
             deck = GameObject.Find("Deck (1)");
             contador = GameObject.Find("Contador (1)");
             hand = GameObject.Find("Hand1");
             cardsInHand = deck.GetComponent<Draw>().CardsInHand;
             cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
-            if(gameManager.RondasGanadas2 == 0 && gameManager.PlayerTwoPassed == false && gameManager.LeaderCardLActivated == false &&  Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
+            if(gameManager.RondasGanadas2 == 0 && gameManager.PlayerTwoPassed == false && gameManager.LeaderCardLActivated == false && gameManager.CambieL < 2 && Input.GetMouseButtonUp(1) && contador.GetComponent<Contador>().puntos == 0 && deck.GetComponent<Draw>().CardsInHand.Count == 10)
             {
                 EscogeCartas(cardsInHand , cardsInDeck);
+                gameManager.CambieL++;
+                Debug.Log(gameManager.CambieL);
             }
         else Debug.Log("Ya cambiaste las dos cartas o ya jugaste y no  puedes cambiar");
         }
@@ -54,15 +58,13 @@ public class EscogerCartas : MonoBehaviour
         {
             cardsInHand.Remove(clickedCard);
             cardsInDeck.Add(clickedCard);
-            Destroy(clickedCard);
+            clickedCard.SetActive(false);
             int index = UnityEngine.Random.Range(0, cardsInDeck.Count);
             GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
             cardsInDeck.RemoveAt(index);
             drawCard.transform.SetParent(hand.transform, false);
             cardsInHand.Add(drawCard);
             Debug.Log("cambie una carta");
-            gameManager.CambieL++;
-            Debug.Log(gameManager.CambieL);
             Transform hijoADestruir = cardZoom.transform.GetChild(0);
             if (hijoADestruir != null) { Destroy(hijoADestruir.gameObject); }   
         }       

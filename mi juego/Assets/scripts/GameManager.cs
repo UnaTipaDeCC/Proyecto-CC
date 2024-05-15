@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//using System.Data.Common;
-//using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -123,17 +121,19 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("compruebo para robar carta");
         Cementery = GameObject.Find(tagcementery);
+        deck = GameObject.FindGameObjectWithTag(tagDeck);
         for(int i = 0; i < n; i++)
         {
-            hand = GameObject.FindGameObjectWithTag(tagHand);
-            deck = GameObject.FindGameObjectWithTag(tagDeck);
+            
+            deck.GetComponent<Draw>().ROBAR();
+            /*hand = GameObject.FindGameObjectWithTag(tagHand);
             cardsInHand = deck.GetComponent<Draw>().CardsInHand;
             cardsInDeck = deck.GetComponent<Draw>().CardsInDeck;
             int index = Random.Range(0, cardsInDeck.Count);
             GameObject drawCard = Instantiate(cardsInDeck[index], new Vector3(0,0,0), Quaternion.identity);
             cardsInDeck.RemoveAt(index);
             drawCard.transform.SetParent(hand.transform, false);
-            cardsInHand.Add(drawCard);
+            cardsInHand.Add(drawCard);*/
         }
         if(n == 0)
         {

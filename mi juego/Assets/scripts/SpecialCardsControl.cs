@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -385,7 +386,6 @@ public class SpecialCardsControl : MonoBehaviour
                 {
                   gameManager.IsPlayerOneTurn = !gameManager.IsPlayerOneTurn;
                 }
-              Debug.Log(CardInfo.jugada);
               }           
               else Debug.Log("No es tu turno");
           }
@@ -412,11 +412,8 @@ public class SpecialCardsControl : MonoBehaviour
     filaSiege = GameObject.FindGameObjectWithTag(siegeTag);
     siege = filaSiege.GetComponent<Tablero>().CartasEnZona;
     int contador_melee = int.MinValue;
-    int index_melee = 0;
     int contador_ranged = int.MinValue;
-    int index_ranged = 0;
     int contador_siege = int.MinValue;
-    int index_siege = 0;
     if(melee.Count != 0 || siege.Count != 0 || ranged.Count != 0)
     {
       foreach(GameObject carta in melee)//encuentra la carta mas poder de la zona melee
@@ -426,7 +423,6 @@ public class SpecialCardsControl : MonoBehaviour
         if(carta.GetComponent<cardDisplay>().card.Damage > contador_melee) 
         {
           contador_melee = carta.GetComponent<cardDisplay>().card.Damage;
-          index_melee = melee.IndexOf(carta);
           cartam = carta;
         }
         }
@@ -435,10 +431,9 @@ public class SpecialCardsControl : MonoBehaviour
       {
         if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == global::Card.TipoDeCarta.silver)
         {
-        if(carta.GetComponent<cardDisplay>().card.Damage > contador_ranged)
+        if(carta.GetComponent<cardDisplay>().card.Damage >  contador_ranged)
         {
           contador_ranged = carta.GetComponent<cardDisplay>().card.Damage;
-          index_ranged = ranged.IndexOf(carta);
           cartar = carta;
         }
         }
@@ -447,10 +442,9 @@ public class SpecialCardsControl : MonoBehaviour
       {
         if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == global::Card.TipoDeCarta.silver)
         {
-        if(carta.GetComponent<cardDisplay>().card.Damage > contador_siege)
+        if(carta.GetComponent<cardDisplay>().card.Damage > contador_siege )
         {
           contador_siege = carta.GetComponent<cardDisplay>().card.Damage;
-          index_siege = siege.IndexOf(carta);
           cartas = carta;
         }
         }
@@ -503,7 +497,8 @@ public class SpecialCardsControl : MonoBehaviour
     zone.GetComponent<Tablero>().Suma = 0;
     zone1.GetComponent<Tablero>().Suma = 0;
     Debug.Log("estoy aqui");
-    foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
+    climaAfecta(zone);
+    /*foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
     {
       if(carta.CompareTag("Card"))
       {
@@ -514,8 +509,9 @@ public class SpecialCardsControl : MonoBehaviour
       }
       zone.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       } 
-    }
-    foreach(GameObject carta in zone1.GetComponent<Tablero>().CartasEnZona)
+    }*/
+    climaAfecta(zone1);
+    /*foreach(GameObject carta in zone1.GetComponent<Tablero>().CartasEnZona)
     {
       if(carta.CompareTag("Card"))
       {
@@ -525,6 +521,21 @@ public class SpecialCardsControl : MonoBehaviour
         carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = true;
       }
       zone1.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
+      }
+    }  */
+ }
+ void climaAfecta(GameObject zone)
+ {
+  foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
+    {
+      if(carta.CompareTag("Card"))
+      {
+      if(carta.GetComponent<cardDisplay>().card.tipoDeCarta == global::Card.TipoDeCarta.silver)
+      {
+        carta.GetComponent<cardDisplay>().card.Damage -= 1;
+        carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = true;
+      }
+      zone.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       }
     }  
  }
@@ -552,7 +563,8 @@ public class SpecialCardsControl : MonoBehaviour
     zone.GetComponent<Tablero>().Suma = 0;
     zone1 = GameObject.FindGameObjectWithTag(tag1);
     zone1.GetComponent<Tablero>().Suma = 0;
-    foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
+    AfectaDespeje(zone);
+    /*foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
     {
        if(carta.CompareTag("Card"))
        {
@@ -563,7 +575,9 @@ public class SpecialCardsControl : MonoBehaviour
       }
       zone.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
        }
-    }
+    }*/
+    AfectaDespeje(zone1);
+    /*
      foreach(GameObject carta in zone1.GetComponent<Tablero>().CartasEnZona)
     {
        if(carta.CompareTag("Card"))
@@ -575,8 +589,23 @@ public class SpecialCardsControl : MonoBehaviour
       }
       zone1.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
       }
-    } 
+    } */
   }
+   void AfectaDespeje(GameObject zone)
+   {
+      foreach(GameObject carta in zone.GetComponent<Tablero>().CartasEnZona)
+    {
+       if(carta.CompareTag("Card"))
+       {
+      if(carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima == true)
+      {
+        carta.GetComponent<cardDisplay>().card.Damage += 1;
+        carta.GetComponent<cardDisplay>().card.AfectadaPorUnClima = false;
+      }
+      zone.GetComponent<Tablero>().Suma += carta.GetComponent<cardDisplay>().card.Damage;
+       }
+    }
+   }
    void Mover(string tagZone, List<GameObject> cardsinhand)
     {
         Zone = GameObject.Find(tagZone);
